@@ -1,7 +1,2039 @@
 % Copyright (c) 2014,2016,2018 Casper Ti. Vector
 % Public domain.
 
-\chapter{Conclusion}
-Test text.
+\chapter{Spine decompositions of critical superprocesses: Yaglom type result}
+
+\section{Introduction}
+
+	It is well known that for a critical Galton-Watson process $\{(Z_n)_{n\in \mathbb N};P\}$, we have
+\begin{equation}
+\label{eq:Mot-1}
+	nP(Z_n>0)
+	\xrightarrow[n\to\infty]{} \frac{2}{\sigma^2}
+\end{equation}
+	and
+\begin{equation}
+\label{eq:Mot-2}
+	\big\{\frac{Z_n}{n}; P(\cdot|Z_n>0)\big\}
+	\xrightarrow[n\to\infty]{law} \frac{\sigma^2}{2} \mathbf e,
+\end{equation}
+	where $\sigma^2$ is the variance of the offspring distribution and $\mathbf e$ is an exponential random variable with mean 1.
+	The result \eqref{eq:Mot-1} was first proved by Kolmogorov in \cite{Kolmogorov1938Zur-losung} under a third moment condition, and the result \eqref{eq:Mot-2} is due to Yaglom \cite{Yaglom1947Certain}.
+	For further references to these results, see \cite{Harris2002The-theory, KestenNeySpitzer1966The-Galton-Watson}.
+	Ever since these pioneering works of Kolmogorov and Yaglom, lots of analogous results were obtained for more general critical branching processes.
+	For continuous time critical branching processes, see \cite{AthreyaNey1972Branching}; for discrete time multitype critical branching processes, see \cite{AthreyaNey1972Branching, JoffeSpitzer1967On-multitype}; for continuous time multitype critical branching processes, see \cite{AthreyaNey1974Functionals}; and for critical branching Markov processes, see \cite{AsmussenHering1983Branching}.
+	We will call results like \eqref{eq:Mot-1} Kolmogorov type results and results like \eqref{eq:Mot-2} Yaglom type results.
+\par
+	Similar results have also been obtained for some superprocesses.
+	Evans and Perkins \cite{EvansPerkins1990Measure-valued} obtained both Kolmogorov type and Yaglom type results for critical superprocesses when the branching mechanism is $(x,z) \mapsto z^2$ and the spatial motion satisfies some ergodicity conditions.
+	Recently, Ren, Song and Zhang \cite{RenSongZhang2015Limit} obtained similar limit results for a class of critical superprocesses with general branching mechanisms and general spatial motions:
+	Let $X=\{(X_t)_{t\geq 0};\mathbf P_\mu\}$ be a critical superprocess, in a locally compact separable metric space $E$, starting from a measure $\mu$, with its spatial motion being a Hunt process, and its branching mechanism being
+\[
+	(x,z) \mapsto -\beta(x)z + \alpha(x)z^2 + \int_{(0,\infty)} (e^{-zy}-1+zy)\pi(x,dy),
+\]
+	where $\beta\in b\mathscr B_E,\alpha\in bp\mathscr B_E$ and $\pi(x,dy)$ is a kernel from $E$ to $(0,\infty)$ satisfying that $\sup_{x\in E}\int_{(0,\infty)}(y\wedge y^2)\pi(x,dy)<\infty$.
+	Under the condition that the transition semigroup of the spatial motion is intrinsically ultracontractive with respect to some reference measure $m$ on $E$, and some other mild assumptions, it was proved in \cite{RenSongZhang2015Limit} that
+\begin{equation}
+\label{eq:Mot-3}
+	t\mathbf P_\mu(X_t\neq \mathbf 0)
+	\xrightarrow[t\to\infty]{} c^{-1} \langle \phi,\mu \rangle,
+\end{equation}
+	and for a large class of functions $f$ on $E$,
+\begin{equation}
+\label{eq:Mot-4}
+	\big\{\frac{X_t(f)}{t};\mathbf P_\mu(\cdot|X_t \neq \mathbf 0)\big\}
+\xrightarrow[t\to\infty]{law} c \langle \phi^*, f\rangle_m \mathbf e.
+\end{equation}
+	Here, the constant $c>0$ is independent of the choice of $\mu$ and $f$;
+	$\mathbf e$ is an exponential  random variable with mean 1;
+	and $\phi$ (respectively, $\phi^*$) is the principal eigenfunction of (respectively, the dual of) the mean semigroup of $X$.
+\par
+	The proofs of the limit results in the works mentioned above are all analytic in nature and thus not very transparent.
+	More intuitive probabilistic proofs would be very helpful.
+	This was first accomplished for critical Galton-Watson processes, see \cite{Geiger1999Elementary, LyonsPemantlePeres1995Conceptual} for probabilistic proofs of \eqref{eq:Mot-1}, and \cite{Geiger2000A-new-proof, LyonsPemantlePeres1995Conceptual, RenSongSun2018A-2-spine} for probabilistic proofs of \eqref{eq:Mot-2}.
+	For more general models, Vatutin and Dyakonova \cite{VatutinDyakonova2001The-survival} gave a probabilistic proof of a Kolmogrov type result for multitype critical branching processes.
+	Recently, Powell \cite{Powell2015An-invariance} gave probabilistic proofs of both Kolmogorov type and Yaglom type results for a class of critical branching diffusions.
+As far as we know, there is no probabilistic proof of Yaglom type result for multitype critical branching processes, and there are no probabilistic proofs of results \eqref{eq:Mot-3} and \eqref{eq:Mot-4} for critical superprocesses yet.
+\par
+	The method initiated in \cite{LyonsPemantlePeres1995Conceptual} is now known as the spine decomposition.
+	Roughly speaking, the spine decomposition theorem says that the size-biased transform of the branching process can be interpreted as an immigration branching process along with an immortal particle.
+	This spine approach is generic in the sense that it can be adapted to a variety of general branching processes and is powerful in studying limit behaviors due to its relation with the size-biased transforms.
+\par
+	In this chapter, by the \emph{size-biased transform} we mean the following:
+	Let $X$ be a random variable and $g$ be a Borel function with $\mathbf P(g(X)\geq 0)=1$ and $\mathbf E[g(X)] \in (0,\infty)$.
+	We say that a random variable $\dot X$ is the \emph{$g(X)$-size-biased transform (or simply $g(X)$-transform) of $X$} if
+\[
+	\mathbf E [f (\dot X)]
+	= \frac {\mathbf E[ g(X) f(X)]} {\mathbf E[ g(X)]},
+\]
+	for every positive Borel function $f$.
+	More generally, for a non-negative measurable function $g$ on a measure space $(D,\mathscr F_D,\mathbf D)$ with $\mathbf D(g)\in (0,\infty)$, we define the \emph{$g$-transform of the measure $\mathbf D$} as the probability measure $\mathbf D^g$ on $(D,\mathscr F_D)$ such that
+\[
+	d\mathbf D^g
+	:= \frac{g}{\mathbf D(g)} d\mathbf D.
+\]
+	It is clear that a random variable $\dot X$ is the $g(X)$-transform of a random variable $X$ if and only if the law of $\dot X$ is the $g$-transform of the law of $X$.
+For a process $(X_t)_{t\in \Gamma}$ with $\Gamma = \mathbb R^+$ or $\mathbb N$, and a nonnegative random variable $G$, defined in a probability space $(\Omega,\mathscr F,P)$, satisfying $ P[G] \in (0,\infty)$,
+	we say that a process $\{(\dot X_t)_{t\in \Gamma}; \dot P\}$ is the \emph{$G$-transform of  $(X_t)_{t\in \Gamma}$} if
+\[
+	\{(\dot X_t)_{t\in\Gamma}; \dot P\}
+	\overset{f.d.d.}{=} \{(X_t)_{t\in \Gamma}; P^G\},
+\]
+	where $P^G$ is the $G$-transform of the probability measure $P$.
+	Here and in the rest of the paper, $\overset{f.d.d.}{=}$ means the two processes have the same finite-dimensional distributions.
+	\par
+	Using the spine decomposition theorem for the Galton-Watson process $(Z_n)_{n\geq 0}$, Lyons, Pemantle and Peres \cite{LyonsPemantlePeres1995Conceptual} investigated the $Z_n$-transform of the process $(Z_k)_{0\leq k\leq n}$, which is denoted by $(\dot Z_k)_{0\leq k\leq n}$.
+	Their key observation in the critical case is that $U\cdot \dot Z_n$ is distributed approximately like $Z_n$ conditioned on $\{Z_n > 0\}$ where $U$ is an independent uniform random variable on $[0,1]$.
+	If one denotes by $X$ the weak limit of $\frac{Z_n}{n}$ conditioned on $\{Z_n > 0\}$, and by $\dot X$  the weak limit of $\frac{\dot Z_n}{n}$, then \cite{LyonsPemantlePeres1995Conceptual} proved that $\dot X$ is the $X$-transform of the positive random variable $X$ and
+\[
+	X
+	\overset{law}{=} U \cdot \dot X,
+\]
+	which implies that $X$ is an exponential random variable.
+\par
+	Very recently, we developed a 2-spine decomposition technique in \cite{RenSongSun2018A-2-spine} for critical Galton-Watson processes
+	and used it to give a new probabilistic proof of Yaglom's result \eqref{eq:Mot-2}.
+	One of the facts we used in \cite{RenSongSun2018A-2-spine} is that, if $X$ is a strictly positive random variable with finite second moment,
+	then $X$ is an exponential random variable if and only if
+\begin{equation}\label{eq:intro-1}
+	\ddot X
+	\overset{law}{=} \dot X + U \cdot \dot X'
+\end{equation}
+	where $\dot X$ and $\dot X'$ are independent $X$-transforms of $X$;
+	$\ddot X$ is the $X^2$-transform of $X$;
+	and $U$ is again an independent uniform random variable on $[0,1]$.
+	We then proved in \cite{RenSongSun2018A-2-spine} that the $Z_n(Z_n-1)$-transform of the critical Galton-Watson process $(Z_k)_{0\leq k\leq n}$, which is denoted as $(\ddot Z_k^{(n)})_{0\leq k\leq n}$, can be interpreted as an immigration branching process along a 2-spine skeleton.
+	One of those two spines is longer than the other.
+	The spirit of our proof in \cite{RenSongSun2018A-2-spine} is to show that the immigration along the longer spine at generation $n$ is distributed approximately like $\dot Z_n$, while the immigration along the shorter spine at generation $n$ is distributed approximately like $\dot Z'_{[U\cdot n]}$.
+	Here $\dot Z_n$ and $\dot Z_n'$ are independent $Z_n$-transforms of $Z_n$.
+	Roughly speaking, we have
+\[
+	\ddot Z_n^{(n)}
+	\overset{law}{\approx} \dot Z_n + \dot Z'_{[U\cdot n]},
+\]
+	and therefore, if $X$ is the weak limit of $\frac{Z_n}{n}$ conditioned on $\{Z_n>0\}$, then $X$ is a positive random variable satisfying \eqref{eq:intro-1}.
+	Our main motivation for \cite{RenSongSun2018A-2-spine} was to develop a method that can be adapted to give probabilistic proofs of Kolmogorov type and Yaglom type results for general critical branching processes.
+\par
+	The spine decomposition approach is also very useful in studying limit behaviors of supercritical superprocesses.
+	In this case, the spine is the trajectory of an immortal moving particle and the spine decomposition theorem says that, after a martingale change of measure, the transformed superprocess can be decomposed in law as an immigration process along this spine.
+	A closely related decomposition, the skeleton decomposition, says that the superprocess itself can be decomposed in law as an immigration process along a branching particle system.
+	For the spine method on superprocesses, see \cite{EckhoffKyprianouWinkel2015Spines, EnglanderKyprianou2004Local,  LiuRenSong2009Llog}.
+	For the skeleton methods and its applications under a variety of names, see \cite{BerestyckiKyprianouMurillo-Salas2011The-prolific,  BertoinFontbonaMartinez2008On-prolific, DuquesneWinkel2007Growth, EckhoffKyprianouWinkel2015Spines, EnglanderPinsky1999On-the-construction, EvansOConnell1994Weighted,  KyprianouPerezRen2014The-backbone, KyprianouRen2012Backbone,  Milos2012Spatial, RenSongZhang2015Central}.
+	However, up to now, there is no known skeleton decomposition for critical superprocesses conditioned on survival up to time $t$ yet.
+\par
+	In both the spine decomposition and the skeleton decomposition, the Kuznetsov measures (also known as the excursion measures or $\mathbb N$-measures) are often used to describe the infinitesimal immigrations along the spine or the skeleton.
+	Such measures are $\sigma$-finite measures
+on $\mathcal W$,
+	the canonical space of all the finite-measure-valued right-continuous trajectories
+	on $[0, \infty)$ and having the null measure as a trap on $(0, \infty)$.
+	We refer our readers to \cite{DynkinKuznetsov2004mathbb} and \cite[Section 8.4]{Li2011Measure-valued} for detailed discussions of the definition and the existence of such measures.
+\par
+	The Kuznetsov measures can also be used to give
+	a construction of superprocesses.
+	Denote by $\mathbb N_\mu$ the Kuznetsov measure of a superprocess $\{X;\mathbf P_\mu\}$.
+	If $\mathcal N$ is a Poisson random measure on $\mathcal W$ with mean measure $\mathbb N_\mu$, then according to \cite[Theorem 8.24]{Li2011Measure-valued}, under some conditions, the process defined by $\widetilde X_0:=\mu$ and
+\begin{equation}\label{eq:Mot-5}
+	\widetilde X_t(\cdot)
+	:= \int_{\mathcal W} w_t(\cdot)\mathcal N(dw),
+	\quad t>0,
+\end{equation}
+	is a realization of $\{X;\mathbf P_{\mu}\}$.
+\par
+	In this chapter, we first establish a spine decomposition theorem
+	(Theorem \ref{prop:sizBiasNMeas}) and a 2-spine decomposition theorem
+	(Theorem \ref{prop:2-spine-decomposition}) for critical superprocesses.
+	Then we use these tools to give probabilistic proofs of a Kolmogorov type result (Theorem \ref{thm:Kolmogorov-type-of-theorem}) and a Yaglom type result (Theorem \ref{thm:Yaglom-type-theorem}) for a class of critical superprocesses.
+	The key to our probabilistic insight is that the spine decomposition theorem for superprocesses and the Poissonian representation \eqref{eq:Mot-5} are closely related, a fact which seems has not been fully exploited before in the literature.
+	In fact, we will develop a decomposition theorem for size-biased Poisson random measures which we think should be of independent interest:
+\begin{itemize}
+\item
+	\emph{Let $\{\mathcal N;P\}$ be a Poisson random measure on a measurable space $(S, \mathscr S)$ with mean measure $N$.
+	Let $F$ be a non-negative measurable function on $(S, \mathscr S)$ with $N(F)\in (0, \infty)$.
+	Then the $N(F)$-transform of $\{\mathcal N;P\}$ can be decomposed in law as a copy of $\{\mathcal N;P\}$ plus an independent random atomic measure $\delta_\vartheta$ with $\vartheta$ distributed according to the $F$-transform of the measure $N$.
+This will be made precise in Theorem \ref{prop:sizBaisPoissRandMeas}.}
+\end{itemize}
+\par
+	With this theorem and the Poissonian representation \eqref{eq:Mot-5} of superprocesses, we prove a theorem which will serve as a general framework for the study of a large class of size-biased transforms of superprocesses:
+\begin{itemize}
+\item
+	\emph{Let $\{X;\mathbf P_\mu\}$ be the superprocess defined in \eqref{eq:Mot-5}.
+	Let $F$ be a non-negative measurable function on $\mathcal W$ with $\mathbb N_\mu(F)\in(0,\infty)$.
+	Then the $\mathcal N(F)$-transform of the superprocess $(X_t)_{t\geq 0}$ can be decomposed in law as a copy of $(X_t)_{t\geq 0}$ plus an independent measure-valued process $(Y_t)_{t\geq 0}$, which is distributed according to the $F$-transform of the Kuznetsov measure $\mathbb N_\mu$.
+	This will be made precise in Theorem \ref{prop:sizBiasDecSupProc}.}
+\end{itemize}
+\par
+	Both the spine decomposition and the 2-spine decomposition for superprocesses are special forms of this general theorem.
+	Recall that  $\phi$ is the principal eigenfunction of the mean semigroup of our critical superprocess $X$.
+	By taking $F(w) := w_T(g)$ where $T > 0$ and $g$ is a nonnegative function on $E$ such that $m(g) > 0$ and $\phi^{-1}g$ is bounded from above, we have the following spine decomposition:
+\begin{itemize}
+\item
+	\emph{Let $(Y_t)_{t\geq 0}$ be a measure-valued process with law $\mathbb N^{w_T(g)}$.
+	Then $(Y_t)_{0\leq t\leq T}$ can be interpreted as an immigration process along the trajectory
+	of a moving particle (referred as the spine) up to time $T$.
+	This will be made precise in Theorem \ref{prop:sizBiasNMeas}.}
+\end{itemize}
+	By taking $F(w) := w_T(\phi)^2$ where $T>0$, we have the following 2-spine decomposition:
+\begin{itemize}
+\item
+	\emph{Let $(Y_t)_{t\geq 0}$ be a measure-valued process with law $\mathbb N^{w_T(\phi)^2}$.
+	Then $(Y_t)_{0\leq t\leq T}$ can be interpreted as an immigration process along the trajectories of two moving particles (referred as the 2-spine skeleton) up to time $T$.
+	These two particles will move together at first and then split at a random time.
+	This will be made precise in Theorem \ref{prop:2-spine-decomposition}.}
+\end{itemize}
+\par
+	To discuss the spine or the 2-spine decomposition of our superprocesses, only some mild assumptions (Assumptions \ref{asp:1}, \ref{asp:2} and \ref{asp:3}) are needed.
+	Assumption \ref{asp:1} guarantees the existence of the Kuznetsov measures;
+    Assumption \ref{asp:2} guarantees the existence of the principal eigenfunction $\phi$ of the mean semigroup of the superprocess;
+	Assumption \ref{asp:3} is a moment condition which guarantees
+	that $X_t(\phi)$ has finite 2nd moment.
+\par
+	In Section \ref{sec:asymptotic} we will state and prove our Kolmogorov type and Yaglom type results for critical superprocesses.
+	In order to develop those limit theorems, some further, stronger, assumptions are needed.
+	Assumption \ref{asp:1'} is a condition about the extinction probability of superprocesses.
+	Assumption \ref{asp:2'} says that the transition semigroup of the spatial motion is intrinsically ultracontractive.
+	Those further assumptions are discussed in Section \ref{sec:further_assumptions}.
+	The assumptions made in this chapter are slightly weaker than the assumptions made in \cite{RenSongZhang2015Limit}.
+	So all the examples in \cite{RenSongZhang2015Limit} satisfy our conditions.
+
+\section{Perliminaries}
+
+\subsection{Superprocesses}
+	Let $E$ be a locally compact separable metric space, and $\mathcal M_f$ be the collection of all the finite Borel measures on $E$ equipped with topology of weak convergence.
+	Let $\partial$ be a point not contained in $E$.
+	$\partial$ will be interpreted as a cemetery point.
+	We will use $E_\partial$ to denote $E\cup\{\partial\}$.
+	Every function $f$ on $E$ is extended on $E_\partial$ by setting $f(\partial) = 0$.
+	For any real function $\Gamma$ on $E \times \mathbb R$ and any real function $f$ on $E$, we write $ \Gamma (f)(x) := \Gamma(x,f(x))$ for each $ x\in E$.
+	We will use $b\mathscr B_E$ and $p\mathscr B_E$ to denote the collection of all the bounded Borel functions and positive Borel functions on $E$ respectively.
+	We write $bp\mathscr B_E$ for $b\mathscr B_E \cap p\mathscr B_E$.
+	For any functions $f,g$ and measure $\mu$ on $E$, we write $\|f\|_\infty := \sup_{x\in E} |f(x)|$, $\mu(f) := \int_E f d\mu$, $\langle \mu,f \rangle := \int_E f d\mu$ and $\langle f,g \rangle_\mu := \int_E fg d\mu$ as long as they have meanings.
+	We use $\mathbf 0$ to denote the null measure and use $f\equiv 0$ to mean that $f$ is the zero function.
+	If $g(t,x)$ is a function on $[0,\infty)\times E$, we say $g$ is locally bounded if $\sup_{t\in [0,T],x\in E} |g(t,x)|<\infty$ for every $T\geq 0$.
+\par
+	Let the \emph{spatial motion} $\{(\xi_t)_{t\geq 0}; (\mathbb P_x)_{x\in E}\}$ be an $E$-valued Hunt process with $\zeta :=\inf\{t>0:\xi_t=\partial\}$ being its lifetime and $(P_t)_{t\geq 0}$ being its transition semigroup.
+	Let the \emph{branching mechanism} $\Psi$ be a function on $E\times [0,\infty)$ defined by
+\[
+	\Psi(x,z)
+	:=-\beta(x)z+\alpha(x)z^2+\int_{(0,\infty)}(e^{-zy}-1+zy)\pi(x,dy),
+	\quad x\in E,z\geq 0,
+\]
+	with $\beta\in b\mathscr B_E,\alpha\in bp\mathscr B_E$ and $\pi(x,dy)$ being a kernel from $E$ to $(0,\infty)$ satisfying that $\sup_{x\in E} \int_{(0,\infty)} (y\wedge y^2) \pi(x,dy) < \infty$.
+\par
+	Let $\{(X_t)_{t\geq 0};(\mathbf P_\mu)_{\mu\in \mathcal M_f}\}$ be a \emph{superprocess with spatial motion $\{\xi;\mathbb P\}$ and branching mechanism $\Psi$.}
+	That is to say, $\{X;\mathbf P\}$ is an $\mathcal M_f$-valued Markov process such that $\mathbf P_\mu[e^{-X_t(f)}] = e^{-\mu(V_tf)}$ for each $t \geq 0,\mu \in \mathcal M_f$ and
+	$f \in p\mathscr B_E$.
+	Here, for any $f\in bp\mathscr B_E$, the function $(t,x) \mapsto V_tf(x)$ on $[0,\infty) \times E$ is the unique locally bounded positive solution to the equation
+\begin{equation}\label{eq:FKPP_in_definition}
+	V_t f(x) + \mathbb P_x \big[ \int_0^t \Psi (V_{t-s} f)(\xi_s) ds \big]
+	=\mathbb P_x[f(\xi_t)], \quad t \geq 0, x\in E.
+\end{equation}
+	We refer our readers to \cite{Dawson1993Measure-valued, Dynkin1993Superprocesses} and \cite[Section 2.3]{Li2011Measure-valued} for detailed discussions about the definition and the existence of such processes.
+	Notice that we always have $\mathbf P_{\mathbf 0}(X_t = \mathbf 0) = 1$ for each $t\geq 0$.
+	The process $\{(X_t)_{t\geq 0};(\mathbf P_\mu)_{\mu\in \mathcal M_f}\}$ will sometimes be referred to as a $(\xi, \Psi)$-superprocess.
+\par
+	According to \cite[Theorem 2.21]{Li2011Measure-valued}, the family $(V_t)_{t\geq 0}$ of operators on $p\mathscr B_E$ satisfies the semigroup property in the sense that, for any $f\in p\mathscr B_E, t, s \geq 0$ and $x \in E$, $V_t V_sf(x) = V_{t+s} f(x)$.
+	$(V_t)_{t \geq 0}$ is referred to as the \emph{cumulant semigroup} of $\{X;\mathbf P\}$.
+	Let $(S_t)_{t \geq 0}$ be a Feynman-Kac semigroup of $\{\xi; \mathbb P\}$ defined by
+\[
+	S_t f(x)
+	:= \mathbb P_x[e^{\int_0^t \beta(\xi_s) ds} f(\xi_t)],
+	\quad x \in E,t \geq 0,f \in b\mathscr B_E.
+\]
+	Then $(S_t)_{t \geq 0}$ is the \emph{mean semigroup} of the superprocess $\{X; \mathbf P\}$.
+	It is well known, see \cite[Proposition 2.27]{Li2011Measure-valued} for example, that
+\[
+	\mathbf P_\mu[X_t(f)]
+	= \mu(S_t f),
+	\quad \mu \in \mathcal M_f, t \geq 0,f \in b\mathscr B_E.
+\]
+	It is also known, see \cite[Theorem 2.23]{Li2011Measure-valued} for example, that \eqref{eq:FKPP_in_definition} can be rewritten as
+\begin{equation}\label{eq:mean-fkpp}
+	V_t f(x) + \int_0^t S_{t-s} \Psi_0(V_s f)(x) ds
+	= S_t f(x),
+	\quad f \in bp\mathscr B_E, t \geq 0,x \in E,
+\end{equation}
+	where
+\[
+	\Psi_0(x,z)
+	:= \alpha(x) z^2 + \int_{(0,\infty)} (e^{-z y} - 1 + z y) \pi(x,dy),
+	\quad x \in E,z \geq 0.
+\]
+	We exclude the degenerate case that $\Psi_0\equiv 0$.
+
+\subsection{Kuznetsov measures}
+	In this chapter, we make the following assumption which not only allows us to study the extinction probability via the cumulant semigroup $(V_t)_{t\geq 0}$ but also guarantees the existence of the Kuznetsov measures $(\mathbb N_x)_{x\in E}$.
+\begin{asp}\label{asp:1}
+	$\mathbf P_{\delta_x}(X_t = \mathbf 0) > 0$ for each $x \in E$ and $t>0$.
+\end{asp}
+	Under Assumption \ref{asp:1}, we define,
+\begin{equation}\label{eq:V_infty}\begin{split}
+	v_t(x)
+	&:= \lim_{\theta \to \infty} V_t(\theta \mathbf 1_E)(x)
+	= - \lim_{\theta \to \infty} \log \mathbf P_{\delta_x}[e^{-X_t(\theta \mathbf 1_E)}]\\
+	&= - \log \mathbf P_{\delta_x}(X_t = \mathbf 0)
+	< \infty,
+	\quad x \in E, t> 0.
+\end{split}\end{equation}
+	For convention, we write $-\log 0 = +\infty$.
+	By monotonicity,
+\begin{equation}\label{eq:linearity}\begin{split}
+	-\log \mathbf P_\mu(X_t = \mathbf 0)
+	&= -\lim_{\theta \to \infty} \log \mathbf P_{\mu}[e^{-X_t(\theta 1_E)}]\\
+	& = \lim_{\theta\to \infty} \langle \mu, V_t(\theta\mathbf 1_E) \rangle
+	= \langle \mu, v_t \rangle,
+	\quad \mu \in \mathcal M_f, t > 0.
+\end{split}\end{equation}
+	It is also clear that
+\[\begin{split}
+	V_t v_s(x)
+	&= -\log \mathbf P_{\delta_x}[e^{-\langle X_t,\lim_{\theta\to\infty } V_s(\theta \mathbf 1_E)\rangle}]
+	= -\lim_{\theta \to \infty} \log \mathbf P_{\delta_x}[e^{-\langle X_t, V_s(\theta \mathbf 1_E)\rangle}]\\
+	&= - \lim_{\theta\to\infty} V_t V_s(\theta \mathbf 1_E)(x)
+	= v_{t+s}(x),
+	\quad s,t>0, x\in E.
+\end{split}\]
+\par
+	Denote by $(\mathbb N_x)_{x\in E}$
+	the Kuznetsov measures of $\{X;\mathbf P\}$ which are $\sigma$-finite measures on $\mathcal W$, the space of all the $\mathcal M_f$-valued right-continuous trajectories on
+	$[0,\infty)$ and having the null measure as a trap on $(0,\infty)$,
+	equipped with $\sigma$-algebra on $\mathcal W$ generated by the coordinate process $(w_t)_{t\geq 0}$.
+	We refer our readers to \cite{DynkinKuznetsov2004mathbb} and \cite[Section 8.4]{Li2011Measure-valued} for detailed discussions of the definition and existence of such measures.
+
+	According to \cite[Theorem 8.22]{Li2011Measure-valued}, $\mathbb N_x$-a.e., we have $w_0 = \mathbf 0$.
+	For any $\mu \in \mathcal M_f$, define
+\[
+	\mathbb N_\mu(dw)
+	:=\int_E \mu(dx)\mathbb N_x(dw),
+	\quad w\in \mathcal W.
+\]	
+\begin{lem}[{\cite[Theorem 8.24]{Li2011Measure-valued}}]\label{lem:lislem}
+	Under Assumption \ref{asp:1}, for any $\mu\in \mathcal M_f$,
+	if $\{\mathcal N; \mathbf P_\mu\}$ is a Poisson random measure with mean measure $\mathbb N_\mu$,
+	then the process defined by
+\[
+	\widetilde X_0 := \mu;
+	\quad \widetilde X_t(\cdot)
+	:=\mathcal N[w_t(\cdot)],
+	\quad t>0,
+\]
+	is a realization of the superprocess $\{X; \mathbf P_{\mu}\}$.
+\end{lem}
+	To simplify our discussion, we will always assume $X$ is given by the realization $\widetilde X$.
+\par
+	For any $T>0$, we write $(K,f)\in \mathcal K_T$ if $f: (s,x) \mapsto f_s(x)$ is a bounded non-negative Borel function on $(0,T] \times E$, and $K$ is an atomic measure on $(0,T]$ with finitely many atoms.
+	For any $(K,f)\in\mathcal K_T$ and any $\mathcal M_f$-valued  process $(Y_t)_{t> 0}$, define the random variable
+\[	
+	K_{(s, T]}^f(Y)
+	:= \int_{(s,T]} Y_{r-s}(f_r) K(dr),
+	\quad s\in [0,T].
+\]	
+	It is clear that two $\mathcal M_f$-valued processes $(Y_t)_{t>0}$ and $(X_t)_{t>0}$ have same finite-dimensional distributions if and only if
+\[
+	\mathbf E[e^{-K_{(0,T]}^f(X)}]
+	=\mathbf E[e^{-K^f_{(0,T]}(Y)}],
+	\quad (K,f)\in \mathcal K_T, T>0.
+\]
+\begin{lem}[{\cite[Theorem 5.15 and Theorem 8.23]{Li2011Measure-valued}}]\label{lem:EquatDescNmeas}
+	Under Assumption \ref{asp:1}, for any fixed $T> 0$ and $(K,f) \in \mathcal K_T$, we have
+\[
+	\mathbb N_\mu \big[ 1 - e^{-K_{(s, T]}^f(w)} \big]
+	= \langle \mu, u_s \rangle
+	= -\log \mathbf P_{\mu} \big[ e^{-K_{(s, T]}^f(X)} \big],
+	\quad s\in [0,T], \mu \in \mathcal M_f,
+\]
+	where the function $u: (s,x) \mapsto u_s(x)$ on $[0,T] \times E$ is the unique bounded positive solution to the following integral equation:
+\[
+	u_s(x)
+    =\mathbb P_x \Big[\int_{(s,T]} f_r(\xi_{r-s}) K(dr) - \int_s^T \Psi(u_r)(\xi_{r-s}) dr \Big],
+    \quad s \in [0,T], x \in E.
+\]
+\end{lem}
+
+\subsection{Poisson random measure and its size-biased transform}
+	In this subsection, we digress briefly from superprocesses and discuss the size-biased transforms of Poisson random measures.
+	Let $(S, \mathscr S)$ be a measurable space with a $\sigma$-finite measure $N$.
+	Let $\{\mathcal N; P\}$ be a Poisson random measure on $(S, \mathscr S)$ with mean measure $N$.
+	Campbell's theorem, see \cite[Proof of Theorem 2.7]{Kyprianou2014Fluctuations} for example, characterizes the law of $\{ \mathcal N; P \}$ by its Laplace functionals:
+\[
+	P [e^{-\mathcal N(g)}]
+	= e^{-N(1 - e^{-g})},
+	\quad g\in p\mathscr S.
+\]
+	According to \cite[Theorem 2.7]{Kyprianou2014Fluctuations}, we also have that $P [\mathcal N(g)] = N(g)$ for each $g\in \mathscr S$ with $N(|g|) < \infty.$
+	By monotonicity, one can verify that
+\[
+	P [\mathcal N(g)] = N(g),
+	\quad g\in p\mathscr S.
+\]
+\begin{lem}\label{lem:size-biased-lemma}
+	If $g\in L^1(N)$ and $ f\in p\mathscr S$, then $\mathcal N(g) e^{-\mathcal N(f)}$ is integrable and
+\begin{equation}\label{eq:size-biased-equation}
+	P[\mathcal N(g) e^{-\mathcal N(f)}]
+	= P[e^{-\mathcal N(f)}] N[g e^{-f}].
+\end{equation}
+	Furthermore, \eqref{eq:size-biased-equation} is true for each $g,f\in p\mathscr S$ if we allow extended values.	
+\end{lem}
+\begin{proof}
+	Since $N$ is a $\sigma$-finite measure on $(S, \mathscr S)$, there exists a strictly positive measurable function $h$ on $S$ such that $N(h)<\infty$.
+	According to \cite[Theorem 2.7.]{Kyprianou2014Fluctuations}, $\mathcal N(h)$ has finite mean.
+	For any $g\in bp\mathscr S^h :=\{g\in p\mathscr S: \|h^{-1}g\|_\infty <\infty\}$ and $f\in p\mathscr S$, it is clear that $\mathcal N(g)$ and $\mathcal N(g)e^{-\mathcal N(f)}$ are integrable.
+	Therefore, by the dominated convergence theorem, we deduce that
+\[\begin{split}
+	P[\mathcal N(g) e^{-\mathcal N(f)}]
+	&=P[-\partial_\theta|_{\theta=0} e^{-\mathcal N(f+\theta g)}]
+	= -\partial_\theta|_{\theta=0} P[e^{-\mathcal N(f+\theta g)}]\\
+	&= -\partial_\theta|_{\theta=0} e^{-N(1-e^{-(f+\theta g)})}
+	= e^{- N(1-e^{-f})} \partial_\theta|_{\theta=0}N(1-e^{-(f+\theta g)})\\
+	&= P[e^{-\mathcal N(f)}]N[ge^{-f}].
+\end{split}\]
+	For any $g\in p\mathscr S$ and $s\in S$, define $g^{(n)}(s) := h(s) \min\{h(s)^{-1}g(s),n\}$.
+	Then $(g^{(n)})_{n\in \mathbb N}$ is a $bp\mathscr S^h$-sequence which increasingly
+	converges to $g$ pointwisely.
+	Note that \eqref{eq:size-biased-equation} is true for each $g^{(n)}$ and $f$.
+	Letting $n\to\infty$, by monotonicity, we see that if we allow extended values, then \eqref{eq:size-biased-equation} is true for each $g,f\in p\mathscr S$.
+	In the case when $g\in L^1(N)$, we simply consider its positive and negative parts.
+\end{proof}
+\begin{thm}\label{prop:sizBaisPoissRandMeas}
+	Let $g \in p \mathscr S$ with $N(g)\in (0,\infty).$
+	Denote by $N^g$ and $P^{\mathcal N(g)}$ the $g$-transform of $N$ and the $\mathcal N(g)$-transform of $P$, respectively.
+	Let $\{\vartheta;Q\}$ be an $S$-valued random element  with law $N^g$, defined in a different probability space.
+	Then, we have
+\[
+	\{\mathcal N;P^{\mathcal N(g)}\}
+	\overset{law}{=} \{\mathcal N + \delta_\vartheta;P\otimes Q\}.
+\]
+\end{thm}
+\begin{proof}
+	By Lemma \ref{lem:size-biased-lemma}, it is easy to see that, for any $f\in p\mathscr S$,
+\[\begin{split}
+	P^{\mathcal N(g)}[e^{-\mathcal N(f)}]
+	&= N(g)^{-1} P[\mathcal N(g) e^{-\mathcal N(f)}]
+	= N(g)^{-1} P[e^{-\mathcal N(f)}] N[ge^{-f}]\\
+	&=  P[e^{-\mathcal N(f)}] N^g[e^{-f}]
+	= (P\otimes Q)[e^{-\mathcal N(f) - f(\vartheta)}]
+	= (P\otimes Q)[e^{-(\mathcal N + \delta_\vartheta)(f)}].
+\end{split}\]
+	which completes the proof.
+\end{proof}
+\begin{lem}\label{lem:covPoissRandMeas}
+	For all $g, f \in L^1(N) \cap L^2(N)$, $\mathcal N(g) \mathcal N(f)$ is integrable and
+\begin{equation}\label{eq:2rdMomPoissRandMeas}
+	P [\mathcal N(g) \mathcal N(f)]
+	= N(g) N(f) + N(g f).
+\end{equation}
+	Furthermore, \eqref{eq:2rdMomPoissRandMeas} is true for all $g,f\in p\mathscr S$ if we allow extended values.
+\end{lem}
+\begin{proof}
+	Since $N$ is a $\sigma$-finite measure on $(S, \mathscr S)$, there exists a strictly positive measurable function $\tilde h$ on $S$ such that $N(\tilde h)<\infty$.
+	Define $h(s) := \min\{ \tilde h(s), \tilde h(s)^{1/2} \}$ for each $s \in S$.
+	It is clear that $h$ is a strictly positive measurable functionon on $S$ such that $N(h) < \infty$ and $N(h^2) < \infty$.
+	According to \cite[Theorem 2.7]{Kyprianou2014Fluctuations}, $\mathcal N(h)$ has finite 1st and 2nd moments.
+	For any $g, f \in bp\mathscr S^h := \{g \in p\mathscr S: \|h^{-1} g\|_\infty < \infty\}$, it is easy to see that $\mathcal N(g), \mathcal N(f), \mathcal N(f) \mathcal N(g)$ are integrable.
+	Thus, using Lemma \ref{lem:size-biased-lemma} and the dominated convergence theorem, we have
+\[\begin{split}
+	P [\mathcal N(g) \mathcal N(f)]
+	&= - P[\partial_\theta|_{\theta = 0} \mathcal N(g) e^{-\mathcal N(\theta f)}]
+	= - \partial_\theta|_{\theta = 0} P[\mathcal N(g) e^{-\mathcal N(\theta f)}]\\
+	&= - \partial_\theta|_{\theta = 0} P[e^{-\mathcal N(\theta f)}]N(ge^{-\theta f})\\
+	&= - N[g] \partial_\theta|_{\theta = 0} P[e^{-\mathcal N(\theta f)}] - \partial_\theta|_{\theta = 0} N(ge^{- \theta f}) \\
+	&= - N(g) P[ \partial_\theta|_{\theta = 0} e^{-\mathcal N(\theta f)}] - N( \partial_\theta|_{\theta = 0} g e^{-\theta f}) \\
+	&= N(g) N(f) + N(g f).
+\end{split}\]
+	For any $g,f\in p\mathscr S$ and $s \in S$, define $g^{(n)}(s) := h(s) \min\{h(s)^{-1}g(s),n\}$.
+	Then $(g^{(n)})_{n\in \mathbb N}$ is a $bp\mathscr S^h$-sequence which increasingly converges to $g$ pointwisely.
+	Define $f^{(n)}$ similarly.
+	Then from what we have proved, \eqref{eq:2rdMomPoissRandMeas} is true for $g^{(n)}$ and $f^{(n)}$.
+	Letting $n\to\infty$, by monotonicity, \eqref{eq:2rdMomPoissRandMeas} is true for each $g,f\in p\mathscr S$ if we allow extended values.
+	In the case when $g,f\in L^1(N) \cap L^2(N)$ we simply consider their positive and negative parts.
+\end{proof}
+
+\subsection{Size-biased transform of the superprocesses.}
+
+	Recall that, for any $\mu\in \mathcal M_f$, $\{\mathcal N; \mathbf P_\mu\}$ is a Poisson random measure
+	with mean measure $\mathbb N_\mu$,
+	and the $(\xi, \Psi)$-superprocess $(X_t)_{t\ge 0}$ is defined as
+\[
+	X_0 := \mu;
+	\quad X_t(\cdot)
+	:=\mathcal N[w_t(\cdot)],
+	\quad t>0.
+\]
+\begin{thm}\label{prop:sizBiasDecSupProc}
+	Suppose that Assumption \ref{asp:1} holds.
+	Let $\mu \in \mathcal M_f$, and let $F$ be a non-negative measurable function on $\mathcal W$
+	with $\mathbb N_\mu(F)\in (0,\infty)$.
+	Denote by $\mathbb N^F$ and $\mathbf P_\mu^{\mathcal N(F)}$ the $F$-transform of $\mathbb N$ and $\mathcal N(F)$-transform of $\mathbf P_\mu$, respectively.
+	Let $\{(Y_t)_{t\geq 0}; \mathbf Q_\mu\}$ be a $\mathcal W$-valued random element with law $\mathbb N^F_\mu$ defined in a different probability space.
+	Then, we have
+\[
+	\{(X_t)_{t\geq 0}; \mathbf P_\mu^{\mathcal N(F)}\}
+	\overset{f.d.d.}{=} \{(X_t + Y_t)_{t\geq 0}; \mathbf P_\mu \otimes \mathbf Q_\mu\}.
+\]
+\end{thm}
+\begin{proof}
+	Notice that, under $\mathbf P_\mu^{\mathcal N(F)}$, $X_0\overset{\text{a.s.}}{=}\mu$ is deterministic,
+	and so is $X_0+Y_0$ under  $\mathbf P_\mu \otimes \mathbf Q_\mu$ since $X_0+Y_0\overset{\text{a.s.}}=\mu$.
+	Therefore, we only have to show that,
+\[
+	\{(X_t)_{t > 0}; \mathbf P_{\mu}^{\mathcal N(F)}\}
+	\overset{f.d.d.}{=} \{(X_t + Y_t)_{t > 0}; \mathbf P_\mu\otimes \mathbf Q_\mu\}.
+\]
+	Since $\mathbb N_\mu(F) \in (0,\infty)$, it follows from Campbell's formula that $\mathcal N(F)$ is almost surely absolutely convergent with mean $\mathbb N_\mu(F)$ under the probability $\mathbf P_\mu$.
+	It then immediately follows from Theorem \ref{prop:sizBaisPoissRandMeas} that
+\[
+	\{\mathcal N; \mathbf P^{\mathcal N(F)}_\mu\}
+	\overset{law}{=} \{\mathcal N + \delta_Y; \mathbf P_\mu\otimes \mathbf Q_\mu\}.
+\]
+	This completes the proof since for any $T > 0$ and $(K,f) \in \mathcal K_T$,
+\[\begin{split}
+	\mathbf P_\mu^{\mathcal N(F)} [e^{-K_{(0, T]}^f(X)}]
+	&= \mathbf P_\mu^{\mathcal N(F)} [e^{-\mathcal N[K_{(0, T]}^f(w)]}]
+	= (\mathbf P_\mu\otimes \mathbf Q_\mu) [e^{-(\mathcal N+\delta_Y)[K_{(0, T]}^f(w)]}]\\
+	&= (\mathbf P_\mu\otimes \mathbf Q_\mu) [e^{-K_{(0, T]}^f(X+Y)}]
+\end{split}\]
+\end{proof}
+
+\section{Spine decomposition of superprocesses}
+	The spine decomposition theorem characterizes the superprocess $\{X,\mathbf P\}$ after a martingale change of measure, and has been investigated in the literature in different situations, see \cite{EckhoffKyprianouWinkel2015Spines, EnglanderKyprianou2004Local,  LiuRenSong2009Llog} for example.
+	The martingale that is used for the change of measure is defined by $M_t := e^{-\lambda t}X_t(\phi)$ where $\phi$ is the principal eigenfunction of the generator of the mean semigroup of $X$ with $\lambda$ being the corresponding eigenvalue.
+	After this martingale change of measure, the transformed process preserves the Markov property, and thus, to prove the spine decomposition theorem, one only needs to focus on the one-dimensional distribution of the transformed process.
+\par
+	In this section, we generalize this classical result by considering the $X_T(g)$-transform of the superprocess $X$, where $g$ is a non-negative Borel function on $E$ such that $\phi^{-1} g$ is bounded from above.
+	If $g$ is not equal to $\phi$, the $X_T(g)$-transformed process is typically not a Markov process.
+	So we have to use a different method to develop the theorem.
+	Thanks to Theorem \ref{prop:sizBiasDecSupProc},
+	we only have to consider the $w_T(g)$-transform of the Kuznetsov measures.
+
+\subsection{Principal eigenfunction of the mean semigroup}
+	In the remainder of this chapter, we will always assume that the following assumption is satisfied.
+\begin{asp}{2}\label{asp:2}
+	There exist a $\sigma$-finite Borel measure $m$ with full support on $E$ and a family of strictly positive, bounded continuous functions $\{ p(t,\cdot,\cdot): t > 0 \}$ on $E \times E$ such that,
+\begin{equation}\label{eq:kernMeanSemGroup}
+	P_t f(x)
+	= \int_E p(t,x,y) f(y) m(dy),
+	\quad t>0, x \in E,f \in b\mathscr B_E,
+\end{equation}
+\[
+	\int_E p(t,y,x)m(dy)
+	\leq 1,
+	\quad t>0,x\in E,
+\]
+	and
+\[
+	\int_E \int_E p(t,x,y)^2 m(dx) m(dy)
+	<\infty,
+	\quad t> 0.
+\]
+	Moreover, $x \mapsto \int_E p(t,x,y)^2 m(dy)$ and $x \mapsto \int_E p(t,y,x)^2 m(dy)$ are both continuous on $E$.
+\end{asp}
+	Under Assumption \ref{asp:2}, it is proved in \cite{RenSongZhang2015Limit} and \cite{RenSongZhang2017Central} that the semigroup $(P_t)_{t \geq 0}$ and its adjoint semigroup $(P^*_t)_{t \geq 0}$ are both strongly continuous semigroups of compact operators in $L^2(E,m)$.
+	According to \cite[Lemma 2.1]{RenSongZhang2015Limit}, there exists a function $q(t,x,y)$ on $(0,\infty) \times E \times E$ which is continuous in $(x,y)$ for each $t>0$ such that
+\[
+	e^{-\|\beta\|_\infty t} p(t,x,y)
+	\leq q(t,x,y)
+	\leq e^{\|\beta\|_\infty t} p(t,x,y),
+	\quad t>0, x, y\in E,
+\]
+	and that for any $t>0, x\in E$ and $f \in b\mathscr B_E$,
+\[
+	S_t f(x)
+	= \int_E q(t,x,y) f(y) m(dy).
+\]
+	Define a family of transition kernels $(S^*_t)_{t \geq 0}$ on $E$ such that
+\[
+	S^*_0 = I;
+	\quad S^*_t f(x)
+	:= \int_E q(t,y,x) f(y) m(dy),
+	\quad t>0, x\in E, f\in b\mathscr B_E.
+\]
+	It is clear that $(S^*_t)_{t \geq 0}$ is the adjoint semigroup of $(S_t)_{t \geq 0}$ in $L^2(E,m)$.
+	It is proved in \cite{RenSongZhang2015Limit} and \cite{RenSongZhang2017Central} that $(S_t)_{t \geq 0}$ and $(S^*_t)_{t \geq 0}$ are also strongly continuous semigroups of compact operators in $L^2(E,m)$.
+	Let $L$ and $L^*$ be the generators of the semigroups $(S_t)_{t \geq 0}$ and $(S^*_t)_{t \geq 0}$, respectively.
+	Denote by $\sigma(L)$ and $\sigma(L^*)$ the spectra of $L$ and $L^*$, respectively.
+	According to \cite[Theorem V.6.6.]{Schaefer1974Banach}, $\lambda := \sup \text{Re}(\sigma(L)) = \sup \text{Re}(\sigma(L^*))$ is a common eigenvalue of multiplicity $1$ for both $L$ and $L^*$.
+	Using the argument in \cite{RenSongZhang2015Limit}, the eigenfunctions $\phi$ of $L$ and $\phi^*$ of $L^*$ associated with the eigenvalue $\lambda$ can be chosen to be strictly positive and continuous everywhere on $E$.
+	We further normalize $\phi$ and $\phi^*$ so that $\langle\phi, \phi\rangle_m = \langle\phi,\phi^*\rangle_m = 1$.
+	Moreover, for each $t\geq 0,x\in E$, we have $S_t \phi(x) = e^{\lambda t} \phi(x)$ and $S^*_t \phi(x) = e^{\lambda t} \phi^*(x)$.
+	Since our main interest in this article is on critical superprocesses, we assume that $\lambda = 0$.
+
+\subsection{Spine decomposition}
+	Denote by $\mathcal M_f^\phi$ the collection of all the measures $\mu \in \mathcal M_f$ such that $\mu(\phi) \in (0,\infty)$.
+	Denote by $b\mathscr B_E^\phi$ and $bp\mathscr B_E^\phi$ the collection of all the Borel functions $g$ on $E$ such that $\phi^{-1} g\in b\mathscr B_E$ and $\phi^{-1} g\in bp\mathscr B_E$, respectively.
+	By monotonicity, one can verify that for each $\mu \in \mathcal M^\phi_f, t \geq 0$ and $g \in bp\mathscr B_E^\phi$, $\mathbf P_\mu[X_t(g)] = \mu(S_t g) \leq \mu(\phi) \|\phi^{-1} g\|_\infty < \infty$.
+\par
+	It is clear that $\{(\phi(\xi_t) e^{\int_0^t \beta(\xi_s) ds})_{t \geq 0}; \mathbb P\}$ is a non-negative martingale.
+	Let $\{\xi; \dot{\mathbb P}\}$ be the martingale transform of $\{\xi; \mathbb P\}$ via this martingale in the sense that
+\[
+	\frac {d \dot{\mathbb P}_x|_{\mathscr F_t^\xi}} {d \mathbb P_x|_{\mathscr F_t^\xi}}
+	:= \frac {\phi(\xi_t)} {\phi(x)} e^{\int_0^t \beta(\xi_s) ds},
+	\quad x \in E,t \geq 0.
+\]
+	One can verify that $\{\xi; \dot{\mathbb P}\}$ is a time homogeneous Markov process and that its transition density with respect to the measure $m$ is
+\[
+	\dot{q}(t,x,y)
+	:= \frac {\phi(y)} {\phi(x)} q(t,x,y),
+	\quad x, y\in E, t\geq 0.
+\]
+	One can also verify that $\phi(x)\phi^*(x)m(dx)$ is a invariant measure for $\{\xi; \dot{\mathbb P}\}$.
+\par
+	Fix a measure $\mu \in \mathcal M^\phi_f$.
+	Define $M_t := X_t(\phi)$ for each $t \geq 0$.
+	It is clear that $\{(M_t)_{t\geq 0}; \mathbf P_\mu\}$ is a non-negative martingale.
+	Let $\{(X_t)_{t\geq 0}; \mathbf P_\mu^M\}$ be the martingale transform of $\{(X_t)_{t\geq 0}; \mathbf P_\mu\}$ via this martingale in the sense that
+\[
+	\frac {d \mathbf P_\mu^M |_{\mathscr F_t^X}} {d \mathbf P_\mu |_{\mathscr F_t^X}}
+	:= \frac {M_t} {\mu(\phi)},
+	\quad t \geq 0.
+\]
+\par
+	The \emph{spine immigration $\{(Y_t)_{t\geq 0}, (\xi_t)_{t\geq 0}, \mathbf n; \dot {\mathbf P}_\mu\}$ corresponding to $\{X; \mathbf P_\mu\}$}
+	is defined as follows:
+\begin{itemize}
+\item
+	The \emph{spine process} $\{\xi; \dot{\mathbf P}_\mu\}$ is a copy of $\{\xi; \dot{\mathbb P}_{\mu\phi}\}$, where
+\[
+	\dot {\mathbb P}_{\mu\phi}(\cdot)
+	:= \mu(\phi)^{-1} \int \mu(dx) \phi(x) \dot{\mathbb P}_x(\cdot).
+\]
+\item
+    Conditioned on $\xi$, the measure $\mathbf n$ is a Poisson random measure on $[0,\infty) \times \mathcal W$ with mean measure
+\[
+	\mathbf m^\xi(ds,dw)
+	:= 2 \alpha(\xi_s) ds \cdot \mathbb N_{\xi_s}(dw) + ds \cdot \int_{(0,\infty)} y \mathbf P_{y \delta_{\xi_s}}(dw) \pi(\xi_s,dy).
+\]
+\item
+	The \emph{immigration} $\{Y; \dot{\mathbf P}_\mu\}$ is an $\mathcal M_f$-valued process defined by
+\[
+	Y_t
+	:= \int_{(0,t] \times \mathcal W} w_{t-s} \mathbf n(ds,dw),
+	\quad t \geq 0.
+\]
+\end{itemize}
+\begin{thm}[{Spine decomposition, \cite{EckhoffKyprianouWinkel2015Spines, EnglanderKyprianou2004Local, LiuRenSong2009Llog}}]\label{thm:spinDec}
+    Suppose that Assumptions \ref{asp:1} and \ref{asp:2} hold.
+	Let $\mu \in \mathcal M_f^\phi$, and let $\{Y; \dot {\mathbf P}_\mu\}$ be the spine immigration corresponding to $\{X; \mathbf P_\mu\}$ defined above.
+	Then, we have
+\[
+    \{(X_t)_{t\geq 0}; \mathbf P_\mu^M\}
+    \overset{f.d.d.}{=} \{(X_t + Y_t)_{t\geq 0}; \mathbf P_\mu \otimes\dot{\mathbf P}_\mu\}.
+\]
+\end{thm}
+\par
+	We will prove Theorem \ref{thm:spinDec} by providing a more general result.
+	Fixing a time $T>0$ and a function $g \in bp\mathscr B^\phi_E$ with $m(g)>0$, we define a process $\{(\xi_t)_{0 \leq t \leq T}; \mathbb P^{(g, T)}\}$ as the $(g(\xi_T) e^{-\int_0^T \beta(\xi_s) ds})$-transform of process $\{(\xi_t)_{0\leq t\leq T}; \mathbb P\}$ in the sense that
+\[
+	\frac {d \mathbb P^{(g,T)}_x} {d \mathbb P_x}
+	:= \frac {g(\xi_T) e^{-\int_0^T \beta(\xi_s) ds}} {S_T g(x)},
+	\quad x \in E.
+\]
+	Notice that, since $m(g) > 0$ and $q(T,\cdot,\cdot)$ is strictly positive on $E \times E$, we have
+\[
+	\mathbb P_x[ g(\xi_T) e^{-\int_0^T \beta(\xi_s) ds} ]
+	= S_T g(x)
+	= \int_E q(T,x,y) g(y) m(dy)
+	> 0,
+	\quad x \in E,
+\]
+	and therefore the probability $\mathbb P_x^{(g,T)}$ is well defined.
+\par
+	We define the \emph{$(g,T)$-spine immigration $\{(Y_t)_{0\leq t\leq T}, (\xi_t)_{0\leq t\leq T}, \mathbf n_T; \dot {\mathbf P}^{(g,T)}_\mu\}$ corresponding to $\{X; \mathbf P_\mu\}$} as follows:
+\begin{itemize}
+\item
+	The \emph{spine process} $\{(\xi_t)_{0\leq t\leq T}; \dot{\mathbf P}^{(g,T)}_\mu\}$ is a copy of $\{(\xi_t)_{0\leq t\leq T}; \mathbb P^{(g,T)}_{\mu S_T g}\}$, where
+\[
+	\mathbb P_{\mu S_T g}^{(g,T)}(\cdot)
+	:= \langle\mu, S_T g\rangle^{-1} \int_{x\in E} \mu(dx) S_T g(x) \mathbb P^{(g,T)}_{x} (\cdot).
+\]
+\item
+    Conditioned on $(\xi_t)_{0 \leq t\leq T}$, the measure $\mathbf n_T$ is a Poisson random measure on $[0,T] \times \mathcal W$ with mean measure
+\begin{equation}\label{eq:meanMeasImmigr}
+	\mathbf m^\xi_T(ds,dw)
+	:= 2 \alpha(\xi_s) ds \cdot \mathbb N_{\xi_s}(dw) + ds \cdot \int_{(0,\infty)} y \mathbf P_{y\delta_{\xi_s}}(dw) \pi(\xi_s,dy).
+\end{equation}
+\item
+	The \emph{immigration} $\{(Y_t)_{0\leq t\leq T}; \dot{\mathbf P}^{(g,T)}_\mu\}$ is an $\mathcal M_f$-valued process defined by
+\begin{equation}\label{eq:defSpinImmigr}
+	Y_t
+	:= \int_{(0,t] \times \mathcal W} w_{t-s} \mathbf n_T(ds,dw),
+	\quad 0 \leq t\leq T.
+\end{equation}
+\end{itemize}
+	Note that, by this construction, $\{(Y_t)_{0 \leq t \leq T}; \dot {\mathbf P}_\mu\} \overset{f.d.d}{=} \{(Y_t)_{0\leq t\leq T}; \dot{\mathbf P}^{(\phi,T)}_\mu\}$.
+\begin{thm}[Spine decomposition]\label{prop:sizBiasNMeas}
+	Suppose that Assumptions \ref{asp:1} and \ref{asp:2} hold.
+	Fix a time $T>0$, a measure $\mu \in \mathcal M_f^\phi$ and a function $g \in bp\mathscr B^\phi_E$ with $m(g) > 0$.
+	Let $\{Y; \dot {\mathbf P}^{(g,T)}_\mu\}$ be the $(g,T)$-spine immigration corresponding to $\{X; \mathbf P_\mu\}$ defined above.
+	Then we have
+\[
+	\{(Y_t)_{t\leq T}; \dot{\mathbf P}^{(g,T)}_\mu\}
+	\overset{f.d.d.}{=} \{(w_t)_{t\leq T}; \mathbb N_\mu^{w_T(g)}\},
+\]
+	where $\mathbb N_{\mu}^{w_T(g)}$ is the $w_T(g)$-transform of the Kuznetsov measure $\mathbb N_\mu$.
+\end{thm}
+	The proof of Theorem \ref{prop:sizBiasNMeas} relies on the following lemmas:
+\begin{lem}\label{lem:relSpinNMeas}
+	For any $x\in E, T>0, (K,f) \in \mathcal K_T$ and $g \in p\mathscr B_E$, we have
+\begin{equation}\label{eq:relSpinNMeas}
+	\mathbb N_x[w_T(g) e^{-K_{(0, T]}^f(w)}]
+	= \mathbb P_x[g(\xi_T) e^{-\int_0^T \Psi'(u_s)(\xi_s) ds}],
+\end{equation}
+	where
+\[
+	\Psi'(x,z)
+	:= \partial_z \Psi(x,z)
+	= - \beta(x) + 2 \alpha(x) z + \int_{(0,\infty)} (1 - e^{-yz}) y \pi(x,dy),
+	\quad x \in E, z \geq 0,
+\]
+	and $u: (s,x) \mapsto u_s(x)$ on $[0,T] \times E$ is defined in Lemma \ref{lem:EquatDescNmeas}.
+\end{lem}
+\begin{proof}
+	We first prove assertion \eqref{eq:relSpinNMeas} in the case when $g \in bp\mathscr B_E$.
+	Throughout this proof, we fix $(K,f) \in \mathcal K_T$ and consider $0 \leq \theta \leq 1$.
+	Define
+\begin{equation}\label{eq:mm-1}
+	u_s^\theta(x)
+	:=	\mathbb N_x \big[ 1 - e^{ - K_{(s, T]}^f(w) - w_{T-s}(\theta g)} \big],
+	\quad s \geq 0, x\in E.
+\end{equation}
+	Let
+\[\begin{split}
+	\tilde K(dr)
+	&:=	\mathbf 1_{0\leq r<T} K(dr) + \delta_T (dr), \\
+	\tilde f_r
+	&:=	\mathbf 1_{0\leq r<T} f_r + \mathbf 1_{r=T} \big( K(\{T\}) f_T + \theta g \big).
+\end{split}\]
+	Then $(\tilde K, \tilde f) \in \mathcal K_T$ and \eqref{eq:mm-1} can be rewritten as
+\[
+	u_s^\theta(x)
+	:=	\mathbb N_x \big[ 1 - e^{ - \tilde K_{(s, T]}^{\tilde f} (w)} \big],
+	\quad s \geq 0, x\in E.
+\]
+	It follows from Lemma \ref{lem:EquatDescNmeas} that, for any
+$\theta \geq 0$, $(s,x) \mapsto u^\theta_s(x)$ is the unique bounded positive solution to the equation
+\[	
+	u_s^\theta(x)
+	= \mathbb P_{x} \Big[ \int_{(s,T]} \tilde f_r(\xi_{r-s}) \tilde K(dr) - \int_s^T \Psi (u_r^\theta) (\xi_{r-s}) dr \Big],
+	\quad s\in [0,T],x\in E,
+\]
+	which is equivalent to
+\begin{equation}\label{eq:mewth}
+	u_s^\theta(x)
+    = \mathbb P_{x} \Big[\int_{(s,T]} f_r(\xi_{r-s}) K(dr) + \theta g(\xi_{T-s}) - \int_s^T \Psi(u^\theta_r)(\xi_{r-s}) dr\Big].
+\end{equation}
+	We claim that $u_s^\theta(x)$ is differentiable in $\theta$ at $\theta = 0$.
+	In fact, since
+\begin{equation}\label{eq:sbN-1}
+	\frac {|e^{-K_{(s, T]}^f(w)-w_{T-s}(\theta g)} - e^{-K_{(s, T]}^f(w)}|} {\theta}
+	\leq w_{T-s}(g),
+	\quad 0 < \theta \leq 1,
+\end{equation}
+	and
+\begin{equation}
+\label{eq:sbN-2}
+	\mathbb N_x[w_{T-s}(g)]
+	= S_{T-s} g (x)
+	= \mathbb P_x[e^{\int_0^{T-s} \beta(\xi_r) dr} g(\xi_{T-s})]
+	\leq e^{T \|\beta\|_\infty} \|g\|_\infty,
+\end{equation}
+	it follows from \eqref{eq:mm-1} and the dominated convergence theorem that
+\begin{equation}
+\label{eq:mm-3}
+	\dot u_s(x)
+	:= \partial_\theta|_{\theta=0} u_s^\theta(x)
+	= \mathbb N_x[w_{T-s}(g) e^{-K^f_{(s,T]}(w)}]
+	\leq e^{T \|\beta\|_\infty} \|g\|_\infty.
+\end{equation}
+	From \eqref{eq:mm-1}, we also have the following upper bound for $u_s^\theta (x)$ with $0 \leq \theta \leq 1$:
+\begin{equation}\label{eq:uppBoundUThet}\begin{split}
+	u_s^\theta(x)
+	&\leq \mathbb N_x \Big[\int_{(s,T]} w_{r-s}(f_r) K(dr) + w_{T-s}(\theta g)\Big]\\
+	&= \int_{(s,T]} \mathbb N_x[w_{r-s}(f_r)] K(dr ) + \mathbb N_x[w_{T-s}(\theta g)]\\
+	&\leq e^{T\|\beta\|_\infty} \big( \|f\|_\infty K((0,T])+\|g\|_\infty \big)
+	= : L_0.
+\end{split}\end{equation}
+	By elementary analysis, one can verify that, for each $L>0$, there exists a constant $C_{\Psi,L}>0$ such that for each $x\in E$ and $0\leq z, z_0 \leq L$,
+\begin{equation}\label{eq:lipschPhi}
+	|\Psi(x,z_0) - \Psi(x,z)|
+	\leq C_{\Psi,L} |z - z_0|.
+\end{equation}
+	In fact one can choose
+	$C_{\Psi,L} := \|\beta\|_\infty + 2L\|\alpha\|_\infty + \max\{L,1\} \sup_{x\in E} \int_{(0,\infty)} (y \wedge y^2) \pi(x,dy)$.
+	This upper bound also implies that
+\[
+	|\Psi' (x,z)|
+	\leq C_{\Psi,L},
+	\quad x \in E, 0 \leq z \leq L.
+\]
+	Therefore, we can verify that $\mathbb P_x[\int_s^T \Psi(u^\theta_r)(\xi_{r-s}) dr]$ is differentiable in $\theta$ at $\theta = 0$.
+	In fact, by \eqref{eq:lipschPhi}, \eqref{eq:uppBoundUThet}, \eqref{eq:mm-1}, \eqref{eq:sbN-1} and \eqref{eq:sbN-2}, we have
+\[\begin{split}
+	\frac {|\Psi(u_r^\theta)(x)- \Psi(u^0_r)(x)|} {\theta}
+	&\leq C_{\Psi,L_0} \frac {|u_r^\theta(x) - u_r^0(x)|} {\theta}\\
+	&\leq C_{\Psi,L_0} \cdot e^{T \|\beta\|_\infty} \|g\|_\infty,
+	\quad 0 \leq \theta \leq 1.
+\end{split}\]
+	Therefore, by the bounded convergence theorem, we have
+\begin{equation}\label{eq:mm-5}\begin{split}
+	\partial_\theta|_{\theta =0} \mathbb P_x \Big[ \int_s^T \Psi(u_r^\theta)(\xi_{r-s}) dr\Big]
+	= \mathbb P_x \Big[ \int_s^T \big(\Psi'(u_r^0) \cdot \dot u_r \big)(\xi_{r-s}) dr \Big].
+\end{split}\end{equation}
+	Now, taking $\partial_\theta|_{\theta=0}$ on the both sides of \eqref{eq:mewth}, we obtain from \eqref{eq:mm-5} that
+\begin{equation}\label{eq:mm-2}
+	\dot u_s (x)
+	= \mathbb P_x\Big[ g(\xi_{T-s})- \int_s^T \big(\Psi'(u_r^0)\cdot \dot u_r\big)(\xi_{r-s}) dr \Big],
+	\quad s\in [0,T], x\in E.
+\end{equation}
+	Notice that the function $\dot u:(s,x) \mapsto \dot u_s(x)$ is bounded on $[0,T] \times E$ by $e^{T \|\beta\|_\infty} \|g\|_\infty$;
+	$g$ is bounded on $E$ by $\|g\|_\infty$;
+	and $\Psi'(u_r^0)$ is bounded on $E$ by $C_{\Psi,L_0}$.
+	These bounds allow us to apply the classical Fymann-Kac fromula, see \cite[Lemma A.1.5]{Dynkin1993Superprocesses} for example, to equation \eqref{eq:mm-2} and get that
+\begin{equation}\label{eq:third}
+	\dot u_0(x)
+	= \mathbb P_{x} \Big[g(\xi_T) e^{-\int_0^T \Psi'(u_s)(\xi_s) ds}\Big].
+\end{equation}
+	The desired result when $g \in bp\mathscr B_E$ then follows from \eqref{eq:mm-3} and \eqref{eq:third}.
+\par
+	In the case when $g \in p\mathscr B_E$, we write $g^{(n)}(x) := \min\{g(x), n\}$ for $x \in E$ and $n \in \mathbb N$.
+	Then, from what we have proved, we know that
+\[
+	\mathbb N_x[w_T(g^{(n)}) e^{- K_{(0,T]}^f(w)}]
+	= \mathbb P_x[g^{(n)}(\xi_T) e^{-\int_0^T \Psi'(u_s)(\xi_s)ds}],
+	\quad n \in \mathbb N.
+\]
+	Letting $n \to \infty$ we complete the proof.
+\end{proof}
+\begin{lem}\label{lem:spinImigrCondSpin}
+	Let $T>0, k\in[0, T], (K,f) \in \mathcal K_T, \mu\in \mathcal M^\phi_f$ and $g\in bp\mathscr B^\phi_E$.
+	We have
+\begin{equation}\label{eq:spinImigrCondSpin}
+    -\log \dot{\mathbf P}^{(g,T)}_\mu[e^{-K^f_{(k, T]}(Y)}|\xi]
+	=\int_k^T \Psi'_0(u_s)(\xi_{s-k}) ds,
+\end{equation}
+	where
+\[
+	\Psi'_0(x,z)
+	:= \partial_z\Psi_0(x,z)
+	= 2 \alpha(x) z + \int_{(0,\infty)}(1 - e^{-yz})y \pi(x,dy),
+	\quad x\in E, z\geq 0,
+\]
+	and the function $u$ is defined in Lemma \ref{lem:EquatDescNmeas}.
+\end{lem}
+\begin{proof}
+	Throughout this proof,
+we denote by $\mathbf n_{T-k}$ and $\mathbf m^\xi_{T-k}$
+	the restriction of $\mathbf n_T$ and $\mathbf m^\xi_T$ on $[0,T-k] \times \mathcal W$ respectively.
+	It follows from the properties of Poisson random measures that, conditioned on $\xi$, $\mathbf n_{T-k}$ is a Poisson random measure with mean measure $\mathbf m^\xi_{T-k}$.
+\par
+	It follows from \eqref{eq:defSpinImmigr} and Fubini's theorem that
+\begin{equation}\label{eq:kfy_is_nkf}\begin{split}
+    &K_{(k,T]}^f(Y)
+    = \int_{(k,T]} Y_{r-k}(f_r) K(dr) \\
+	&\quad = \int_{(k,T]} K(dr) \int_{(0,r-k] \times \mathcal M_f} w_{(r-k)-s}(f_r) \mathbf n_T(ds,dw)\\
+	&\quad = \int_{(0,T-k] \times \mathcal M_f} \mathbf n_T(ds,dw) \int_{(k+s,T]} w_{r-(k+s)}(f_r) K(dr)\\
+    &\quad = \int K^f_{(k + s, T]}(w)\mathbf n_{T-k}(ds,dw).
+\end{split}\end{equation}
+	Conditioned on $\xi$, it follows from Campbell's formula and Lemma \ref{lem:EquatDescNmeas} that
+\[\begin{split}
+    &-\log \dot{\mathbf P}^{(g,T)}_\mu[e^{-K^f_{(k, T]}(Y)}|\xi]
+    = -\log \dot{\mathbf P}^{(g,T)}_\mu\big[e^{-\int K^f_{(k + s, T]}(w)\mathbf n_{T-k}(ds,dw)}\big|\xi\big]\\
+	&\quad = \int(1 - e^{-K_{(k + s, T]}^f (w)})\mathbf m^\xi_{T-k}(ds,dw)\\
+	&\quad = \int_0^{T-k} \Big(2\alpha(\xi_s) \mathbb N_{\xi_s}[1 - e^{-K_{(k + s, T]}^f(w)}] \\
+	&\qquad\qquad\qquad + \int_{(0,\infty)} y \mathbf P_{y \delta_{\xi_s}}[1 - e^{-K_{(k + s, T]}^f(X)}] \pi(\xi_s,dy)\Big) ds\\
+	&\quad = \int_0^{T-k} \Big(2\alpha(\xi_s) u_{k+s}(\xi_s) + \int_{(0,\infty)} (1 - e^{-yu_{k+s}(\xi_s)})y\pi(\xi_s,dy)\Big) ds\\
+	&\quad =\int_0^{T-k} \Psi'_0(u_{s+k})(\xi_s) ds
+	=\int_k^T \Psi'_0(u_s)(\xi_{s-k}) ds,
+\end{split}\]
+	as desired.
+\end{proof}
+\begin{proof}[Proof of Theorem \ref{prop:sizBiasNMeas}]
+    We only need to prove that
+\[
+	\{(Y_t)_{0<t\le T}; \dot{\mathbf P}^{(g,T)}_\mu\}
+	\overset{f.d.d.}{=} \{(w_t)_{0<t\le T}; \mathbb N_\mu^{w_T(g)}\},
+\]
+	since both $\{Y_0; \dot{\mathbf P}^{(g,T)}_\mu\}$ and $\{w_0; \mathbb N_\mu^{w_T(g)}\}$ are deterministic with common value $\mathbf 0$.
+	By Lemma \ref{lem:relSpinNMeas} and \ref{lem:spinImigrCondSpin}, we have
+\[\begin{split}
+    &\mathbb N_\mu^{w_T(g)}\big[e^{-K_{(0, T]}^f(w)}\big]
+	=\mathbb N_\mu[w_T(g)]^{-1} \mathbb N_\mu \big[w_T(g) e^{-K_{(0, T]}^f(w)}\big]\\
+	&\quad =\langle S_Tg,\mu \rangle^{-1} \int_E \mu(dx) \mathbb N_x \big[w_T(g) e^{-K_{(0, T]}^f(w)}\big]\\
+	&\quad =\langle S_Tg,\mu \rangle^{-1} \int_E \mu(dx) \mathbb P_x\big[g(\xi_T) e^{-\int_0^T \Psi'(u_s)(\xi_s) ds}\big]\\
+	&\quad =\langle S_Tg,\mu \rangle^{-1} \int_E \mu(dx) S_Tg(x) \mathbb P^{(g,T)}_x \big[e^{-\int_0^T \Psi'_0(u_s)(\xi_s) ds}\big]\\
+	&\quad =\mathbb P^{(g,T)}_{\mu S_Tg}[e^{-\int_0^T \Psi'_0(u_s)(\xi_s) ds}]
+	=\dot {\mathbf P}^{(g,T)}_\mu\big[ \dot{\mathbf P}^{(g,T)}_\mu[e^{-K_{(0, T]}^f(Y)}|\xi] \big]\\
+	&\quad = \dot{\mathbf P}^{(g,T)}_\mu[e^{-K_{(0, T]}^f(Y)}].
+\end{split}\]
+	The proof is complete.
+\end{proof}
+\begin{proof}[Proof of Theorem \ref{thm:spinDec}]
+	Fix $T>0$.
+	We only need to show that
+\[
+	\{(X_t)_{t\leq T}; \mathbf P_\mu^M\}
+	\overset{f.d.d.}{=} \{(X_t + Y_t)_{t\leq T}; \mathbf P_\mu\otimes\dot{\mathbf P}_\mu\}.
+\]
+	Actually, it follows from Theorem \ref{prop:sizBiasNMeas} that
+\[
+	\{(Y_t)_{t\leq T}; \dot{\mathbf P}_\mu\}
+	\overset{f.d.d.}{=} \{(Y_t)_{t\leq T}; \dot{\mathbf P}^{(\phi,T)}_\mu\}
+	\overset{f.d.d.}{=} \{(w_t)_{t\leq T}; \mathbb N_\mu^{w_T(\phi)}\}.
+\]
+	So, applying Theorem \ref{prop:sizBiasDecSupProc}
+	with $F(w) := w_T(\phi)$, we have
+\[
+	\{(X_t+Y_t)_{t\leq T}; \mathbf P_\mu\otimes\dot{\mathbf P}_\mu\}
+	\overset{f.d.d.}{=} \{(X_t)_{t\leq T}; \mathbf P_\mu^{X_T(\phi)}\}
+	\overset{f.d.d.}{=} \{(X_t)_{t\leq T}; \mathbf P_\mu^M\}
+\]
+	as desired.
+\end{proof}
+
+\section{2-spine decomposition of critical superprocesses}
+	In this section, we develop a 2-spine decomposition for critical superprocesses.
+	We will take $F = w_T(\phi)^2$ in Theorem \ref{prop:sizBiasDecSupProc}
+	and investigate the $w_T(\phi)^2$-transform of the Kuznetsov measure $\mathbb N_\mu$.
+	In order to do so, some moment assumptions are needed to ensure that $\mathbb N_\mu[w_T(\phi)^2] \in (0,\infty)$.
+\begin{asp}\label{asp:3}
+	The function $A\phi$ is bounded on $E$ where
+\[
+	A(x)
+	:= 2\alpha(x) + \int_{(0,\infty)} y^2\pi(x,dy),
+	\quad x\in E.
+\]
+\end{asp}
+	Assumption \ref{asp:3} is satisfied, for example, when $\phi$ and $A$ are bounded on $E$.
+	These conditions appeared in the literature and was used by \cite{RenSongZhang2015Limit} in the proof of the Kolmogrov type result \eqref{eq:Mot-3} and the Yaglom type result \eqref{eq:Mot-4} for critical superprocesses.
+	All the example in \cite{RenSongZhang2015Limit} satisfy these conditions.
+	However, our results are valid under the weaker condition of Assumption \ref{asp:3}.
+
+\subsection{Second moment formula}
+\begin{lem}\label{lem:1stMomSizBiasSupProc}
+	Suppose that Assumption  \ref{asp:1}, \ref{asp:2} and \ref{asp:3} hold, then
+\[
+	\mathbf P_{\mu}^{(g,t)} [Y_t(f)|\xi]
+    = \int_0^t ( A S_{t-s} f) (\xi_s) ds
+	\leq t \|A \phi\|_{\infty} \|\phi^{-1}f\|_\infty,
+	\quad \mathbf P^{(g,t)}_{\mu} \text{-a.s.},
+\]
+	for each $g,f\in bp\mathscr B_E^\phi, \mu \in \mathcal M^\phi_f$ and $t\geq 0$.
+\end{lem}
+\begin{proof}
+	Define $G(s,w) := \mathbf 1_{s\leq t} w_{t-s}(f)$ for each $s \geq 0$ and $w \in \mathcal W$.
+	Under Assumption \ref{asp:3}, it is clear from \eqref{eq:meanMeasImmigr} that
+\[\begin{split}
+	\mathbf m_t^\xi(G)
+	&= \int_0^t 2 \alpha(\xi_s) \mathbb N_{\xi_s}[w_{t-s}(f)]ds + \int_0^t ds \int_{(0,\infty)} y \mathbf P_{y \delta_{\xi_s}}[X_{t-s}(f)] \pi(\xi_s,dy) \\
+	&= \int_0^t 2 \alpha S_{t-s}f(\xi_s) ds + \int_0^t ds \int_{(0,\infty)} y^2 S_{t-s} f(\xi_s) \pi(\xi_s, dy)\\
+    &= \int_0^t (A S_{t-s} f) (\xi_s) ds
+	\leq t \cdot \|A \phi\|_{\infty} \cdot \|\phi^{-1}f\|_\infty.
+\end{split}\]
+	Since, conditioned on $\xi$, $\{\mathbf n_t;\mathbf P^{(g,t)}_\mu\}$ is a
+	Poisson random measure on $[0,t] \times \mathcal W$
+	with mean measure $\mathbf m_t^\xi$, we conclude from Campbell's theorem that
+\[
+	\mathbf P^{(g,t)}_{\mu}[Y_t(f)|\xi]
+	= \mathbf P^{(g,t)}_{\mu} [\mathbf n_t(G)|\xi]
+	= \mathbf m_t^\xi(G)
+    = \int_0^t (A S_{t-s} f) (\xi_s) ds,
+	\quad \mathbf P^{(g,t)}_{\mu} \text{-a.s.}.
+\]
+	Noticing that
+\[
+    \int_0^t (A S_{t-s} f)(\xi_s)ds
+	 = \int_0^t [(A \phi) \phi^{-1} S_{t-s}(\phi \cdot \phi^{-1} f)](\xi_s)ds
+	\leq t \|A\phi\|_\infty \|\phi^{-1}f\|_\infty,
+\]
+	we have our result as desired.
+\end{proof}
+\begin{prop}\label{prop:covanrance}
+	Under Assumptions \ref{asp:1}, \ref{asp:2} and \ref{asp:3}, for each $g,f\in b\mathscr B^\phi_E$, $\mu \in \mathcal M^\phi_f$ 
+	and $t\geq 0$, 
+	we have that $X_t(g)X_t(f)$ is integrable with respect to $\mathbf P_\mu$ and
+\begin{equation}\label{eq:covanrance}
+	\mathbf P_\mu[X_t(g) X_t( f)]
+	= \langle\mu, S_t g \rangle \langle\mu, S_t f\rangle + \langle\mu, \phi\rangle \dot{\mathbb P}_{\mu\phi} \Big[\phi^{-1} g(\xi_t) \int_0^t( A S_{t-s} f)(\xi_s) ds\Big].
+\end{equation}
+\end{prop}
+\begin{proof}
+	We first consider the case when $g,f\in bp\mathscr B^\phi_E$.
+	In this case, the right hand of \eqref{eq:covanrance} is positive and finite.
+	Actually,
+	by Lemma \ref{lem:1stMomSizBiasSupProc},
+	the right side of \eqref{eq:covanrance} is less than or equal to
+\[\begin{split}
+	&\langle \mu, S_tg \rangle \langle\mu,S_t f \rangle + \langle \mu,\phi\rangle\dot{\mathbb P}_{\mu\phi}\big[\phi^{-1}g(\xi_t)\big] t \|A\phi\|_\infty \|\phi^{-1}f\|_\infty\\
+	&\quad \leq \big(\langle \mu,\phi \rangle^2 + \langle \mu,\phi\rangle t \|A\phi\|_\infty\big)\|\phi^{-1}g\|_\infty\|\phi^{-1}f\|_\infty
+	< \infty.
+\end{split}\]
+	We can also assume that $m(g)>0$.
+	Since if $m(g)=0$,
+then both sides of \eqref{eq:covanrance} are $0$.
+\par
+	Now in the case when $g,f\in bp\mathscr B^\phi_E$ and $m(g)>0$, from
+    Theorem \ref{prop:sizBiasNMeas} and
+	Lemma \ref{lem:1stMomSizBiasSupProc} we know that, for each $x\in E$,
+\[\begin{split}
+	\mathbb N_x^{w_t(g)}[w_t(f)]
+	&= \mathbf P_{\delta_x}^{(g,t)}[Y_t(f)]
+	= \mathbf P_{\delta_x}^{(g,t)} \big[\mathbf P_{\delta_x}^{(g,t)}[Y_t(f) | \xi]\big]\\
+	&= \mathbf P_{\delta_x}^{(g,t)} \Big[\int_0^t  (A S_{t-s}  f)(\xi_s) ds\Big]
+	= \mathbb P_x^{(g,t)} \Big[\int_0^t  (A S_{t-s} f)(\xi_s) ds\Big]\\
+	&= S_t g(x)^{-1} \mathbb P_{x} \big[g(\xi_t) e^{\int_0^t \beta(\xi_s) ds} \int_0^t (A S_{t-s} f)(\xi_s) ds\big].
+\end{split}\]
+	Therefore,
+\[\begin{split}
+	\mathbb N_x[w_t(g) w_t( f)]
+	&= \mathbb N_x[w_t(g)] \mathbb N_x^{w_t(g)}[w_t(f)]\\
+	&= \mathbb P_x \big[g(\xi_t) e^{\int_0^t \beta(\xi_s) ds} \int_0^t( A S_{t-s} f)(\xi_s) ds\big]\\
+	&= \phi(x) \dot{\mathbb P}_x \big[(\phi^{-1} g)(\xi_t) \int_0^t( A S_{t-s} f)(\xi_s)ds \big].
+\end{split}\]
+	Integrating with $\mu \in \mathcal M_f^{\phi}$, we have
+\[
+	\mathbb N_\mu[w_t(g)w_t(f)]
+	= \langle\mu, \phi\rangle \dot{\mathbb P}_{\mu\phi} \big[(\phi^{-1} g)(\xi_t) \int_0^t (A S_{t-s} f)(\xi_s) ds\big].
+\]
+	It then follows from Lemmas \ref{lem:lislem} and \ref{lem:covPoissRandMeas} that
+\[\begin{split}
+	\mathbf P_\mu[ X_t( g) X_t( f)]
+	&= \mathbb N_\mu[ w_t( g)] \mathbb N_\mu[ w_t( f)] + \mathbb N_\mu[ w_t( g) w_t( f)]\\
+	&= \langle \mu, S_t g\rangle \langle \mu, S_t f\rangle + \langle \mu, \phi\rangle \dot{\mathbb P}_{\mu\phi} \big[ ( \phi^{-1} g)( \xi_t) \int_0^t (A S_{t-s} f)( \xi_s) ds \big]
+\end{split}\]
+	as desired.
+	For the more general case when $g,f\in b\mathscr B^\phi_E$, we only need to consider their positive and negative parts.
+\end{proof}
+
+\subsection{Immigrations along a 2-spine skeleton}
+\label{size-biased-equation}
+	Fix an arbitrary $\mu \in \mathcal M_f^\phi$.
+	Consider the spine immigration $\{Y, \xi, \mathbf n; \dot{\mathbf P}_\mu\}$ corresponding to $\{X; \mathbf P_\mu\}$.
+	We first state a property of $\{Y; \dot{\mathbf P}_\mu\}$, which is needed later.
+\begin{lem}\label{lem:Y-is-immortal}
+	$\dot{\mathbf P}_\mu(Y_t = \mathbf 0) = 0$ for each $\mu \in \mathcal M_f^\phi$ and $t>0$.
+\end{lem}
+\begin{proof}
+	According to Theorem \ref{prop:sizBiasNMeas}, we have
+\[
+	\dot{\mathbf P}_\mu (Y_t = 0)
+	= \mathbb N^{w_t(\phi)}_\mu ( w_t(\phi) = 0 )
+	= \langle \mu, \phi \rangle^{-1} \mathbb N_\mu [ w_t(\phi) \mathbf 1_{w_t(\phi) = 0}]
+	= 0.
+\]
+\end{proof}
+\par
+	We now introduce the \emph{2-spine immigration}
+\[
+	\{(Z_t)_{t\leq T}, (\xi_t)_{t\leq T}, \kappa, (\xi_t')_{\kappa\leq t\leq T}; \ddot {\mathbf P}_\mu^{(T)}\}
+\]
+	\emph{corresponding to the process} $\{X; \mathbf P_\mu\}$  as follows:
+\begin{itemize}
+\item
+	\emph{The main spine} $\{(\xi_t)_{t\leq T}; \ddot{\mathbf P}_\mu^{(T)}\}$ is a copy of $\{(\xi_t)_{t\leq T}; \ddot{\mathbb P}_{\mu\phi}^{(T)}\}$, where
+\begin{equation}\label{eq:definition-of-main-spine}
+	\frac {d \ddot{\mathbb P}_{\mu\phi}^{(T)}} {d \dot{\mathbb P}_{\mu\phi}}
+	:= \frac{\int_0^T (A \phi)(\xi_s) ds}{\dot{\mathbb P}_{\mu\phi}[ \int_0^T (A \phi)(\xi_s) ds]}.
+\end{equation}
+\item
+	Conditioned on $(\xi_t)_{t \leq T}$, the \emph{splitting time} $\kappa$ is a random variable taking values in $[0,T]$ with law proportion to $\int_\cdot \mathbf 1_{s\leq T} (A \phi)(\xi_s) ds$ in the sense that
+\[
+	\ddot{\mathbf P}_\mu\big(\kappa \in ds\big|(\xi_t)_{t\leq T}\big)
+	=\frac {\mathbf 1_{s\leq T} (A\phi)(\xi_s) ds} {\int_0^T (A\phi)(\xi_r) dr}.
+\]
+\item
+	Conditioned on $(\xi_t)_{t \leq T}$ and $\kappa$, we define the \emph{auxiliary spine} $(\xi'_t)_{\kappa \leq t \leq T}$ such that
+\begin{equation}\label{eq:defAuxilSpin}
+	\{(\xi'_{\kappa+t})_{0 \leq t \leq T - \kappa}; \ddot{\mathbf P}_\mu^{(T)}(\cdot | \xi,\kappa) \}
+	\overset{law}{=} \{(\xi_t)_{0 \leq t \leq T - \kappa}; \dot{\mathbb P}_{\xi_\kappa} \}.
+\end{equation}
+	We refer to $\{(\xi_t)_{t\leq T}, \kappa, (\xi_t')_{\kappa \leq t\leq T}; \ddot {\mathbf P}_\mu^{(T)}\}$ as \emph{the 2-spine skeleton} and define
+\[
+	\mathscr G
+	:= \sigma \{ (\xi_t)_{t \leq T}, \kappa, (\xi_t')_{\kappa \leq t \leq T} \}.
+\]
+\item
+	Conditioned on $\mathscr G$, \emph{the main immigration} $(Y_t)_{0 \leq t\leq T}$ is defined by
+\[
+	Y_t
+	:= \int_{(0,t] \times \mathcal W} w_{t-s} \mathbf n_T(ds, dw),
+	\quad t\in [0,T],
+\]
+	where $\mathbf n_T$ is a
+	Poisson random measure on $[0,T] \times \mathcal W$ with mean measure
+\[
+	\mathbf m_T^\xi (ds,dw)
+	:= 2 \alpha(\xi_s) ds \cdot \mathbb N_{\xi_s}(dw) + ds \cdot \int_{(0,\infty)} y \mathbf P_{y\delta_{\xi_s}}(dw) \pi(\xi_s,dy).
+\]
+\item
+	Conditioned on $\mathscr G$, \emph{the auxiliary immigration} $(Y'_t)_{\kappa \leq t \leq T}$ is defined by
+\[
+	Y'_t
+	:= \int_{(\kappa,t] \times \mathcal W} w_{t-s} \mathbf n'_T(ds,dw),
+	\quad t \in [\kappa,T],
+\]
+	where $\mathbf n'_T$ is a
+	Poisson random measure on $[\kappa,T] \times \mathcal W$ with mean measure
+\[
+	\mathbf m^{\xi'}_{\kappa,T}(ds,dw)
+	:= 2 \alpha(\xi'_s)ds \cdot \mathbb N_{\xi'_s}(dw) + ds \cdot \int_{(0,\infty)} y \mathbf P_{y\delta_{\xi'_s}}(dw) \pi(\xi'_s,dy).
+\]
+\item
+	Conditioned on $\mathscr G$, \emph{the splitting-time immigration}
+$(X'_t)_{\kappa \leq t \leq T}$ is defined by
+\[
+	\{(X'_{\kappa+t})_{0\leq t\leq T-\kappa}; \ddot{\mathbf P}_\mu(\cdot | \mathscr G)\}
+	\overset{law}{=} \{(X_t)_{0 \leq t \leq T-\kappa}; \widetilde{\mathbf P}_{\xi_\kappa}\},
+\]
+where, for each $x\in E$, the probability measure $\widetilde{\mathbf P}_{x}$ is defined by
+
+\begin{equation}\label{eq:def-tilde-P}
+	\widetilde{\mathbf P}_{x}(\cdot)
+	:=
+\begin{cases}
+	\frac{2\alpha(x) \mathbf P_{\mathbf 0}(\cdot)+\int_{(0,\infty)}y^2\mathbf P_{y\delta_x}(\cdot)\pi(x,dy)}{2\alpha(x)+\int_{(0,\infty)}y^2\pi(x,dy)},
+	&\quad \mbox{if } A(x)>0,\\
+	\mathbf P_{\mathbf 0}(\cdot),
+	&\quad \mbox{if } A(x)=0.
+\end{cases}
+\end{equation}
+\item
+	We assume that, conditioned on $\mathscr G$,
+	$\{Y,\mathbf n_T\}$, $\{Y',\mathbf n'_T\}$ and $X'$ are independent.
+	We also define $Y'_t = \mathbf 0$ and $X'_t = \mathbf 0$ for every $t\leq \kappa$.
+	Finally, we define  the \emph{total immigration $(Z_t)_{0\leq t\leq T}$} by
+\[
+	Z_t
+	:= Y_t + Y_t' + X_t',
+	\quad 0\leq t\leq T.
+\]
+\end{itemize}
+\begin{thm}\label{prop:2-spine-decomposition}
+	Suppose that Assumptions \ref{asp:1}, \ref{asp:2} and \ref{asp:3} hold.
+	Fix  $\mu\in\mathcal M_f^\phi$ and $T>0$.
+	Let $\{Z;\ddot {\mathbf P}_\mu^{(T)}\}$ be the 2-spine immigration process defined above.
+	Then
+\[
+	\{(Z_t)_{t\leq T}; \ddot {\mathbf P}^T_\mu\}
+	\overset{f.d.d.}{=} \{(w_t)_{t\leq T}; \mathbb N^{w_T(\phi)^2}_\mu\},
+\]
+	where $\mathbb N^{w_T(\phi)^2}_\mu$ is the $w_T(\phi)^2$-transform of the Kuznetsov measure $\mathbb N_\mu$.
+\end{thm}
+\begin{rem}\label{rem:chain-rule}
+	Note that $\mathbb N^{w_T(\phi)^2}_\mu$ is also the $w_T(\phi)$-transform of $\mathbb N^{w_T(\phi)}_\mu$.
+	In fact, the size-biased transforms satisfy the following chain rule:
+	If $g,f$ are non-negative measurable functions on some measure space $(D,\mathscr F_D,\mathbf D)$ with $\mathbf D(g) \in (0,\infty)$ and $\mathbf D(gf) \in (0,\infty)$.
+	Denoted by $\mathbf D^g$ the $g$-transform of $\mathbf D$, then $(\mathbf D^g)^f = \mathbf D^{gf}$, i.e., the $f$-transform of $\mathbf D^g$ is the $gf$-transform of $\mathbf D$.
+	This is true because it is easy to see that
+\[
+	\mathbf D^{gf}(ds)
+	:= \frac{g(s) f(s) \mathbf D(ds)}{\mathbf D[gf]}
+	= \frac{f(s) \mathbf D^g(ds)}{\mathbf D^g[f]}
+	=: (\mathbf D^g)^f (ds),
+	\quad s\in S.
+\]
+\end{rem}
+\par
+	The proof of Theorem \ref{prop:2-spine-decomposition} relies on the following lemma:
+\begin{lem}
+\label{lem:key-lemma}
+	For any $\mu\in \mathcal M_f^\phi$, $T>0$ and $(K,f)\in \mathcal K_T$, we have
+\[\begin{split}
+    &\dot{\mathbf P}_\mu [Y_T(\phi) e^{-K_{(0, T]}^f(Y)}|\xi]\\
+    &\quad =\dot{\mathbf P}_\mu[e^{-K_{(0, T]}^f(Y)}|\xi]\int_0^T  (A\phi)(\xi_s)\dot{\mathbf P}_{\delta_{\xi_s}}[e^{-K_{(s, T]}^f(Y)}]\widetilde {\mathbf P}_{\xi_s}[e^{-K^f_{(s, T]}(X)}]ds,
+\end{split}\]
+where $\widetilde {\mathbf P}_{x}$ is defined by \eqref{eq:def-tilde-P} for each $x\in E$.
+\end{lem}
+\begin{proof}
+	Define $G(s,w) := \mathbf 1_{s\leq T}w_{T-s}(\phi)$ for each $s\geq 0$ and $w\in\mathcal W$.
+	Notice that from \eqref{eq:kfy_is_nkf}, under the probability $\dot {\mathbf P}_\mu$,
+	we have $Y_T(\phi) = \mathbf n(G)$ and
+	$K_{(0, T]}^f(Y) = \mathbf n(K^f_{s}(w))$.
+	From Lemmas \ref{lem:1stMomSizBiasSupProc} and \ref{lem:Y-is-immortal} we know that
+\[
+	0
+	< \dot{\mathbf P}_{\mu}[Y_T(\phi)|\xi]
+	< \infty,
+	\quad \dot{\mathbf P}_\mu \text{-a.s.}.
+\]
+	Therefore, we can apply Lemma \ref{lem:size-biased-lemma} to the conditioned
+	Poisson random measure $\mathbf n$, and get
+\begin{equation}\label{eq:condSizBiasEquatSpinImmigr}
+    \dot{\mathbf P}_\mu [\mathbf n(G) e^{-\mathbf n(K^f_{(s, T]}(w))}|\xi]
+	=\dot{\mathbf P}_\mu[e^{-\mathbf n(K^f_{(s, T]}(w))}|\xi]\mathbf m^\xi[Ge^{-K^f_{(s, T]}(w)}].
+\end{equation}
+	It is clear from the definitions of $\mathbf m^\xi$, $\mathbb N^{w_t(\phi)}$ and $\mathbf P^M$ that
+\begin{equation}\label{eq:represent-mGeKf}\begin{split}
+    \mathbf m^\xi[Ge^{-K_{(s, T]}^f(w)}]
+	&=\int_0^T \Big( 2\alpha(\xi_s)\mathbb N_{\xi_s}[w_{T-s}(\phi)e^{-K^f_{(s,T]}(w)}]\\
+	&\qquad\qquad +\int_{(0,\infty)}y\mathbf P_{y\delta_{\xi_s}}[X_{T-s}(\phi)e^{-K^f_{(s,T]}(X)}]\pi(\xi_s,dy)\Big)ds\\
+	&=\int_0^T \Big(2\alpha\phi(\xi_s)\mathbb N^{w_{T-s}(\phi)}_{\xi_s}[e^{-K^f_{(s,T]}(w)}] \\
+	&\qquad\qquad + \int_{(0,\infty)}y^2\phi(\xi_s)\mathbf P^M_{y\delta_{\xi_s}}[e^{-K^f_{(s,T]}(X)}]\pi(\xi_s,dy)\Big)ds.
+\end{split}\end{equation}
+	According to  Theorem \ref{prop:sizBiasNMeas}, we have
+\begin{equation}
+\label{eq:represent-NxwTsphi}
+	\mathbb N_x^{w_{T-s}(\phi)}[e^{-K^f_{(s,T]}(w)}]
+	= \dot{\mathbf P}_{\delta_x}[e^{-K^f_{(s,T]}(Y)}]
+	= \dot{\mathbf P}_{\delta_x}[e^{-K^f_{(s,T]}(Y)}]\mathbf P_{\mathbf 0}[e^{-K^f_{(s,T]}(X)}],
+\end{equation}
+	where we used the fact that $\mathbf P_{\mathbf 0}(X_t=\mathbf 0,\mbox{ for any }t\ge 0)=1$.
+	According to Theorem \ref{thm:spinDec}, we have
+\begin{equation}\label{eq:represent-PMydeltax}
+	\mathbf P^M_{y\delta_x}[e^{-K^f_{(s,T]}(X)}]
+	= \dot{\mathbf P}_{y\delta_x}[e^{-K^f_{(s,T]}(X+Y)}]
+	=\dot{\mathbf P}_{\delta_x}[e^{-K^f_{(s,T]}(Y)}]\mathbf P_{y\delta_x}[e^{-K^f_{(s,T]}(X)}]
+\end{equation}
+	for any $s\in [0,T],x\in E$, and $y\in (0,\infty)$.
+	Plugging \eqref{eq:represent-NxwTsphi} and \eqref{eq:represent-PMydeltax} back into \eqref{eq:represent-mGeKf} and rearranging terms, we have that
+\begin{equation}\label{eq:fifth}
+\begin{split}
+    &\mathbf m^\xi[Ge^{-K_{(s, T]}^f}(w)]\\
+	&\quad=\int_0^T \Big(2\alpha\phi(\xi_s)\dot{\mathbf P}_{\delta_{\xi_s}}[e^{-K^f_{(s,T]}(Y)}]\mathbf P_{\mathbf 0}[e^{-K^f_{(s,T]}(X)}] \\
+	&\qquad\qquad\quad + \int_{(0,\infty)}y^2\phi(\xi_s)\dot{\mathbf P}_{\delta_{\xi_s}}[e^{-K_s^f(Y)}]\mathbf P_{y\delta_{\xi_s}}[e^{-K^f_{(s,T]}(X)}]\pi(\xi_s,dy)\Big)ds.\\
+	&\quad=\int_0^T \phi(\xi_s)\dot{\mathbf P}_{\delta_{\xi_s}}[e^{-K^f_{(s,T]}(Y)}] \\
+	&\qquad\qquad\times\Big(2\alpha(\xi_s)\mathbf P_{\mathbf 0}[e^{-K^f_{(s,T]}(X)}] + \int_{(0,\infty)}y^2\mathbf P_{y\delta_{\xi_s}}[e^{-K^f_{(s,T]}(X)}]\pi(\xi_s,dy)\Big)ds\\
+	&\quad =\int_0^T (A\phi)(\xi_s)\dot{\mathbf P}_{\delta_{\xi_s}}[e^{-K^f_{(s,T]}(Y)}]\widetilde {\mathbf P}_{\xi_s}[e^{-K^f_{(s,T]}(X)}]ds.
+\end{split}\end{equation}
+	Plugging \eqref{eq:fifth} back into \eqref{eq:condSizBiasEquatSpinImmigr}, we get the desired result.
+\end{proof}
+\begin{proof}[Proof of Theorem \ref{prop:2-spine-decomposition}]
+	By Remark \ref{rem:chain-rule}, and noticing that $\{Z_0;\ddot{\mathbf P}^{(T)}_\mu\}$ and $\{w_0;\mathbb N^{w_T(\phi)^2}_\mu\}$ are both deterministic with common value $\mathbf 0$,
+	we only need to show that
+$\{(Z_t)_{0< t\leq T};\ddot{\mathbf P}^{(T)}_\mu\}$ is the $w_T(\phi)$-transform of $\{(w_t)_{0< t\leq T}; \mathbb N^{w_T(\phi)}_\mu\}$.
+	Note that, by Theorem\ref{prop:sizBiasNMeas},
+%	we already have a process $\{(Y_t)_{0\leq t\leq T}; \dot {\mathbf P}_\mu\}$ which is a realization of $\{(w_t)_{0< t\leq T}; \mathbb N^{w_T(\phi)}_\mu\}$.
+	we already have a process $\{(Y_t)_{0\leq t\leq T}; \dot {\mathbf P}_\mu\}$ which is a realization of $\{(w_t)_{0\leq t\leq T}; \mathbb N^{w_T(\phi)}_\mu\}$.
+	Therefore, in order to prove Theorem \ref{prop:2-spine-decomposition},
+	we only need to show that
+$\{(Z_t)_{0< t\leq T};\ddot{\mathbf P}^{(T)}_\mu\}$ is the $Y_T(\phi)$-transform of process $\{(Y_t)_{0< t\leq T}; \dot {\mathbf P}_\mu\}$.
+\par
+	Similar to \eqref{eq:kfy_is_nkf}, on the probability space where $\ddot {\mathbf P}^{(T)}_\mu$ is defined, we have $K_{(r, T]}^f(Y) = \mathbf n_T[K^f_{(r+\cdot, T]}]$ and $K_{(r, T]}^f(Y') = \mathbf n'_T[K^f_{(r+\cdot, T]}]$ for each $r\leq T$.
+	Therefore, by Campbell's theorem, using an argument similar to that used in the proof of Lemma \ref{lem:spinImigrCondSpin}, one can verify that
+\begin{equation}\label{eq:mainImmigrCondSkel}\begin{split}
+	- \log\ddot {\mathbf P}_\mu [e^{-K^f_{(0, T]}(Y)}|\mathscr G]
+	= \int_0^T\Psi'_0(u_s)(\xi_s)ds
+\end{split}\end{equation}
+	and
+\begin{equation}\label{eq:auxilImmigrCondSkel}
+	- \log\ddot {\mathbf P}_\mu [e^{-K^f_{(0, T]}(Y')}|\mathscr G]
+	= \int_\kappa^T\Psi'_0(u_s)(\xi'_s)ds,
+\end{equation}
+	where $u:(s,x)\mapsto u_s(x)$ is the function on $[0,T]\times E$ defined in Lemma \ref{lem:EquatDescNmeas}.
+	It is then clear from \eqref{eq:auxilImmigrCondSkel}, \eqref{eq:defAuxilSpin} and Lemma \ref{lem:spinImigrCondSpin} that
+\begin{equation}\label{eq:auxilImmigrCondMainSpin}\begin{split}
+    \ddot{\mathbf P}_\mu[e^{-K^f_{(0, T]}(Y')}|\xi,\kappa]
+	&= \ddot{\mathbf P}_\mu[e^{-\int_\kappa^T\Psi'_0(u_s)(\xi'_s)ds}|\xi,\kappa]\\
+	&= \dot{\mathbb P}_{\xi_r}[e^{-\int_r^T\Psi'_0(u_s)(\xi_{s-r})ds}]|_{r=\kappa}
+	= \dot{\mathbf P}_{\delta_{\xi_r}} [e^{-K^f_{(r, T]}(Y)}]|_{r=\kappa}.
+\end{split}\end{equation}
+	By the construction of the splitting immigration $X'$ at time $\kappa$, we also have
+\begin{equation}\label{eq:oneTimImmigrCondSkel}
+    \ddot {\mathbf P}_\mu[e^{-K^f_{(0, T]}(X')}|\mathscr G ]
+	= \widetilde{\mathbf P}_{\xi_r}[e^{-K^f_{(r, T]}(X)}]|_{r=\kappa}.
+\end{equation}
+	Using \eqref{eq:mainImmigrCondSkel}, \eqref{eq:auxilImmigrCondMainSpin}, \eqref{eq:oneTimImmigrCondSkel} and the construction of the 2-spine immigration, we deduce that
+\[\begin{split}
+	&\ddot {\mathbf P}_\mu[e^{-K^f_{(0, T]}(Z)}|\xi,\kappa]
+	=\ddot {\mathbf P}_\mu\big[ \ddot {\mathbf P}_\mu[e^{-K^f_{(0, T]}(Z)}|\mathscr G ] \big | \xi,\kappa\big]\\
+	&\quad=\ddot {\mathbf P}_\mu\Big[ \ddot {\mathbf P}_\mu[e^{-K^f_{(0, T]}(Y)}|\mathscr G ] \ddot {\mathbf P}_\mu[e^{-K^f_{(0, T]}(Y')}|\mathscr G ] \ddot {\mathbf P}_\mu[e^{-K^f_{(0, T]}(X')}|\mathscr G ] \Big | \xi,\kappa\Big]\\
+	&\quad=e^{-\int_0^T\Psi'_0(u_s)(\xi_s)ds}\dot {\mathbf P}_{\delta_{\xi_r}}[ e^{-K^f_{(r, T]}(Y)}]\widetilde{\mathbf P}_{\xi_r}[e^{-K^f_{(r, T]}(X)}]\big |_{r=\kappa}.
+\end{split}\]
+	Therefore, from the conditioned law of $\kappa$ given $\xi$, we have
+\begin{equation}\label{eq:totImmigrCondSpin}\begin{split}
+	&\ddot {\mathbf P}_\mu[e^{-K^f_{(0, T]}(Z)}|\xi]\\
+	&\quad = \frac{e^{-\int_0^T\Psi'_0(u_s)(\xi_s)ds}}{\int_0^T (A\phi)(\xi_r)dr}\int_0^T  (A\phi)(\xi_r)\dot {\mathbf P}_{\delta_{\xi_r}}[ e^{-K^f_{(r, T]}(Y)}]\widetilde{\mathbf P}_{\xi_r}[e^{-K^f_{(r, T]}(X)}] dr.
+\end{split}\end{equation}
+	Taking expectation, we get that
+\[\begin{split}
+	&\ddot {\mathbf P}_\mu[e^{-K^f_{(0,T]}(Z)}]\\
+	&\quad \overset{\text{\eqref{eq:totImmigrCondSpin}}}{=}\ddot {\mathbb P}_{\mu\phi}^{(T)}\Big\{ \frac{e^{-\int_0^T\Psi'_0(u_s)(\xi_s)ds}}{\int_0^T (A\phi)(\xi_r)dr}\int_0^T  (A\phi)(\xi_r)\dot {\mathbf P}_{\delta_{\xi_r}}[ e^{-K^f_{(r, T]}(Y)}]\widetilde{\mathbf P}_{\xi_r}[e^{-K^f_{(r, T]}(X)}] dr\Big\}\\
+	&\quad \overset{\text{\eqref{eq:definition-of-main-spine}}}{=}\dot{\mathbb P}_{\mu\phi}\Big\{ \frac{e^{-\int_0^T\Psi'_0(u_s)(\xi_s)ds}}{\dot{\mathbb P}_{\mu\phi}[\int_0^T (A\phi)(\xi_r)dr]}\int_0^T  (A\phi)(\xi_r)\dot {\mathbf P}_{\delta_{\xi_r}}[ e^{K^f_{(r, T]}(Y)}]\widetilde{\mathbf P}_{\xi_r}[e^{-K^f_{(r, T]}(X)}] dr\Big\}\\
+	&\quad \overset{\text{\eqref{eq:spinImigrCondSpin}}}{=} \dot{\mathbf P}_{\mu}\Big\{ \frac{\dot {\mathbf P}_\mu[e^{-K^f_{(0,T]}(Y)}|\xi]}{\dot{\mathbf P}_{\mu}[\int_0^T (A\phi)(\xi_r)dr]}\int_0^T  (A\phi)(\xi_r)\dot {\mathbf P}_{\delta_{\xi_r}}[ e^{-K^f_{(r, T]}(Y)}]\widetilde{\mathbf P}_{\xi_r}[e^{-K^f_{(r, T]}(X)}] dr\Big\}\\
+	&\quad \overset{\text{Lemma \ref{lem:key-lemma}}}{=} \dot{\mathbf P}_{\mu}\Big\{ \frac{\dot {\mathbf P}_\mu[Y_T(\phi)e^{-K^f_{(0, T]}(Y)}|\xi]}{\dot{\mathbf P}_{\mu}[Y_T(\phi)]}\Big\}=\frac{\dot {\mathbf P}_\mu[Y_T(\phi)e^{-K^f_{(0, T]}(Y)}]}{\dot{\mathbf P}_{\mu}[Y_T(\phi)]},
+\end{split}\]
+	which says that $(Z_t)_{0< t\leq T}$ is the $Y_T(\phi)$-transform of the process $\{(Y_t)_{0< t\leq T}; \dot {\mathbf P}_\mu\}$, as desired.
+\end{proof}
+
+\section{The asymptotic behavior of a class of critical superprocesses.}\label{sec:asymptotic}
+
+\subsection{Further assumptions}\label{sec:further_assumptions}
+	In this section, we study the limit behavior of a class of critical superprocesses whose mean semigroups satisfy the following stronger regularity condition:
+\begin{asp}
+\label{asp:2'}
+	In addition to Assumption \ref{asp:2}, we further assume that the mean semigroup $(S_t)_{t\geq 0}$ is intrinsically ultracontractive,
+	that is, for each $t>0$ there exists $c_t>0$ such that for all $x,y\in E$, we have $q(t,x,y)\leq c_t\phi(x)\phi^*(y)$.
+\end{asp}
+	Under Assumption \ref{asp:2'}, it was shown in \cite{KimSong2008Intrinsic} there exist positive constants $c, \gamma$ such that
+\begin{equation}
+\label{eq:IU}
+	\sup_{x,y\in E} \Big| \frac {q(t,x,y)} {\phi(x)\phi^*(y)} - 1\Big|
+	= \sup_{x,y\in E} \Big| \frac { \dot{q}(t,x,y)} {\phi(y)\phi^*(y)} - 1\Big|
+	\leq c e^{-\gamma t},
+	\quad t>1.
+\end{equation}
+\par
+	Throughout this chapter, we define $\nu(dy) := \phi^*(y)m(dy)$.
+	Under Assumption \ref{asp:2'}, $\nu(dy)$ is a finite measure on $E$ (see \cite{RenSongZhang2015Limit}).
+	In fact, $\phi^*(y) \leq q(t,x,y)  (1-c e^{-\gamma t})^{-1}\phi^{-1}(x)$ for all $t>1$ where, clearly, the right hand of this inequality is integrable in $y$ with respect to measure $m$.
+    Therefore, we can consider a superprocess $X$ with initial configuration $\nu$.
+\par
+	According to \eqref{eq:V_infty} and \eqref{eq:linearity}, the limit behavior of the extinction probability $\mathbf P_\mu(X_t = \mathbf 0)$ can be described by the functions $(v_t)_{t > 0}$.
+	Taking $f=V_s(\theta \mathbf 1_E)$ in \eqref{eq:mean-fkpp} and letting $\theta \to \infty$, by monotonicity, we get that $(v_t)_{t\geq 0}$ satisfy the following equation
+\begin{equation}\label{eq:reason-for-asp2'}
+	v_{t+s}(x) + \int_0^tS_{t-r}\Psi_0(v_{r+s})(x) dr
+	= S_tv_s(x),
+	\quad x\in E,t\geq 0.
+\end{equation}
+	However, in order to take advantage of this equation, we need that $S_t v_s(x)$ takes finite value at least for some large $s,t>0$ and for some $x\in E$.
+	The following lemma addresses this need.
+\begin{lem}\label{lem:discuss-of-assumption2'}
+	Under Assumption \ref{asp:2'}, the following statements are equivalent:
+\begin{enumerate}
+\item[$(1)$]
+	$S_tv_s(x)<\infty$ for some $s>0,t>1$ and $x\in E$.
+\item[$(1')$]
+	There is an $s_0>0$ such that for any $s\geq s_0$, $t>1$ and $x\in E$, we have $S_tv_s(x)<\infty$.
+\item[$(1'')$]
+	There is an $s_0>0$ such that for any $s\geq s_0$, $t>0$ and $x\in E$, we have $S_tv_s(x)<\infty$.
+\item[$(2)$]
+	$ \langle v_s, \phi^* \rangle_m < \infty$ for some $s>0$.
+\item[$(2')$]
+	There is an $s_0>0$ such that for any $s\geq s_0$, we have $\langle v_s, \phi^* \rangle_m < \infty$.
+\item[$(3)$]
+	There is an $s_0>0$ such that for any $s\geq s_0$, we have $v_s\in bp\mathscr B^\phi_E$.
+\item[$(4)$]
+	$\mathbf P_\nu (X_t = \mathbf 0) > 0$ for some $t>0$.
+\item[$(5)$]
+	$\phi^{-1}v_t$ converges to $0$ uniformly when $t\to\infty$.
+\item[$(6)$]
+	For any $\mu \in \mathcal M^\phi_f$, $\mathbf P_\mu(\exists t>0,~s.t.~X_t = \mathbf 0)
+	= 1$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+	We first give some estimates.
+	By the definition of $\{X;\mathbf P\}$, it is easy to verify that
+\begin{equation}\label{eq:assertion1}
+\begin{split}
+	\langle v_{s_0},\phi^* \rangle_m
+	&= -\log \mathbf P_\nu ( X_{s_0} = \mathbf 0 )\\
+	& \geq -\log \mathbf P_\nu ( X_s = \mathbf 0 )
+	= \langle v_s,\phi^* \rangle_m,
+	\quad 0 < s_0\leq s.
+\end{split}\end{equation}
+	Let $c,\gamma > 0$ be the constants in \eqref{eq:IU}.
+	By \eqref{eq:kernMeanSemGroup}, we have
+\begin{equation}\label{eq:assertion2}\begin{split}
+	\phi(x) \langle v_s , \phi^* \rangle_m (1 - ce^{-\gamma t})
+	&\leq S_t v_s(x) \\
+	&\leq \phi(x) \langle v_s , \phi^* \rangle_m (1 + ce^{-\gamma t}),
+	\quad s>0,t>1,x\in E.
+\end{split}\end{equation}
+	Notice that $\phi$ is strictly positive, using \eqref{eq:mean-fkpp}, one can verify that
+\begin{equation}\label{eq:inequality-with-IU-assumption}\begin{split}
+	\frac{V_t f(x)}{\phi(x)}
+	\leq \frac{S_t f(x)}{\phi(x)}
+	\leq (1+ ce^{-\gamma t}) \langle f,\phi^*\rangle,
+	\quad f\in bp\mathscr B_E,x\in E,t>1.
+\end{split}\end{equation}
+	Taking $f = V_s(\theta \mathbf 1_E)$ in \eqref{eq:inequality-with-IU-assumption} and letting $\theta \to \infty$, by \eqref{eq:V_infty} we have that,
+\begin{equation}\label{eq:assertion3}
+	\frac{v_{t+s}(x)}{\phi(x)}
+	\leq (1+ ce^{-\gamma t}) \langle v_s,\phi^*\rangle_m,
+	\quad x\in E,s>0,t>1.
+\end{equation}
+	We can also verify that
+\begin{equation}\label{eq:assertion4}
+	S_t v_s(x)
+	\leq \|\phi^{-1}v_s\|_\infty  S_t \phi(x)
+	= \|\phi^{-1}v_s\|_\infty \phi(x)
+	\quad s,t>0,x\in E.
+\end{equation}
+\par
+	Now, we are ready to give the proof of this lemma using the following steps: $(1'')\Rightarrow (1')\Rightarrow (1)\Rightarrow (2)\Rightarrow (2')\Rightarrow (3)\Rightarrow (1'')$ and $(2)\Rightarrow (5)\Rightarrow (6)\Rightarrow (4)\Rightarrow (2)$.
+	In fact, it is obvious that $(1'')\Rightarrow (1')\Rightarrow (1)$.
+	For $(1)\Rightarrow (2)$ we use \eqref{eq:assertion2}.
+	For $(2)\Rightarrow (2')$ we use \eqref{eq:assertion1}.
+	For $(2')\Rightarrow (3)$ we use \eqref{eq:assertion3}.
+	For $(3)\Rightarrow (1'')$ we use \eqref{eq:assertion4}.
+\par
+	For $(2)\Rightarrow (5)$, we follow the argument in \cite[Lemma 3.3]{RenSongZhang2015Limit}.
+	Note that, from what we have proved, $(2)$ is equivalent to $(1),(1'),(1''),(2')$ and $(3)$.
+	Integrating \eqref{eq:mean-fkpp} with respect to the measure $\nu$,
+	by Fubini's theorem and monotonicity, we have that, for any $f\in p\mathscr B_E$ and $t\geq 0$,
+\begin{equation}\label{eq:FKPP_mild}\begin{split}
+	\langle f,\phi^*\rangle_m
+	&=\langle f,S_t^*\phi^*\rangle_m
+	=\langle S_tf,\phi^*\rangle_m\\
+	&=\langle V_tf,\phi^*\rangle_m + \int_0^t\langle S_{t-r}\Psi_0(V_rf),\phi^*\rangle_m dr\\
+	&=\langle V_tf,\phi^*\rangle_m + \int_0^t \langle \Psi_0(V_rf),\phi^*\rangle_mdr.
+\end{split}\end{equation}
+	Define
+\[
+ 	v(x)
+ 	:= \lim_{t\to\infty} v_t(x)
+ 	= \lim_{t\to\infty}(-\log\mathbf P_{\delta_x}(X_t=\mathbf 0))
+ 	= -\log \mathbf P_{\delta_x}(\exists t>0, ~\text{s.t.}~ X_t=\mathbf 0).
+ \]
+	Since $v_t(x)=-\log\mathbf P_{\delta_x}(X_t=\mathbf 0)$ is non-increasing in $t$, and by $(3)$, we know that $v_t\in bp\mathscr B^\phi_E$ for $t$ large enough, we have $v\in bp\mathscr B^\phi_E\subset L^2(E,m)$.
+	Taking $f=V_s(\theta \mathbf 1_E)$ in \eqref{eq:FKPP_mild} and letting $\theta\to\infty$, by monotonicity and $(2')$, we have that, there is an $s_0>0$ such that
+\begin{equation}\label{eq:extinction-vt-phi}
+	\int_0^t \langle \Psi_0(v_{r+s}),\phi^*\rangle_mdr
+	=\langle v_s,\phi^*\rangle_m-\langle v_{t+s},\phi^*\rangle_m,
+	\quad s\geq s_0, t\geq 0.
+\end{equation}
+	Letting $s\to\infty$, by monotonicity, we have
+\[
+	\int_0^t \langle \Psi_0(v), \phi^* \rangle_m dr
+	= t \langle \Psi_0(v), \phi^* \rangle_m
+	= \langle v, \phi^* \rangle_m - \langle v, \phi^* \rangle_m
+	= 0.
+\]
+	Since $\phi^*$ is strictly positive on $E$, we must have $\Psi_0(v) = 0, m\text{-a.e.}$.
+	This, with \eqref{eq:kernMeanSemGroup}, implies that $S_t\Psi_0 (v)\equiv 0$ for any $t>0$.
+	By $(1'')$, we know that $S_t v_s(x)$ take finite value for $s$ large enough.
+	Letting $s\to\infty$ in the \eqref{eq:reason-for-asp2'}, by monotonicity, we have
+\[
+	v(x)
+	=S_tv(x)-\int_0^t S_{t-r}\Psi_0(v)(x)dr=S_tv(x),
+	\quad x\in E, t\geq 0.
+\]
+	Since $v\in L^2(E,m)$, there is a constant $c\in \mathbb R$, such that $v(x) = c\phi(x)$ for all $x\in E$.
+	So with $\Psi_0 (v) \equiv 0, m\text{-a.e.},$ we must have $v\equiv 0$.
+	Using the fact that $v_t(x)$ converges to $0$ pointwisely, by monotonicity and \eqref{eq:assertion3}, we can verify the desired result $(5)$.
+\par
+	For $(5)\Rightarrow (6)$, note that, by \eqref{eq:linearity}, for any $\mu\in\mathcal M_f^\phi$, we have
+\[\begin{split}
+	&-\log\mathbf P_\mu[\exists t>0,\text{ s.t. }X_t=0]
+	=\lim_{t\to \infty}(-\log\mathbf P_\mu(X_t = \mathbf 0))
+	=\lim_{t\to\infty}\langle\mu, v_t\rangle
+	= 0.
+\end{split}\]
+\par
+	Finally, note that $(6)\Rightarrow (4)$ and $(4)\Rightarrow (2)$ are obvious.
+\end{proof}
+	As we mentioned earlier, in order to study the limit behavior of $(v_t)_{t>0}$, we assume that one of the assertions in Lemma \ref{lem:discuss-of-assumption2'} is true:
+\begin{asp}
+\label{asp:1'}
+	In addition to Assumption \ref{asp:1}, we further assume that $\mathbf P_\nu (X_t = \mathbf 0) > 0$ for some $t>0$.
+\end{asp}
+
+\subsection{Kolmogorov type result}
+\begin{thm}\label{thm:Kolmogorov-type-of-theorem}
+	Under Assumptions \ref{asp:1'}, \ref{asp:2'} and \ref{asp:3}, we have
+\[
+	t\mathbf P_\mu(X_t\neq \mathbf 0)
+	\xrightarrow[t\to\infty]{} \frac{\langle \mu,\phi\rangle} {\frac{1}{2}\langle  A \phi,\phi \phi^*\rangle_m},
+%	\quad \mu\in \mathcal M^\phi_f,x\in E.
+	\quad \mu\in \mathcal M^\phi_f.
+\]
+\end{thm}
+	We first give some lemmas.
+\begin{lem}\label{lem:Kolmogorov-1}
+	Under Assumptions  \ref{asp:1'}, \ref{asp:2'} and \ref{asp:3}, we have
+\[
+	\sup_{x\in E}\Big | \frac{v_t(x)}{\langle v_t, \phi^*\rangle_m \phi(x)} - 1\Big |
+	\xrightarrow[t\to\infty]{} 0.
+\]
+\end{lem}
+\begin{proof}
+	We use an argument similar to that used in \cite{Powell2015An-invariance} for critical branching diffusions.
+	For each $\mu\in\mathcal M_f^\phi$, consider $\{Y, \mathbf n, \xi;\dot{\mathbf P}_\mu\}$, the spine immigration corresponding to $\{X;\mathbf P_\mu\}$.
+	According to Theorem \ref{prop:sizBiasNMeas}, we have
+\begin{equation}\label{eq:vt-and-Y}\begin{split}
+	\langle \mu,\phi\rangle \dot {\mathbf P}_\mu [Y_t(\phi)^{-1}]
+	&= \langle \mu,\phi\rangle \mathbb N_\mu^{w_t(\phi)} [ w_t(\phi)^{-1}] \\
+	&= \mathbb N_{\mu}[\mathbf 1_{w_t(\phi)>0}]
+	= -\log \mathbf P_{\mu} [ X_t = \mathbf 0] \\
+	& = \langle \mu,v_t \rangle,\quad \mu\in\mathcal M_f^\phi,t > 0.
+\end{split}\end{equation}
+	Taking $\mu = \delta_x$ in \eqref{eq:vt-and-Y}, we get $v_t(x)/\phi(x)=\dot{\mathbf P}_{\delta_x}[Y_t(\phi)^{-1}]$.
+	Taking $\mu = \nu$, we get $\langle v_t, \phi^*\rangle_m = \dot {\mathbf P}_{\nu} [Y_t(\phi)^{-1}]$.
+	Therefore, to complete the proof, we only need to show that
+\[
+	\sup_{x\in E}\Big | \frac {\dot{\mathbf P}_{\delta_x}[Y_t(\phi)^{-1}]} {\dot {\mathbf P}_\nu [Y_t(\phi)^{-1}]}-1\Big|
+	\xrightarrow[t\to\infty]{} 0.
+\]
+	For any Borel subset $G\subset (0,t]$, define
+\[
+	Y^G_t
+	:= \int_{G\times \mathcal W} w_{t-s} \mathbf n(ds,dw).
+\]
+	Then we have the following decomposition of $Y$:
+\begin{equation}\label{eq:decomposition-on-Y}
+	Y_t
+	= Y^{(0,t_0]}_t + Y^{(t_0,t]}_t,
+	\quad 0 < t_0 < t < \infty.
+\end{equation}
+	It is easy to see, from the construction and the Markov property of the spine immigration $\{Y,\xi; \dot {\mathbf P}\}$, that for any $0 < t_0 < t < \infty$,
+\[
+	\dot{\mathbf P} [Y_t^{(t_0,t]}(\phi)^{-1}|\mathscr F^\xi_{t_0}]
+	= \dot{\mathbf P}_{\delta_{\xi_{t_0}}}[Y_{t-t_0}(\phi)^{-1}]
+	= (\phi^{-1}v_{t-t_0})(\xi_{t_0}).
+\]
+	Therefore, we have
+\[\begin{split}
+	\dot{\mathbf P}_\nu[Y_t^{(t_0,t]}(\phi)^{-1}]
+	= \dot{\mathbb P}_{\nu\phi}[(\phi^{-1}v_{t-t_0})(\xi_{t_0}) ]
+	= \langle v_{t-t_0},\phi^* \rangle_m
+\end{split}\]
+	and
+\begin{equation}
+\label{eq:Yt0t}
+	\dot{\mathbf P}_{\delta_x}[Y_t^{(t_0,t]}(\phi)^{-1}]
+	= \dot{\mathbb P}_x[(\phi^{-1}v_{t-t_0})(\xi_{t_0}) ]
+	=  \int_E  \dot{q}(t_0,x,y)(\phi^{-1}v_{t-t_0})(y) m(dy).
+\end{equation}
+	By the decomposition \eqref{eq:decomposition-on-Y}, we have
+\begin{equation}\label{eq:vt-equation}\begin{split}
+	\phi^{-1}v_t(x)
+	&= \dot {\mathbf P}_{\delta_x} [Y_t(\phi)^{-1}]\\
+	&= \dot {\mathbf P}_\nu [Y^{(t_0,t]}_t(\phi)^{-1}] + \big( \dot {\mathbf P}_{\delta_x} [Y^{(t_0,t]}_t(\phi)^{-1}] - \dot {\mathbf P}_\nu [Y^{(t_0,t]}_t(\phi)^{-1}] \big) \\
+	&\quad + \big( \dot{\mathbf P}_{\delta_x}[Y_t(\phi)^{-1} - Y^{(t_0,t]}_t(\phi)^{-1}] \big)\\
+	&=: \langle v_{t-t_0},\phi^* \rangle_m + \epsilon_x^1(t_0,t) +\epsilon_x^2(t_0,t).
+\end{split}\end{equation}
+	Suppose that $t_0 >1$, and let $c,\gamma > 0$ be the constants in \eqref{eq:IU}, we have
+\begin{equation}\label{eq:epsilon-1}\begin{split}
+	|\epsilon_x^1(t_0,t)|
+	& = \big| \dot {\mathbf P}_{\delta_x} [Y^{(t_0,t]}_t(\phi)^{-1}] - \dot {\mathbf P}_\nu [Y^{(t_0,t]}_t(\phi)^{-1}] \big| \\
+	& = \big|  \int_E  \dot{q}(t_0,x,y)(\phi^{-1}v_{t-t_0})(y) m(dy) - \langle v_{t-t_0},\phi^* \rangle_m \big|\\
+	& \leq \int_{y\in E} \big| \dot{q}(t_0,x,y) - (\phi\phi^*)(y) \big| (\phi^{-1}v_{t-t_0})(y) m(dy)\\
+	& \leq ce^{-\gamma t_0}\langle v_{t-t_0},\phi^* \rangle_m .
+\end{split}\end{equation}
+	We also have
+\begin{equation}\label{eq:epsilon-2}\begin{split}
+	|\epsilon_x^2(t_0,t)|
+	&= \big| \dot{\mathbf P}_{\delta_x}[Y_t(\phi)^{-1} - Y^{(t_0,t]}_t(\phi)^{-1}] \big| \\
+	&= \dot{\mathbf P}_{\delta_x}[Y_t^{(0,t_0]}(\phi)\cdot Y_t(\phi)^{-1}\cdot Y^{(t_0,t]}_t(\phi)^{-1}]\\
+	&\leq \dot{\mathbf P}_{\delta_x}[\mathbf 1_{Y_t^{(0,t_0]}(\phi)>0}\cdot Y^{(t_0,t]}_t(\phi)^{-1}]\\
+	&= \dot{\mathbf P}_{\delta_x} \big[\dot{\mathbf P}_{\delta_x}[\mathbf 1_{Y_t^{(0,t_0]}(\phi)>0}|\mathscr F^\xi_{t_0}] \cdot \dot{\mathbf P}_{\delta_x}[ Y^{(t_0,t]}_t(\phi)^{-1}|\mathscr F^\xi_{t_0}] \big].
+\end{split}\end{equation}
+	Notice that, by Campbell's formula, one can verify that
+\[
+	\dot{\mathbf P}_{\delta_x}[e^{-\langle Y_t^{(0,t_0]},\theta \mathbf 1_E\rangle}|\mathscr F^\xi_{t_0}]
+	= e^{-\int_0^{t_0}\Psi'_0(V_{t-s}(\theta\mathbf 1_E))(\xi_s)ds}.
+\]
+	Letting $\theta \to \infty$ we have
+\[
+	\dot {\mathbf P}_{\delta_x} [ \mathbf 1_{Y_t^{(0,t_0]}=\mathbf 0} | \mathscr F^\xi_{t_0}]
+	= e^{-\int_0^{t_0}\Psi'_0(v_{t-s})(\xi_s)ds}.
+\]
+	We also have
+\[\begin{split}
+	\Psi'_0(v_{t-s})(x)
+	&= 2\alpha(x)v_{t-s}(x) +\int_{(0,\infty)} (1-e^{-yv_{t-s}(x)})y\pi(x,dy)\\
+	&\leq \big( 2\alpha (x)+\int_{(0,\infty)}y^2\pi(x,dy) \big) v_{t-s}(x)\\
+	&= A v_{t-s}(x) \leq \| A\phi\|_\infty \|\phi^{-1}v_{t-s}\|_\infty.
+\end{split}\]
+	Therefore
+\begin{equation}\label{eq:firstpart-of-Y}
+	\dot{\mathbf P}_{\delta_x}[\mathbf 1_{Y_t^{(0,t_0]}\neq \mathbf 0}|\mathscr F^\xi_{t_0}]
+	= 1-e^{-\int_0^{t_0}\Psi'_0(v_{t-s})(\xi_s)ds}
+	\leq t_0\| A\phi\|_\infty \|\phi^{-1}v_{t-t_0}\|_\infty.
+\end{equation}
+	Plugging \eqref{eq:firstpart-of-Y} into \eqref{eq:epsilon-2}, using \eqref{eq:Yt0t} and letting $c,\gamma > 0$ be the constants in \eqref{eq:IU}, we have that
+\begin{equation}\label{eq:epsilon-2-final}\begin{split}
+	|\epsilon_x^2(t_0,t)|
+	& \leq t_0\| A\phi\|_\infty \|(\phi^{-1}v_{t-t_0})\|_\infty \dot{\mathbf P}_{\delta_x}[ Y^{(t_0,t]}_t(\phi)^{-1}|\mathscr F^\xi_{t_0}] \\
+	& \leq t_0\|  A \phi\|_\infty\|(\phi^{-1}v_{t-t_0}) \|_\infty \int_{E} \dot{q} (t_0,x,y)(\phi^{-1}v_{t-t_0})(y) m(dy)\\
+	& \leq t_0\| A\phi\|_\infty \| \phi^{-1}v_{t-t_0}\|_\infty (1+ce^{-\gamma t_0}) \langle v_{t-t_0},\phi^* \rangle_m.
+\end{split}\end{equation}
+	Combining \eqref{eq:vt-equation}, \eqref{eq:epsilon-1} and \eqref{eq:epsilon-2-final}, we have that
+\begin{equation}\label{vts-inequality}\begin{split}
+	\Big|\frac{\phi^{-1}v_t(x)}{\langle v_{t-t_0},\phi^* \rangle_m}-1 \Big|
+	&\leq \frac{|\epsilon_x^1(t_0,t)|}{\langle v_{t-t_0},\phi^* \rangle_m} + \frac{|\epsilon_x^2(t_0,t)|}{\langle v_{t-t_0},\phi^* \rangle_m}\\
+	&\leq ce^{-\gamma t_0} +t_0\| A\phi\|_\infty \| \phi^{-1}v_{t-t_0}\|_\infty (1+ce^{-\gamma t_0}).
+\end{split}\end{equation}
+	Since we know from
+	Lemma \ref{lem:discuss-of-assumption2'}(5)
+	that $\| \phi^{-1}v_t\|_\infty\to 0$ when $t\to\infty$, there exists a map $t\mapsto t_0(t)$ such that,
+\[
+	t_0(t)
+	\xrightarrow[t\to\infty]{} \infty;
+	\quad t_0(t)\| \phi^{-1}v_{t-t_0(t)}\|_\infty
+	\xrightarrow[t\to\infty]{} 0.
+\]
+	Plugging this choice of $t_0(t)$ back into \eqref{vts-inequality}, we have that
+\begin{equation}\label{eq:k1}
+	\sup_{x\in E}\Big|\frac{\phi^{-1}v_t(x)}{\langle v_{t-t_0(t)},\phi^* \rangle_m}-1 \Big|
+	\xrightarrow[t\to\infty]{} 0.
+\end{equation}
+	Now notice that
+\begin{equation}\label{eq:k2}\begin{split}
+	\Big |\frac {\langle v_t, \phi^*\rangle_m} {\langle v_{t-t_0(t)} , \phi^*\rangle_m} - 1 \Big |
+	&\leq \int \Big | \frac{\phi^{-1}v_t(x)}{\langle v_{t-t_0(t)} , \phi^*\rangle} - 1 \Big| \phi \phi^*(x) m(dx)\\
+	&\leq \sup_{x\in E}\Big|\frac{\phi^{-1}v_t(x)}{\langle v_{t-t_0(t)},\phi^* \rangle_m}-1 \Big|
+	\xrightarrow[t\to\infty]{} 0.
+\end{split}\end{equation}
+	Finally, by \eqref{eq:k1}, \eqref{eq:k2} and the property of uniform convergence,
+\[
+	\sup_{x\in E}\Big|\frac{\phi^{-1}v_t(x)}{\langle v_{t},\phi^* \rangle_m}-1 \Big|
+	\xrightarrow[t\to\infty]{} 0,
+\]
+	as desired.
+\end{proof}
+\begin{lem}\label{lem:Kolmogorov-2}
+	Under Assumptions \ref{asp:1'}, \ref{asp:2'} and \ref{asp:3}, we have
+\[
+	\frac{1}{t\langle v_t,\phi^*\rangle_m}
+	\xrightarrow[t\to\infty]{} \frac{1}{2}\langle  A\phi,\phi\phi^*\rangle_m.
+\]
+\end{lem}
+\begin{proof}
+	We use an argument similar to that used in \cite{Powell2015An-invariance} for critical branching diffusions.
+	According to \cite{RenSongZhang2015Limit}, we have that, for any $x\in E$ and $z\geq 0$,
+\[\begin{split}
+	R(x,z)
+	:=\Psi_0(x,z)-\frac{1}{2} A(x)z^2
+	\leq e(x,z)z^2,
+\end{split}\]
+	where
+\[
+	e(x,z)
+	:=\int_{(0,\infty)}y^2\big(1\wedge \frac{1}{6}yz\big)\pi(x,dy)
+	\leq  A(x).	
+\]
+	By monotonicity, we have that
+\begin{equation}\label{equation:reason2}
+	e(x,z)
+	\xrightarrow[z\to 0]{} 0,
+	\quad x\in E.
+\end{equation}
+	Taking $b(t):=\langle v_t,\phi^*\rangle_m$ and writing $l_t(x):=v_t(x)-b(t)\phi(x)$, Lemma \ref{lem:Kolmogorov-1} says that,
+\begin{equation}\label{equation:reason1}
+	\sup_{x\in E}\Big|\frac{l_t(x)}{b(t)\phi(x)}\Big|
+	\xrightarrow[t\to\infty]{} 0.
+\end{equation}
+	Now, taking $s_0>0$ as in \eqref{eq:extinction-vt-phi},
+	we have that $t\mapsto b(t)$ is differentiable on the set
+\[
+	C
+	=\{t> s_0: \text{the function}~ t \mapsto \langle\Psi_0(v_t),\phi^*\rangle_m~ \text{is continuous at}~ t \}
+\]
+	and that
+\begin{equation}\label{equation:b(t)}\begin{split}
+	\frac{d}{dt}b(t)
+	&= -\langle\Psi_0(v_t),\phi^*\rangle_m
+	= -\big\langle \frac{1}{2} A \cdot v_t^2+R (v_t),\phi^*\big\rangle_m \\
+	&= -\big\langle \frac{1}{2}  A \cdot \big(b(t)\phi+l_t\big)^2+R (v_t),\phi^*\big\rangle_m\\
+	&= -b(t)^2\big[\frac{1}{2} \langle  A\phi,\phi \phi^*\rangle_m+g(t)\big],
+	\quad t\in C,
+\end{split}\end{equation}	
+	where
+\[\begin{split}
+	g(t)
+	&= \Big\langle \frac{l_t}{b(t) \phi}, A\phi^2\phi^*\Big\rangle_m + \frac{1}{2}\Big\langle \Big(\frac{l_t}{b(t) \phi}\Big)^2, A\phi^2\phi^*\Big\rangle_m + \Big\langle \frac{R(v_t)}{b(t)^2 \phi^2},\phi^2\phi^*\Big\rangle_m \\
+	&=: g_1(t) + g_2(t) + g_3(t).
+\end{split}\]
+	From \eqref{equation:reason1}, we have $g_1(t)\to 0$ and $g_2(t)\to 0$ as $t\to\infty$.
+	From
+\[\begin{split}
+	\frac{R(v_t)(x)}{b(t)^2 \phi(x)^2}
+	\leq \frac{e(v_t)(x)\cdot v_t(x)^2}{ b(t)^2\phi(x)^2}
+	= e(v_t)(x)\Big(1+\frac{l_t(x)}{ b(t) \phi(x)}\Big)^2,
+\end{split}\]
+	using \eqref{equation:reason1}, \eqref{equation:reason2}, Lemma \ref{lem:discuss-of-assumption2'}(5) and the dominated convergence theorem ($e(v_t)$ is dominated by $ A$), we conclude that $g_3(t)\to 0$ as $t\to\infty$.
+\par
+	Finally, from \eqref{equation:b(t)} we can write
+\begin{equation}\label{eq:derivative-of-b(t)-1}
+	\frac{d}{dt} \Big(\frac{1}{b(t)}\Big)
+	= -\frac{d b(t)}{b(t)^2dt}
+	= \frac{1}{2}\langle  A\phi,\phi\phi^*\rangle_m + g(t),
+	\quad t\in C.
+\end{equation}
+	Notice that, since the function $t\mapsto \langle\Psi_0(v_t),\phi^*\rangle_m$ is non-increasing in $t$, $C^c$ has at most countably many elements.
+	Therefore, using \eqref{eq:extinction-vt-phi} and \eqref{eq:derivative-of-b(t)-1}, one can verify that $t\mapsto \frac{1}{b(t)}$ is absolutely continuous on the interval $[s_0,t_0]$ as long as $s_0$ and $t_0$ are large enough.
+	This allows us to integrate \eqref{eq:derivative-of-b(t)-1} on the interval $[s_0,t_0]$ with respect to the Lebesgue measure, and get that
+\[
+	\frac{1}{b(t_0)}
+	= \frac{1}{b(s_0)} + \frac{1}{2}\langle A\phi,\phi\phi^*\rangle_m(t_0-s_0) + \int_{s_0}^{t_0} g(s)ds,
+	\quad \text{for } 0\leq s_0\leq t_0 \text{ large enough}.
+\]
+	Dividing by $t_0$ and letting $t_0\to\infty$ in the above equation, we have
+\[
+	\frac{1}{b(t)t}
+	\xrightarrow[t\to\infty]{} \frac{1}{2}\langle  A\phi,\phi\phi^*\rangle_m
+\]
+	as desired.
+\end{proof}
+\begin{proof}[Proof of Theorem \ref{thm:Kolmogorov-type-of-theorem}]
+	For $\mu \in \mathcal M^\phi_f$, from Lemma \ref{lem:discuss-of-assumption2'}(5) we know that
+\begin{equation}\label{eq:kol-1}
+	\langle \mu ,v_t\rangle
+    = \int_E v_t(x) \mu(dx)
+	= \int_E \frac{v_t(x)}{\phi(x)} \phi(x)\mu(dx)
+	\xrightarrow[t\to\infty]{} 0.
+\end{equation}
+	From Lemma \ref{lem:Kolmogorov-1} we know that
+\begin{equation}\label{eq:kol-2}
+     \frac {\langle\mu, v_t\rangle}{ \langle v_t,\phi^*\rangle_m}
+	= \int_E \frac{v_t(x)}{\langle v_t, \phi^* \rangle_m \phi(x)}\phi(x)\mu(dx)
+	\xrightarrow[t\to\infty]{} \langle \mu,\phi\rangle.
+\end{equation}
+	It then follows from \eqref{eq:kol-1}, \eqref{eq:kol-2} and Lemma \ref{lem:Kolmogorov-2} that
+\[\begin{split}
+	t\mathbf P_{\mu}(X_t\neq \mathbf 0)
+	&= t (1-e^{-\langle \mu, v_t \rangle})
+	= t \langle v_t,\phi^*\rangle\frac{\langle \mu,v_t\rangle }{\langle v_t,\phi^*\rangle_m} \frac {1-e^{-\langle \mu, v_t \rangle}} {\langle \mu, v_t \rangle}\\
+	&\xrightarrow[t\to\infty]{} \frac{\langle \mu,\phi\rangle} {\frac{1}{2}\langle  A \phi,\phi \phi^*\rangle_m},
+	\quad x\in E.
+\end{split}\]
+\end{proof}
+
+\subsection{Yaglom type result}
+	In this section we give the proof of the following Yaglom type result:
+\begin{thm}\label{thm:Yaglom-type-theorem}
+	Suppose that Assumptions  \ref{asp:1'}, \ref{asp:2'} and \ref{asp:3} hold.
+	If $f\in bp\mathscr B^\phi_E$ and $\mu\in\mathcal M^\phi_f$, then we have
+\[\begin{split}
+	\big\{t^{-1}X_t(f);\mathbf P_\mu(\cdot | X_t\neq \mathbf 0)\big\}
+	\xrightarrow[t\to\infty]{law} \frac{1}{2}\langle \phi^*, f\rangle_m\langle \phi A, \phi\phi^*\rangle_m \mathbf e,
+\end{split}\]
+	where $\mathbf e$ is an exponential random variable with mean 1.
+\end{thm}
+	We will need the following lemmas:
+\begin{lem}
+\label{lem:ergodic}
+	Suppose that Assumption \ref{asp:2'} holds. Suppose that $F(x,u,t)$ is a bounded Borel function on $E\times [0,1]\times [0,\infty)$ such that $F(x,u):= \lim_{t\to\infty} F(x,u,t)$ exists for each $x\in E$ and $u\in [0,1]$.
+	Then we have,
+\[
+	\int_0^1 F(\xi_{ut},u,t)du
+	\xrightarrow[t\to\infty]{L^2(\dot{\mathbb P}_x)} \int_0^1 \langle F(\cdot ,u),\phi\phi^* \rangle_m du,
+	\quad x\in E.
+\]
+\end{lem}
+\begin{proof}
+\par
+	We first show that
+\begin{equation}\label{eq:ergodic-lemma-1}
+	\dot{\mathbb P}_x[F(\xi_{ut},u,t)]
+	\xrightarrow[t\to\infty]{} \langle F(\cdot,u),\phi\phi^*\rangle_m,
+      \quad x\in E, u\in(0,1).
+\end{equation}
+	In fact,
+\[
+	\dot{\mathbb P}_x[F(\xi_{ut},u,t)]
+	=\int_E \frac{\dot{q}(ut,x,y)}{(\phi\phi^*)(y)}F(y,u,t)(\phi\phi^*)(y)m(dy).
+\]
+	Note that $\int_\cdot (\phi\phi^*)(y)m(dy)$ is a finite measure, $(y,t)\mapsto \frac{\dot{q}(ut,x,y)}{(\phi\phi^*)(y)}F(y,u,t)$ is bounded by $(1+ce^{-\gamma ut})\|F\|_\infty$ for $t>u^{-1}$, and $\frac{\dot{q}(ut,x,y)}{(\phi\phi^*)(y)}F(y,u,t)\xrightarrow[t\to\infty]{}F(y,u)$.
+	Using the bounded convergence theorem, we get \eqref{eq:ergodic-lemma-1}.
+	By Fubini's theorem,
+\[
+	\dot{\mathbb P}_x\big[\int_0^1F(\xi_{ut},u,t)du\big]
+	=\int_0^1\dot{\mathbb P}_x[F(\xi_{ut},u,t)]du,
+	\quad x\in E.
+\]
+	Since $\dot{\mathbb P}_x[F(\xi_{ut},u,t)]$ is bounded by $\|F\|_\infty$ and $\dot{\mathbb P}_x[F(\xi_{ut},u,t)]\xrightarrow[t\to\infty]{}\langle F(\cdot, u),\phi\phi^*\rangle_m$, by the bounded convergence theorem, we get
+\[
+	\dot{\mathbb P}_x\big[\int_0^1F(\xi_{ut},u,t)du\big]
+	\xrightarrow[t\to\infty]{} c_F
+	:=\int_0^1\langle F(\cdot,u),\phi\phi^*\rangle_mdu.
+\]
+	With a similar argument, using \eqref{eq:IU}, one can verify that for any $0< u< v\leq 1$,
+\[\begin{split}
+	&\dot{\mathbb P}_x[F(\xi_{ut},u,t)F(\xi_{vt},v,t)]\\
+	&\quad=\int_E\int_E  \dot{q}(ut,x,y) \dot{q}((v-u)t,y,z)F(y,u,t)F(z,v,t)m(dy)m(dz)\\
+	&\quad\xrightarrow[t\to\infty]{} \langle F(\cdot,u),\phi\phi^*\rangle_m \langle F(\cdot,v),\phi\phi^*\rangle_m.
+\end{split}\]
+	The above convergence is also true for $0< v < u\leq 1$ since the limit is symmetric in $u$ and $v$.
+	We have again, by Fubini's theorem and the bounded convergence theorem,
+\[\begin{split}
+	\dot{\mathbb P}_x\Big[\big(\int_0^1 F(\xi_{ut},u,t)du\big)^2\Big]
+	&=\int_0^1du\int_0^1\dot{\mathbb P}_x[F(\xi_{ut},u,t)F(\xi_{vt},v,t)]dv\xrightarrow[t\to\infty]{} c_F^2.
+\end{split}\]
+	Finally, we have
+\[\begin{split}
+	&\dot{\mathbb P}_x\Big[\big(\int_0^1 F(\xi_{ut},u,t)du - c_F\big)^2\Big]\\
+	&\quad =\dot{\mathbb P}_x\Big[\big(\int_0^1 F(\xi_{ut},u,t)du\big)^2\Big] -2c_F \dot{\mathbb P}_x\Big[\int_0^1 F(\xi_{ut},u,t)du\Big]+ c_F^2\\
+	&\quad \xrightarrow[t\to\infty]{} 0,
+\end{split}\]
+	as desired.
+\end{proof}
+\begin{prop}\label{prop:yaglTheorSpinImmigr}
+	Suppose that Assumptions \ref{asp:1}, \ref{asp:2'}  and \ref{asp:3} hold.
+	Let $\{Y,\xi,\mathbf n;\dot{\mathbf P}\}$ be the corresponding spine immigration.
+	Then
+\[
+	\dot{\mathbf P}_\mu[e^{-\theta W_t}]
+	\xrightarrow[t\to\infty]{}\frac{1}{(1 + c_0 \theta)^2},
+	\quad \theta \geq 0,\mu\in \mathcal M^\phi_f,
+\]
+	where $W_t:= \frac{Y_t(\phi)}{t}$ and $c_0 := \frac {1} {2} \langle \phi  A, \phi \phi^* \rangle_m$.
+\end{prop}
+\begin{proof}
+	We first prove the result when $\mu = \delta_x$.
+	To simplify  notation, for any $x\in E,\theta\geq 0$ and $t\geq 0$, we write
+\[\begin{split}
+	J(x,\theta,t)
+	&:=\phi A(x)\dot{\mathbf P}_{\delta_{x}}[e^{-\theta W_t}]\widetilde{\mathbf P}_{x}[e^{-X_t(\frac{\theta\phi}{t})}],\\
+	J_0(x,\theta,t)
+	&:=\phi A(x)\dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}]
+\end{split}\]
+	and
+\[\begin{split}
+	M(x,\theta,t)
+	&:=\Big|\frac{1}{(1+c_0\theta)^2}-\dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}]\Big|.
+\end{split}\]
+	\emph{Step 1.  We will show that}
+\begin{equation}\label{eq:yaglTheorSpinImmigrStep1}
+	\dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}]
+	=\dot{\mathbf P}_{\delta_x}[ e^{-\int_0^1 du\int_0^\theta d\rho\cdot J(\xi_{ut},\rho(1-u),t(1-u))} ].
+\end{equation}
+	In fact, we have
+\[
+	\frac{\partial}{\partial \theta}\dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}|\xi]
+	= -\dot{\mathbf P}_{\delta_x}[W_te^{-\theta W_t}|\xi],
+	\quad t\geq 0,\theta \geq 0.
+\]
+	Applying Lemma \ref{lem:key-lemma} with $K(dr)=\delta_t(dr)$ and $f_t=\frac{\theta\phi}{t}$, for each $\theta \geq 0$, we have
+\[\begin{split}
+	-\frac{\partial}{\partial \theta}\log \dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}|\xi]
+	&=\frac{\dot{\mathbf P}_{\delta_x} [W_t e^{-\theta W_t}|\xi]}{\dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}|\xi]}\\
+	&=\frac{1}{t}\int_0^t  (A\phi)(\xi_s)\dot{\mathbf P}_{\delta_{\xi_s}}[e^{-(\theta \frac{t-s}{t})W_{t-s}}]\widetilde{\mathbf P}_{\xi_s}[e^{-X_{t-s}(\frac{\theta\phi}{t})}]ds\\
+	&=\int_0^1 J(\xi_{ut},\theta(1-u),t(1-u)) du.
+\end{split}\]
+	Integrating both sides of the above equation yields that
+\[
+	-\log \dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}|\xi]
+	=\int_0^1 du\int_0^\theta J(\xi_{ut},\rho(1-u),t(1-u)) d\rho,
+\]
+	which implies \eqref{eq:yaglTheorSpinImmigrStep1}.
+\par
+	\emph{Step 2. We will show that}
+\begin{equation}\label{eq:yaglTheorSpinImmigrStep2}
+	\int_0^1 du\int_0^\theta (J_0-J)(\xi_{ut},\rho(1-u),t(1-u)) d\rho
+	\xrightarrow[t\to\infty]{L^2(\dot{\mathbf P}_{\delta_x})} 0,\quad \theta\geq 0.
+\end{equation}
+	To get this result, we will apply Lemma \ref{lem:ergodic} with
+\begin{equation}\label{eq:F}\begin{split}
+	F(x,u,t)
+	&:=\int_0^\theta d\rho\cdot (J_0-J)(x,\rho(1-u),t(1-u))\\
+	&=\int_0^\theta d\rho\cdot  (A\phi)(x)\dot{\mathbf P}_{\delta_{x}}[e^{-\rho(1-u)W_{t(1-u)}}]\widetilde{\mathbf P}_{x}[1-e^{-X_{t(1-u)}(\frac{\rho\phi}{t})}].
+\end{split}\end{equation}
+	Firstly note that $F(x,u,t)$ is bounded by $\theta\|\phi A\|_\infty$ on $E\times[0,1]\times[0,\infty)$.
+	Secondly note that $F(x,u,t)\xrightarrow[t\to\infty]{} 0$ for each $x\in E$ and $u\in[0,1]$, since $|J_0-J|$ is bounded by $\|\phi A\|_\infty$ and
+\[\begin{split}
+	\big|(J_0-J)(x,\theta,t)\big|
+	&=  (A\phi)(x)\dot{\mathbf P}_{\delta_{x}}[e^{-\theta W_{t}}]\widetilde{\mathbf P}_{x}[1-e^{-X_t(\frac{\theta\phi}{t})}]\\
+	&\leq  (A\phi)(x)\widetilde{\mathbf P}_{x}(X_t\neq \mathbf 0) \\
+	&=  (A\phi)(x)\frac{2\alpha(x)\mathbf P_{\mathbf 0}(X_t\neq \mathbf 0)+\int_{(0,\infty)}y^2\mathbf P_{y\delta_x}(X_t\neq \mathbf 0)\pi(x,dy)}{2\alpha(x)+\int_{(0,\infty)}y^2\pi(x,dy)}\\
+	&\xrightarrow[t\to\infty]{} 0, \quad x\in E,\theta\geq 0.
+\end{split}\]
+	Therefore, we can apply Lemma \ref{lem:ergodic} with $F(x,u,t)$ given by \eqref{eq:F}, and get \eqref{eq:yaglTheorSpinImmigrStep2}.
+\par
+	\emph{Step 3. We will show that}
+\begin{equation}\label{eq:yaglTheorSpinImmigrStep3}
+	\frac{1}{(1+c_0\theta)^2}
+	= \lim_{t\to\infty} \dot {\mathbf P}_{\delta_x} \Big[e^{- \int_0^1 du \int_0^\theta d\rho \frac{ (A\phi)(\xi_{ut})}{(1+c_0\rho(1-u))^2} }\Big],
+	\quad \theta\geq 0.
+\end{equation}
+	By elementary calculus, the following map
+\[
+	(x,u)
+	\mapsto\int_0^\theta \frac{ (A\phi)(x)}{(1+c_0\rho(1-u))^2} d\rho
+	= \frac{ (A\phi)(x)\theta}{1+c_0\theta(1-u)}
+\]
+	is bounded by $\theta\| A\phi\|_\infty$ on $E\times[0,1]$.
+	According to Lemma \ref{lem:ergodic}, we have that
+\[\begin{split}
+	\int_0^1 du \int_0^\theta \frac{ (A\phi)(\xi_{ut})}{\big(1+c_0\rho(1-u)\big)^2} d\rho
+	&\xrightarrow[t\to\infty]{L^2(\dot{\mathbf P}_{\delta_x})} \int_0^1 \big\langle \frac{\theta A\phi}{1+c_0\theta(1-u)},\phi\phi^* \big\rangle_m du\\
+	&= \langle  A\phi,\phi\phi^*\rangle_m\int_0^1 \frac{\theta}{1+c_0\theta(1-u)}du \\
+	&=2\log(1+c_0\theta).
+\end{split}\]
+	Therefore, by the bounded convergence theorem, we get \eqref{eq:yaglTheorSpinImmigrStep3}.
+\par
+	\emph{Step 4. We will show that}
+\begin{equation}\label{eq:yaglTheorSpinImmigrStep4}
+	M(x,\theta)
+	:=\limsup_{t\to\infty}M(x,\theta,t)=0,
+	\quad x\in E,\theta\geq 0.
+\end{equation}
+	In fact,
+\begin{equation}\label{eq:separate-M-into-3-parts}
+	M(x,\theta,t)
+	\leq I_1+I_2+I_3,
+\end{equation}
+	where
+\[
+	I_1
+	:=\Big|\frac{1}{(1+c_0\theta)^2}- \dot {\mathbf P}_{\delta_x} \big[e^{- \int_0^1 du \int_0^\theta \frac{ (A\phi)(\xi_{ut})}{[1+c_0\rho(1-u)]^2}d\rho }\big]\Big|
+	\xrightarrow[t\to\infty]{\text{by \eqref{eq:yaglTheorSpinImmigrStep3}}} 0,
+\]
+\[\begin{split}
+	I_2
+	&:=\Big| \dot {\mathbf P}_{\delta_x} [e^{- \int_0^1 du \int_0^\theta  \frac{ (A\phi)(\xi_{ut})}{(1+c_0\rho(1-u))^2} d\rho}]-\dot{\mathbf P}_{\delta_x}[e^{-\int_0^1 du\int_0^{\theta} J_0(\xi_{ut},\rho(1-u),t(1-u)) d\rho}]\Big|\\
+	&\leq\dot{\mathbf P}_{\delta_x}\Big[\int_0^1du\int_0^\theta (A\phi)(\xi_{ut})M(\xi_{ut},\rho(1-u),t(1-u))d\rho \Big]\\
+	&=\int_0^1du\int_0^\theta d\rho \int_{E} \dot{q}(ut,x,y) (A\phi)(y)M(y,\rho(1-u),t(1-u)) m(dy),
+\end{split}\]
+	and by \eqref{eq:yaglTheorSpinImmigrStep1} and \eqref{eq:yaglTheorSpinImmigrStep2},
+\[\begin{split}
+	I_3
+	&:=\big|\dot{\mathbf P}_{\delta_x}[e^{-\int_0^1 du\int_0^{\theta} J_0(\xi_{ut},\rho(1-u),t(1-u)) d\rho }]-\dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}]\big|\\
+	&=\big|\dot{\mathbf P}_{\delta_x}[e^{-\int_0^1 du\int_0^{\theta} J_0(\xi_{ut},\rho(1-u),t(1-u)) d\rho }]-\dot{\mathbf P}_{\delta_x}[e^{-\int_0^1 du\int_0^{\theta} J(\xi_{ut},\rho(1-u),t(1-u)) d\rho }]\big|\\
+	&\leq \dot{\mathbf P}_{\delta_x}\Big[\Big|\int_0^1du\int_0^\theta (J_0-J)(\xi_{ut},\rho(1-u),t(1-u))d\rho\Big|\Big]
+	\xrightarrow[t\to\infty]{} 0.
+\end{split}\]
+	Therefore, taking $\limsup_{t\to\infty}$ in \eqref{eq:separate-M-into-3-parts}, by the reverse Fatou lemma, we get
+\begin{equation}\label{eq:the-key-inequiality}
+	M(x,\theta)
+	\leq \int_0^1du\int_0^\theta \langle  A\phi M(\cdot,\rho(1-u)),\phi\phi^*\rangle_m d\rho,
+	\quad x\in E,\theta\geq 0.
+\end{equation}
+	Integrating with respect to the finite measure $(A\phi\phi\phi^*)(x)m(dx)$ yields that
+\[
+	\langle  A\phi M(\cdot,\theta),\phi\phi^*\rangle_m
+	\leq \langle A\phi,\phi\phi^*\rangle_m\int_0^1du\int_0^\theta \langle  A\phi M(\cdot,\rho(1-u)),\phi\phi^*\rangle_m d\rho,
+	\quad \theta\geq 0.
+\]
+	According to \cite[Lemma 3.1]{RenSongSun2018A-2-spine}, this inequality implies that $\langle A\phi M(\cdot,\theta),$ $\phi\phi^*\rangle_m$ $ =0$ for each $ \theta\geq 0$.
+	This and \eqref{eq:the-key-inequiality} imply \eqref{eq:yaglTheorSpinImmigrStep4}, which completes the proof when $\mu=\delta_x$.
+\par
+	Finally, for any $\mu \in \mathcal M^\phi_f$, since
+\[\begin{split}
+	\langle \mu,\phi\rangle\dot {\mathbf P}_\mu [e^{-\theta W_t}]
+	&=\langle\mu,\phi\rangle\mathbb N^{w_t(\phi)}_\mu[e^{-\theta \frac{w_t(\phi)}{t}}]
+	=\mathbb N_\mu [w_t(\phi)e^{-\theta \frac{w_t(\phi)}{t}}]\\
+	&=\int_E\mu(dx)\mathbb N_x[w_t(\phi)e^{-\theta\frac{w_t(\phi)}{t}}]
+	=\int_E \mu(dx) \phi(x) \dot{\mathbf P}_{\delta_x}[e^{-\theta W_t}],
+\end{split}\]
+	we have that, by the bounded convergence theorem,
+\[
+	\big|\dot {\mathbf P}_\mu[e^{-\theta W_t}] - \frac{1}{(1+c_0\theta)^2}\big|
+	\leq \int_E \big|\dot {\mathbf P}_{\delta_x}[e^{-\theta W_t}]-\frac{1}{(1+c_0\theta)^2}\big| \frac{\phi(x)\mu(dx)}{\langle\mu,\phi\rangle}
+	\xrightarrow[t\to\infty]{} 0,
+\]
+	as desired.	
+\end{proof}
+\begin{lem}\label{lem:Yaglom-for-phi}
+	Suppose that Assumptions \ref{asp:1'}, \ref{asp:2'} and \ref{asp:3} hold.
+	Then we have
+\[\begin{split}
+	\mathbf P_\mu[e^{-\theta t^{-1}X_t(\phi)} |X_t\neq\mathbf 0]
+	&\xrightarrow[t\to\infty]{}\frac{1}{1+c_0\theta},
+	\quad \theta\geq 0, \mu\in \mathcal M_f^\phi,
+\end{split}\]
+	where $c_0 = \frac{1}{2}\langle\phi A,\phi\phi^*\rangle_m$.
+\end{lem}
+\begin{proof}
+	Notice that, by Lemma \ref{lem:discuss-of-assumption2'}(6), we have
+\[
+	\{t^{-1}X_t(\phi);\mathbf P_\mu\}
+	\xrightarrow[t\to\infty]{law} 0.
+\]
+	Therefore, by Theorem \ref{thm:spinDec} and Proposition \ref{prop:yaglTheorSpinImmigr}, we have
+\[
+	\mathbf P^M_\mu[e^{-\theta t^{-1}X_t(\phi)}]
+	= (\mathbf P_\mu \otimes \dot {\mathbf P}_\mu)[e^{-\theta t^{-1}(X_t+Y_t)(\phi)}]
+	\xrightarrow[t\to\infty]{}\frac{1}{(1+c_0\theta)^2}.
+\]
+	Also notice that, by elementary calculus
+\[
+	\frac{1-e^{-\theta u}}{u}
+	=\int_0^\theta e^{-\rho u} d\rho,
+	\quad u> 0.
+\]
+	From Theorem \ref{thm:spinDec} and Lemma \ref{lem:Y-is-immortal} we know that $\mathbf P^M_\mu(X_t=\mathbf 0)=0$.
+	Therefore by the bounded convergence theorem, we have
+\[\begin{split}
+	\mathbf P^M_\mu \Big[\frac{1-e^{-\theta t^{-1}X_t(\phi)}}{t^{-1}X_t(\phi)}\Big]
+	&= \mathbf P^M_\mu\Big[\int_0^\theta e^{-\rho t^{-1}X_t(\phi) }d\rho\Big]
+	= \int_0^\theta \mathbf P^M_\mu [ e^{-\rho t^{-1}X_t(\phi) }] d\rho\\
+	&\xrightarrow[t\to\infty]{} \int_0^\theta \frac{1}{(1+c_0\rho)^2}d\rho
+	= c_0^{-1} (1-\frac{1}{1+c_0\theta}).
+\end{split}\]
+	Hence, by Theorem \ref{thm:Kolmogorov-type-of-theorem} we have
+\[\begin{split}
+	\mathbf P_\mu[1-e^{-\theta t^{-1}X_t(\phi)} |X_t\neq \mathbf 0]
+	&= \mathbf P_\mu(X_t\neq \mathbf 0)^{-1}\mathbf P_\mu[(1-e^{-\theta t^{-1}X_t(\phi)})\mathbf 1_{X\neq \mathbf 0}]\\
+	&= \mathbf P_\mu(X_t\neq \mathbf 0)^{-1}\mathbf P_\mu\Big[(1-e^{-\theta t^{-1}X_t(\phi)})\frac{X_t(\phi)}{X_t(\phi)}\Big]\\
+	&= (t\mathbf P_\mu(X_t\neq \mathbf 0))^{-1} \langle\mu,\phi\rangle \mathbf P^M_\mu \Big[\frac{1-e^{-\theta t^{-1}X_t(\phi)}}{t^{-1}X_t(\phi)}\Big]\\
+	&\xrightarrow[t\to\infty]{}1-\frac{1}{1+c_0\theta},
+\end{split}\]
+	which completes the proof.
+\end{proof}
+\begin{lem}\label{lem:general-lemma}
+	Suppose that Assumptions \ref{asp:1'}, \ref{asp:2'} and \ref{asp:3} hold.
+	If $\tilde f\in b\mathscr B^\phi_E$ satisfies $\langle \tilde f, \phi^*\rangle = 0$, then we have, for any $\mu \in \mathcal M^\phi_f$,
+\[\begin{split}
+	\big\{ t^{-1} X_t(\tilde f) ; \mathbf P_\mu(\cdot|X_t \neq \mathbf 0)\big\}
+	&\xrightarrow[t\to\infty]{} 0,
+	\quad\text{in probability}.
+\end{split}\]
+\end{lem}
+\begin{proof}
+	If we can show that $\mathbf P_\mu\big[\big(t^{-1}X_t(\tilde f)\big)^2|X_t \neq \mathbf 0\big]\xrightarrow[t\to\infty]{} 0$, then the desired result follows by the Chebyshev's inequality
+\[
+	\mathbf P_\mu \big( | t^{-1} X_t(\tilde f) | \geq \epsilon \big | X_t \neq \mathbf 0\big)
+	\leq \epsilon^{-2}\mathbf P_\mu \big[ \big(t^{-1} X_t(\tilde f)\big)^2 \big | X_t \neq \mathbf 0 \big].
+\]
+	By Proposition \ref{prop:covanrance} we have that
+\begin{equation}\label{eq:general-lemma-1}\begin{split}
+	&\mathbf P_\mu\big[\big(t^{-1}X_t(\tilde f)\big)^2\big|X_t \neq \mathbf 0\big]
+	= t^{-2} \mathbf P_\mu (X_t\neq \mathbf 0)^{-1}\mathbf P_\mu\big[X_t(\tilde f)^2\mathbf 1_{X_t\neq \mathbf 0}\big] \\
+	&\quad= t^{-1} \mathbf P_\mu (X_t\neq \mathbf 0)^{-1} \Big(\frac{\langle \mu,S_t\tilde f\rangle^2}{t} + \langle \mu,\phi \rangle\dot{\mathbb P}_{\mu\phi}\big[(\phi^{-1}\tilde f)(\xi_t)\frac{1}{t}\int_0^t A S_{t-s} \tilde f(\xi_s)ds\big]\Big).
+\end{split}\end{equation}
+	Letting $c,\gamma > 0$ be the constants in \eqref{eq:IU}, we know that
+\begin{equation}\label{eq:ll1}\begin{split}
+	| S_t\tilde f (x) - \langle \phi^* , \tilde f \rangle_m \phi(x)|
+	&= \Big | \int_{E} \big(q(t,x,y) - \phi(x)\phi^*(y)\big) \tilde f (y) m(dy) \Big | \\
+	&\leq \int_{E} \big|\frac{q(t,x,y)}{\phi(x)\phi^*(y)} - 1 \big| \cdot |\phi(x)\phi^*(y) \tilde f (y) | m(dy) \\
+	& \leq ce^{-\gamma t} \phi(x) \|\phi^{-1}\tilde f\|_\infty \int_{E} (\phi\phi^*)(y) m(dy)\\
+	& \xrightarrow[t\to\infty]{} 0,
+	\quad x\in E.
+\end{split}\end{equation}
+Therefore, by the dominated convergence thoerem,
+\[
+	\langle \mu,S_t\tilde f\rangle
+	\xrightarrow[t\to \infty]{} \langle \phi^*, \tilde f\rangle_m\langle \mu, \phi\rangle
+	= 0.
+\]
+	Hence,	
+\begin{equation}\label{eq:S_t}
+	\frac{ \langle \mu,S_t\tilde f\rangle}{t}
+	\xrightarrow [t\to\infty]{} 0,
+	\quad x\in E.
+\end{equation}
+	By \eqref{eq:ll1} and Lemma \ref{lem:ergodic}, we know that
+\[\begin{split}
+	\frac{1}{t}\int_0^t A S_{t-s} \tilde f(\xi_s)ds
+	&= \int_0^1 A S_{t-ut} \tilde f(\xi_{ut})d{u}\\
+    &\xrightarrow[t\to\infty]{L^2(\dot{\mathbb P}_x)} \int_0^1\langle A\phi,\phi\phi^*\rangle_m \langle\phi^*,\tilde f\rangle_m du
+	= 0.
+\end{split}\]
+	Hence, by Lemma \ref{lem:1stMomSizBiasSupProc} and the bounded convergence theorem we have that
+\begin{equation}\label{eq:int}\begin{split}
+	&\big| \langle \mu , \phi \rangle \dot{\mathbb P}_{\mu\phi}\big[(\phi^{-1}\tilde f)(\xi_t)\frac{1}{t}\int_0^t A S_{t-s} \tilde f(\xi_s)ds\big]\big|\\
+	&\quad\leq \int \mu(dx)\phi(x) \big|\dot{\mathbb P}_x \big[(\phi^{-1}\tilde f)(\xi_t)\frac{1}{t}\int_0^t A S_{t-s} \tilde f(\xi_s)ds\big]\big| \\
+	&\quad\leq \|\phi^{-1} \tilde f\|_\infty \cdot \int \mu(dx)\phi(x) \dot{\mathbb P}_{x}\Big[ \big| \frac{1}{t}\int_0^t A S_{t-s} \tilde f(\xi_s)ds \big|^2 \Big]^{\frac{1}{2}}\\
+	&\quad \xrightarrow[t\to\infty]{} 0.
+\end{split}\end{equation}
+	Finally, using  Theorem \ref{thm:Kolmogorov-type-of-theorem} and combining  \eqref{eq:general-lemma-1}, \eqref{eq:S_t} and  \eqref{eq:int},   we have that
+\[
+	\mathbf P_{\mu}\big[\big(t^{-1}X_t(\tilde f)\big)^2\big|X_t \neq \mathbf 0\big]
+	\xrightarrow[t\to\infty]{} 0
+\]
+	as required.
+\end{proof}
+\begin{proof}[Proof of Theorem \ref{thm:Yaglom-type-theorem}]
+	Define a function $\tilde f$ by
+\begin{equation}\label{eq:yy1}
+	\tilde f(x)
+	:=f(x) - \langle \phi^*,f\rangle_m \phi(x),
+	\quad x\in E.
+\end{equation}
+	It is easy to see that $\tilde f\in b\mathscr B^\phi_E$ and $\langle\tilde f,\phi^* \rangle_m = 0$.
+	It then follows from Lemma \ref{lem:Yaglom-for-phi} that
+\begin{equation}\label{eq:yy2}
+	\big\{ t^{-1}X_t(\langle \phi^*,f\rangle_m \phi);\mathbf P_\mu(\cdot | X_t\neq \mathbf 0)\big\}
+	\xrightarrow[t\to\infty]{law} \frac{1}{2}\langle \phi^*,f\rangle_m\langle \phi A, \phi\phi^*\rangle_m \mathbf e,
+\end{equation}
+	and from Lemma \ref{lem:general-lemma} that
+\begin{equation}\label{eq:yy3}
+	\big\{ t^{-1} X_t(\tilde f) ; \mathbf P_\mu(\cdot|X_t \neq \mathbf 0)\big\}
+	\xrightarrow[t\to\infty]{\text{in probability}}0.
+\end{equation}
+	The desired result then follows from \eqref{eq:yy1}, \eqref{eq:yy2}, \eqref{eq:yy3} and Slutsky's theorem.
+\end{proof}
+%%% end
+
 
 % vim:ts=4:sw=4
