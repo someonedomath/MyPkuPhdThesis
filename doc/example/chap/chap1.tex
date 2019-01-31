@@ -2,6 +2,69 @@
 % Public domain.
 
 \chapter{Introduction}
-Test text.
+\section{Backgrouds}
+    Superprocess is a very important measure-valued Markov process. It was introduced by Watanabe (1968), Ikeda, Nagasawa and Watanabe (1968, 1967), and Dawson (1975, 1977). It belongs to a large class of stochastic processes called Markovian branching processes. This class includes other models such that Galton-Watson processes, Multitype Galton-Watson processes, continuous time Galton-Watson processes, Multitype continuous time Galton-Watson processes, branching random walks, branching Markov processes and continuous state branching processes.
+    Nowadays the theory of Markovian branching processes is one of the most important subjects in modern probability theory.
+    On the applied side, they are inspired by and used to model various genetic and biological systems. 
+    On the theoretical side, they are closely related to nonlinear PDE's, stochastic PDE's, stochastic analysis and many other branches of modern mathematics.
+
+    The asymptotic behavior of the extinction probability and the size of the population is a fundamental problem in the theory of Markovian branching processes. Typically, there are three different regimes to consider: in the supercritical regime, the expectation of the population growths exponentially; in the subcritical regime, the expectation of the population decreases exponentially; and in the critical regime, the expectation of the population stays as a constant. 
+
+    The limiting behavior of Galton-Watson processes are well known. In the critical case, Slacks (1967) considered Galton-Watson processes with offspring distribution belonging to the domain of attraction of an $\alpha$-stable law. 
+    He showed that the total population, after an aproperite rescaling and conditioning, convergence weakly to a random variable $\mathbf z^{(\alpha)}$ with Laplace transform $E[e^{-u\mathbf z^{(\alpha)}}] = 1-(1+u^{-\alpha})^{-1/\alpha}$. While $\alpha = 2$, this result is also known as Yaglom's theorem.
+    
+    It turns out that Slack's result is universal, in the sense that, for almost all the markovian branching processes mentioned above, similar Slack type weak limit results are true. 
+    For those results under various different names see table on the next page.
+
+\begin{table}[]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+ & $\alpha = 2$: Analytical method & $\alpha = 2$: Probabilistic method & $\alpha \in (1,2)$ \\ \hline
+GW & \begin{tabular}[c]{@{}l@{}} \cite{Kolmogorov1938Zur-losung} A. Kolmogorov (1938)\\ \cite{Yaglom1947Certain} A. Yaglom (1947)\\ \cite{KestenNeySpitzer1966The-Galton-Watson} H. Kesten, P. Ney \\ and F. Spitzer (1966)\end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{LyonsPemantlePeres1995Conceptual} R. Lyons, R. Pemantle \\ and Y. Peres (1995)\\ \cite{Geiger1999Elementary} J. Geiger (1999) \\ \cite{Geiger2000A-new-proof} J. Geiger (2000)\\ \cite{RenSongSun2018A-2-spine} Y.-X. Ren, R. Song \\ and Z. Sun (2018a)\end{tabular} & \begin{tabular}[c]{@{}l@{}} \\ \cite{Slack1968A-branching} R. Slack (1968)\end{tabular} \\ \hline
+Multitype GW & \begin{tabular}[c]{@{}l@{}} \cite{JoffeSpitzer1967On-multitype} A. Joffe and F. Spitzer \\ (1967)\end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{VatutinDyakonova2001The-survival} V. Vatutin and E. Dyakonova \\ (2001)\end{tabular} & \begin{tabular}[c]{@{}l@{}}\cite{GoldsteinHoppe1978Critical} M. Goldstein and F. Hoppe \\ (1978)\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Continuous time \\ GW\end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{AthreyaNey1972Branching} K. Athreya and P. Ney \\ (1972)\end{tabular} & - & \cite{Vatutin1977Limit} V. Vatutin (1977) \\ \hline
+\begin{tabular}[c]{@{}l@{}}Continuous time \\ Multitype GW\end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{AthreyaNey1974Functionals} K. Athreya and P. Ney\\ (1974)\end{tabular} & - & \cite{Vatutin1977Limit} V. Vatutin (1977) \\ \hline
+\begin{tabular}[c]{@{}l@{}}Branching Markov \\ processes\end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{AsmussenHering1983Branching} S. Asmussen and H. Hering \\ (1983)\end{tabular} & \cite{Powell2015An-invariance} E. Powell (2015) & \begin{tabular}[c]{@{}l@{}} \cite{AsmussenHering1983Branching} S. Asmussen and H. Hering \\ (1983)\end{tabular} \\ \hline
+CSBP & \begin{tabular}[c]{@{}l@{}} \cite{Li2000Asymptotic} Z. Li (2000)\\ \cite{Lambert2007Quasi-stationary} \end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{RenSongSun2017Spine} Y.-X. Ren, R. Song \\ and Z. Sun (2018b+)\end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{KyprianouPardo2008Continuous} A. Kyprianou and J. Pardo \\ (2008)\\ \cite{RenYangZhao2014Conditional} Y.-X. Ren, T. Yang \\ and G.-H. Zhao (2014)\end{tabular} \\ \hline
+Superprocesses & \begin{tabular}[c]{@{}l@{}} \cite{EvansPerkins1990Measure-valued} Evans and Perkins (1990) \\ \cite{RenSongZhang2015Limit} Y.-X. Ren, R. Song \\ and R. Zhang (2015)\end{tabular} & \begin{tabular}[c]{@{}l@{}} \cite{RenSongSun2017Spine} Y.-X. Ren, R. Song \\ and Z. Sun (2018b+)\end{tabular} & \begin{tabular}[c]{@{}l@{}}\cite{RenSongSun2018Limit} Y.-X. Ren, R. Song \\ and Z. Sun (2018c+)\end{tabular} \\ \hline
+\end{tabular}%
+}
+\end{table} 
+
+    Evans and Perkins (1990) established a Yaglom type result for a critical superprocess with quadratic branching mechanism. Recently, Ren, Song and Zhang (2015) generalized this to a class of critical superprocesses with more general branching mechanisms and more general spatial motions. 
+    For critical superprocesses without second-moment conditions, it is natural to ask whether Slacks type result is valid. Also, since the methods used by  Evans and Perkins (1990) and Ren, Song and Zhang (2015) are all analytic, it is natural to ask whether an intuitive probabilistic proof exists.
+
+\section{Outline and Contributions}
+    The main topic of this thesis is to consider the asymptotic behaviors of Markovian branching processes in the critical regime using a method called multi-spine decomposition. 
+    The idea of using a spine method to study the limiting behavior of branching processes is by Lyons, Pemantle and Peres (1995) and multi-spine is systematically investigated by Harris and Roberts (2015). 
+    Our main contribution is that we find a generic relationship between the multi-spine theory and the limiting theory in the critical regime.
+
+    Roughly speaking, the spine is the trajectory of an immortal particle, and the $k$-spine-skeleton is the combination of $k$ spines.
+    The multi-spline decomposition says that the biasing measure transformations of a Markovian branching process can be decomposed as branching immigrations along with some multi-spine-skeleton.
+    These decomposition theorems are important at least for two reasons. 
+    The first is that they capture the interplays between the original branching processes and their measure-transformed counterparts. 
+    This provides new probabilistic points of view for characterizing properties of the original processes.
+    The second is that they are flexible and generic, in the sense that almost all the models mentioned earlier can be decomposed under different measure transformations. 
+
+    Chapter 2 is based on the work \cite{RenSongSun2018A-2-spine} in collaboration with Yan-Xia Ren and Renming Song.
+    We give a relatively short and self-contained application of the multi-spine techniques providing a new proof of Yaglom’s theorem for the critical Galton-Watson processes. 
+    We showed that the double-size-biased transformation of a critical Galton-Watson tree corresponding to a branching tree with 2 distinguishable spines. 
+    Using this decomposition, we intuitively explained why Yaglom's theorem should be true. 
+    We then translated this intuition into mathematics. This is useful both for a new point of view on Yaglom’s theorem and as a new application to multi-spine theory. our method is generic in the sense it can apply to much more complicated branching systems such that superprocesses. 
+
+    Chapter 3 is based on the work \cite{RenSongSun2017Spine} in collaboration with Yan-Xia Ren and Renming Song. In that chapter, we give a probabilistic proof of Yaglom type results for a class of critical superprocesses using a newly developed general size-biasing technique for the superprocesses. First, we established a general framework for size-biased decomposition theorems for the superprocesses using their Poissonian representations. Second, under this framework, we established a spine decomposition theorem and a 2-spine decomposition theorem for critical superprocesses. Third, we give a proof of the Kolmogorov type and Yaglom type result using those spine decompositions.  Compared to the analytical methods used by Perkins (1995) and Ren, Song and Zhang (2015), our probabilistic proof is more intuitive and gives more general results. Also, our general framework connects the spine theorem to the Poissonian representation of the superprocesses. This connection is fundamental and seems has not been fully exploited before in the literature. 
+
+    Chapter 4 is based on an ongoing work in collaboration with Yan-Xia Ren, Renming Song and Jianjie Zhao. In that chapter, we consider the characteristic function of Superprocesses. We proof that the characteristic exponent of $\langle X_t,f\rangle$ satisfies a non-lineat complex-valued mild PDE where $(X_t)_{t\geq 0}$ is a general non-presistent superprocess and $f$ is a testing function. This is interesting and more general that the classical theory about the Laplace exponent of superprocesses because we allow the testing function $f$ taking negative values. Some of the contents in this part are still in preparation.
+
+    
+    Chapter 5 is based on the work \cite{RenSongSun2018Limit} in collaboration with Yan-Xia Ren and Renming Song. In that chapter, we established Slack type results for a class of critical superprocesses with spatially dependent stable branching.
+    Using the general spine theory for the superprocess developed in our previous work, we could establish the vanishing speed of survival probability. 
+    We showed that the Laplace transform of the one-dimensional distributions of the superprocess, after proper rescaling, can be characterized by a non-linear delay equation. 
+    We then showed that the Laplace transform of Slack's random variable $\mathbf z^{\alpha}$ can be characterized by a similar non-linear equation. 
+    As far as we know, this characterization of the Slack's random variable is new.
+    The desired Slack type results can then be showed by a comparison-of-equations argument.
+    That the stable index is spatially inhomogeneous and that the second moment is infinite make the arguments challenging.
+    This work adds more results to the theory of critical superprocess and provides a new point of view for Slack type universal results. 
 
 % vim:ts=4:sw=4
