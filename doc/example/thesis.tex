@@ -16,18 +16,27 @@
 % 如果的确须要使脚注按页编号的话，可以去掉后面 footmisc 包的注释。
 % 注意：在启用此设定的情况下，可能要多编译一次以产生正确的脚注编号。
 %\usepackage[perpage]{footmisc}
-
-% 使用 biblatex 排版参考文献，并规定其格式（详见 biblatex-caspervector 的文档）。
-% 这里按照西文文献在前，中文文献在后排序（“sorting = ecnyt”）；
-% 若须按照中文文献在前，西文文献在后排序，请设置“sorting = cenyt”；
-% 若须按照引用顺序排序，请设置“sorting = none”。
-% 若须在排序中实现更复杂的需求，请参考 biblatex-caspervector 的文档。
-\usepackage[backend = biber, style = caspervector, utf8, sorting = ecnyt]{biblatex}
+% 使用 biblatex 排版参考文献，并规定其格式（详见 biblatex 的文档）。
+\usepackage[backend = biber]{biblatex}
 
 % 对于 linespread 值的计算过程有兴趣的同学可以参考 pkuthss.cls。
 \renewcommand*{\bibfont}{\zihao{5}\linespread{1.27}\selectfont}
 % 按学校要求设定参考文献列表的段间距。
 \setlength{\bibitemsep}{3bp}
+
+\ctexset{
+	contentsname = {Contents},
+	listfigurename = {List of Figures},
+	listtablename = {List of Tables},
+	figurename = {Figure},
+	tablename = {Table},
+	indexname = {Index},
+	appendixname = {Appendix},
+	part/name = {\partname\space},
+	part/number = {\thepart},
+	chapter/name = {\chaptername\space},
+	chapter/number = {\thechapter},
+}
 
 % 设定文档的基本信息。
 \pkuthssinfo{
@@ -45,24 +54,6 @@
 }
 % 载入参考文献数据库（注意不要省略“.bib”）。
 \addbibresource{thesis.bib}
-
-% 普通用户可删除此段，并相应地删除 chap/*.tex 中的
-% “\pkuthssffaq % 中文测试文字。”一行。
-\usepackage{color}
-\def\pkuthssffaq{%
-	\emph{\textcolor{red}{pkuthss 文档模版最常见问题：}}
-
-	\texttt{\string\cite}、\texttt{\string\parencite} %
-	和 \texttt{\string\supercite} 三个命令分别产生%
-	未格式化的、带方括号的和上标且带方括号的引用标记：%
-	\cite{test-en}，\parencite{test-zh}、\supercite{test-en, test-zh}。
-
-	若要避免章末空白页，请在调用 pkuthss 文档类时加入 \texttt{openany} 选项。
-
-	如果编译时不出参考文献，
-	请参考 \texttt{texdoc pkuthss}“问题及其解决”一章
-	“上游宏包可能引起的问题”一节中关于 biber 的说明。%
-}
 
 \begin{document}
 	% 以下为正文之前的部分，默认不进行章节编号。
