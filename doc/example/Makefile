@@ -5,7 +5,7 @@
 # 被编译的主文件的文件名，不包括扩展名。
 JOB = thesis
 # 这个变量的值可以为 latex、pdflatex 或 xelatex。
-LATEX = latex
+LATEX = xelatex
 BIBTEX = biber -l zh__pinyin --output-safechars
 DVIPDF = dvipdfmx
 
