@@ -145,7 +145,7 @@ $\langle\cdot, \cdot \rangle_m$ denotes the inner product in $L^2(E, m)$;
 	A simpler version of this question has already been answered in the context of continuous-state branching processes
 	(CSBPs)
 	which can be viewed as superprocesses without spatial movements.
-	Kyprianou and Pardo \cite{Kyprianou2008Continuous} 
+	Kyprianou and Pardo \cite{KyprianouPardo2008Continuous} 
 	considered CSBPs $\{(Y_t)_{t\geq 0}; P\}$ with stable branching mechanism $\psi(z) =c z^\gamma$, where $c > 0$ and $\gamma \in (1,2]$.
 	He showed that for all $x\geq 0$, with $c_t := (c(\gamma - 1)t)^{1/(\gamma - 1)}$,
 \begin{align} \label{eq: conditional limit of CSBP with stable branching}
@@ -386,18 +386,18 @@ $\langle\cdot, \cdot \rangle_m$ denotes the inner product in $L^2(E, m)$;
 \subsection{Methods and overview}
 	
 	To establish Theorem \ref{thm: main theorem}(2) and Theorem \ref{thm: main theorem}(3), we use a spine decomposition theorem for 	$X$.
-	Roughly speaking, the spine is the trajectory of an immortal moving particle and the spine decomposition theorem says that, after a size-biased transform, the transformed superprocess can be decomposed in law as the sum of a copy of the original superprocess and an immigration process along this spine, see \cite{EckhoffKyprianouWinkel2015Spines, EnglanderKyprianou2004Local, LiuRenSong2009Llog}.
+	Roughly speaking, the spine is the trajectory of an immortal moving particle and the spine decomposition theorem says that, after a size-biased transform, the transformed superprocess can be decomposed in law as the sum of a copy of the original superprocess and an immigration process along this spine, see \cite{EckhoffKyprianouWinkel2015Spines, EnglanderKyprianou2004Local, LiuRenSong2009LlogL}.
 	The family of functions used for the size-biased transform is $(e^{-\lambda t} X_t(\phi))_{t\geq 0}$, which is a martingale.
 	Therefore, this size-biased transform can be viewed as a martingale change of measure.
 	Under Assumptions \ref{asp: 1} and \ref{asp: 3}, the spine process $\{\xi; \Pi^{(\phi)}\}$ is an ergodic process.
 	We take advantage of this ergodicity to study the asymptotic behavior of the superprocess.
 	
-	Similar idea has already been used by Powell \cite{Powell2015An-invariance} to establish results parallel to \eqref{eq: Kolmogorov type result with 2rd moment} and \eqref{eq: Ygalom type result with 2rd moment} for a class of critical branching diffusion processes.
+	Similar idea has already been used by Powell \cite{Powell2016An-invariance} to establish results parallel to \eqref{eq: Kolmogorov type result with 2rd moment} and \eqref{eq: Ygalom type result with 2rd moment} for a class of critical branching diffusion processes.
     Let $\{(Y_t)_{t\geq 0}; P\}$ be a branching diffusion process, in a bounded domain,  with finite second moment.
-	As have been discussed in \cite{Powell2015An-invariance}, a direct study of the partial differential equation satisfied by the survival probability $(t,x) \mapsto P_{\delta_x}(\|Y_t\| \neq 0)$ is tricky.
-	Instead, by using a spine decomposition approach, Powell \cite{Powell2015An-invariance} showed that the survival probability decays like $a(t)\phi(x)$, where $\phi(x)$ is the principal eigenfunction of the mean semigroup of $(Y_t)$ and $a(t)$ is a function capturing the uniform speed.
+	As have been discussed in \cite{Powell2016An-invariance}, a direct study of the partial differential equation satisfied by the survival probability $(t,x) \mapsto P_{\delta_x}(\|Y_t\| \neq 0)$ is tricky.
+	Instead, by using a spine decomposition approach, Powell \cite{Powell2016An-invariance} showed that the survival probability decays like $a(t)\phi(x)$, where $\phi(x)$ is the principal eigenfunction of the mean semigroup of $(Y_t)$ and $a(t)$ is a function capturing the uniform speed.
 	Then, the problem is reduced to the study of a single ordinary differential equation satisfied by $a(t)$.
-	Later, inspired by \cite{Powell2015An-invariance}, we gave in \cite{RenSongSun2017Spine} a similar proof of \eqref{eq: Kolmogorov type result with 2rd moment} for a class of
+	Later, inspired by \cite{Powell2016An-invariance}, we gave in \cite{RenSongSun2017Spine} a similar proof of \eqref{eq: Kolmogorov type result with 2rd moment} for a class of
  general critical superprocesses with finite second moment.
 	In this chapter, we will  generalize these arguments to a class of general critical superprocesses without finite second moment and establish Theorem \ref{thm: main theorem}(2).
 	For the conditional weak convergence result, i.e., Theorem \ref{thm: main theorem}(3), we use a fact that the Laplace transform given in \eqref{e:zloltarev} can be characterized by a non-linear 
@@ -413,7 +413,7 @@ $\langle\cdot, \cdot \rangle_m$ denotes the inner product in $L^2(E, m)$;
 	However, the double-size-biased transform of a random variable requires its second moment being finite.
 	Since we do not assume the second moment condition in this chapter, we can not use the method of double size-biased transform.
 		
-	In \cite{Powell2015An-invariance} (for critical branching diffusions in a bounded domain with finite variance) and in
+	In \cite{Powell2016An-invariance} (for critical branching diffusions in a bounded domain with finite variance) and in
 	\cite{RenSongSun2017Spine, RenSongZhang2015Limit}
 	(for general critical superprocesses with finite variance), the conditional weak convergence was proved in two steps.
     First, a convergence result was established for $\phi$, the principal eigenfunction of the mean semigroup of the corresponding process, and then the second moment condition was used to extend the result to more general testing functions.
@@ -808,7 +808,7 @@ $\langle\cdot, \cdot \rangle_m$ denotes the inner product in $L^2(E, m)$;
 
 	Now, suppose that $\{\xi; \Pi\}$ satisfies Assumption \ref{asp: 1}.
     Recall that $\phi$ is the principal eigenfunction of the mean semigroup of $X$.
-	The classical spine decomposition theorem, see \cite{EckhoffKyprianouWinkel2015Spines}, \cite{EnglanderKyprianou2004Local} and \cite{LiuRenSong2009Llog} for example, considered the case when $g = \phi$ only.
+	The classical spine decomposition theorem, see \cite{EckhoffKyprianouWinkel2015Spines}, \cite{EnglanderKyprianou2004Local} and \cite{LiuRenSong2009LlogL} for example, considered the case when $g = \phi$ only.
 	In this case, the family of probabilities $(\Pi_{\mu}^{(\phi,T)})_{T\geq 0}$ is consistent in the sense of Kolmogorov's extension theorem, that is, the process $\{(\xi_t)_{0\leq t\leq T}; \Pi_{\mu}^{(\phi,T)} \}$ can be realized as the restriction of some process, say $\{(\xi_t)_{t\geq 0}; \Pi_{\mu}^{(\phi)}\}$,
 	on the finite time interval $[0,T]$.
 	In fact, one can also check that
