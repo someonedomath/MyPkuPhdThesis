@@ -229,6 +229,7 @@
 \thss@int@infoitema{emajor}
 \thss@int@infoitema{direction}
 \thss@int@infoitema{cmentor}
+\thss@int@infoitema{cmentorb}
 \thss@int@infoitema{ementor}
 \thss@int@infoitema{ckeywords}
 \thss@int@infoitema{ekeywords}
@@ -374,6 +375,8 @@
 				\thss@int@fillinblank{1}{\thss@tmp@len}{\fangsong\@direction}	\\
 				{\bfseries\label@cmentor}		&
 				\thss@int@fillinblank{1}{\thss@tmp@len}{\fangsong\@cmentor}		\\
+				{\bfseries\label@cmentorb}		&
+				\thss@int@fillinblank{1}{\thss@tmp@len}{\fangsong\@cmentorb}	\\
 			\end{tabular}%
 		}
 		\vfill
