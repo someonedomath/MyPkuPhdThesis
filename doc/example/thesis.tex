@@ -362,12 +362,12 @@
 
 	For critical branching processes, the following result is well known:
 \begin{thm}[\cite{KestenNeySpitzer1966The-Galton-Watson}] 
-\label{thm: Kolmogrov and Yaglom theorem}
+\label{thm: Kolmogorov and Yaglom theorem}
 	Let $(Z_n)$ be a critical Galton-Watson branching process with $\operatorname{Var}(Z_1) = \sigma^2 \in (0,\infty)$. Then
 	\begin{enumerate}
-		\item \label{thm:kolmogorov}
+		\item \label{thm:Kolmogorov} 
 		$n P (Z_n>0) \xrightarrow[n \to \infty]{} 2/\sigma^2;$
-		\item \label{thm:yaglom}
+		\item \label{thm:Yaglom}
 		$\{n^{-1}Z_n; P(\cdot | Z_n>0)\}\xrightarrow[n \to \infty]{d} Y,$
 	\end{enumerate}
 	where $Y$ is an exponential random variable with mean $\sigma^2/2$.
@@ -375,7 +375,7 @@
 
 \begin{comment}
 \begin{thm}
-\label{thm: Kolmogrov and Yaglom theorem}
+\label{thm: Kolmogorov and Yaglom theorem}
 	Let $(Z_n)$ be a critical Galton-Watson branching process with $\operatorname{Var}(Z_1) = 2c \in (0,\infty)$. Then 
 \begin{itemize}
 \item[(1)]
@@ -385,8 +385,8 @@
 \end{itemize}
 \end{thm}
 \end{comment}
-	Under a third moment assumption, assertions \eqref{thm:kolmogorov} and \eqref{thm:yaglom} of Theorem \ref{thm: Kolmogrov and Yaglom theorem} are due to Kolmogorov \cite{Kolmogorov1938Zur-losung} and Yaglom \cite{Yaglom1947Certain} respectively.
-	Therefore, Theorem \ref{thm: Kolmogrov and Yaglom theorem}(1) is usually called Kolmogorov's theorem, and Theorem \ref{thm: Kolmogrov and Yaglom theorem}(2) is usually called Yaglom's theorem.
+	Under a third moment assumption, assertions \eqref{thm:Kolmogorov} and \eqref{thm:Yaglom} of Theorem \ref{thm: Kolmogorov and Yaglom theorem} are due to Kolmogorov \cite{Kolmogorov1938Zur-losung} and Yaglom \cite{Yaglom1947Certain} respectively.
+	Therefore, Theorem \ref{thm: Kolmogorov and Yaglom theorem}(1) is usually called Kolmogorov's theorem, and Theorem \ref{thm: Kolmogorov and Yaglom theorem}(2) is usually called Yaglom's theorem.
 	For probabilistic proofs of the above results, we refer our readers to \cite{Geiger1999Elementary}, \cite{Geiger2000A-new}, \cite{LyonsPemantlePeres1995Conceptual} and \cite{RenSongSun2018A-2-spine}. 
 
 	Slack \cite{Slack1968A-branching} considered critical Galton-Watson branching processes without the finite variance condition, and he obtain the following:
@@ -524,7 +524,7 @@
 	Fix a $\mu \in \mathcal M(\mathbb R^d)$. For every $n \in \mathbb N$, consider a binary branching Brownian motion $(X_t^n)$ in $\mathbb R^d$, with branching rate $2n$ and particle weights $n^{-1}$, with its initial configuration $X_0^n$ satisfying that $nX^n_0$ is a Poisson random measure on $\mathbb R^d$ with intensity $n\mu$. Then $(X_t^n)_{t\geq 0} \xrightarrow[n\to \infty]{d} (X_t)_{t\geq 0}$ in the Skorokhod space $\mathbb D(\mathbb R_+, \mathcal M(\mathbb R^d))$, based on the topology of weak convergence in $\mathcal M(\mathbb R^d)$, where $(X_t)_{t\geq 0}$ is a super Brownian motion with branching mechanism $\psi(z) = z^2$ and initial configuration $\mu$.
 \end{thm}
 
-	As mentioned earlier, analogues results of Theorem \ref{thm: Kolmogrov and Yaglom theorem} and Theorem \ref{thm: Slack result} were obtained for a lots of Markovian branching processes. 
+	As mentioned earlier, analogues results of Theorem \ref{thm: Kolmogorov and Yaglom theorem} and Theorem \ref{thm: Slack result} were obtained for a lots of Markovian branching processes. 
 	The main interests of this thesis is to prove those results for a large class of general superprocesses. Our approach for Kolmogorov type and Yaglom type results for the superprocesses are different from the aforementioned works \cite{EvansPerkins1990Measure-valued} and \cite{RenSongZhang2015Limit}, and is more intuitive and probabilistic. 
 	The statements of those results for the general superprocesses is quite technical. For the sake of simplicity, in this subsection, we only present our results for the continuous-state branching processes. 
 	More precise statements of the theory will be presented in Chapter 3 and Chapter 5. 
@@ -581,7 +581,7 @@
 \section{Method}
 \subsection{Spine method for Galton-Watson processes}
 \label{sec: Methods}
-	Let $(Z_n)$ be a Galton-Watson branching process with offspring distribution $\mu$. The spine methods for branching processes are initiated in Lyons, Pemantle and Peres \cite{LyonsPemantlePeres1995Conceptual}, where they gave a probabilistic proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem} using the so-called size-biased $\mu$-Galton-Watson tree.
+	Let $(Z_n)$ be a Galton-Watson branching process with offspring distribution $\mu$. The spine methods for branching processes are initiated in Lyons, Pemantle and Peres \cite{LyonsPemantlePeres1995Conceptual}, where they gave a probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem} using the so-called size-biased $\mu$-Galton-Watson tree.
 In this thesis, by \emph{size-biased transform} we mean the following:
 Let $X$ be a random variable
 and $g(X)$ be a Borel function of $X$ with $P(g(X) \geq 0) = 1$ and $E[g(X)]\in (0,\infty)$.
@@ -620,13 +620,13 @@ E [ g ( \dot Z_1, \dots, \dot Z_n) ]
 = \frac { E[ Z_n g( Z_1, \dots, Z_n)]} {E [ Z_n]}.
 \end{equation}
 
-It is natural to consider probabilistic proofs of analogous results of Theorem \ref{thm: Kolmogrov and Yaglom theorem} for more general critical branching processes.
-Vatutin and  Dyakonova \cite{VatutinDyakonova2001The-survival} gave a probabilistic proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(1) for multitype critical branching processes.
+It is natural to consider probabilistic proofs of analogous results of Theorem \ref{thm: Kolmogorov and Yaglom theorem} for more general critical branching processes.
+Vatutin and  Dyakonova \cite{VatutinDyakonova2001The-survival} gave a probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}(1) for multitype critical branching processes.
 As far as we know, there is no probabilistic proof of Yaglom's theorem for multitype critical branching processes.
 It seems that it is difficult to adapt the probabilistic proofs in \cite{Geiger2000A-new} and \cite{LyonsPemantlePeres1995Conceptual} for monotype branching processes to more general models, such as multitype branching processes, branching Hunt processes and superprocesses.
 
 In my joint paper with Ren and Song \cite{RenSongSun2018A-2-spine}, we propose a $k(k-1)$-type size-biased $\mu$-Galton-Watson tree equipped with a two-spine skeleton, which serves as a change-of-measure of the original $\mu$-Galton-Watson tree;
-and with the help of this two-spine technique, in the next chapter, we give a new probabilistic proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(2), i.e. Yaglom's theorem.
+and with the help of this two-spine technique, in the next chapter, we give a new probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}(2), i.e. Yaglom's theorem.
 The main motivation for developing this new proof for the classical Yaglom's theorem is that this new method is generic, in the sense that it can be generalized to more complicated critical branching systems.
 In fact, in Chapter 3, based on our follow-up
 paper \cite{RenSongSun2017Spine}, we show that, in a similar spirit, a two-spine structure can be constructed for a class of critical superprocesses, and a probabilistic proof of a Yaglom type theorem can be obtained for those processes.
@@ -706,7 +706,7 @@ In fact, for each $\lambda \geq 0$,
 \end{split}
 \end{equation}
 As a consequence,
-Theorem \ref{thm: Kolmogrov and Yaglom theorem}	is equivalent to
+Theorem \ref{thm: Kolmogorov and Yaglom theorem}	is equivalent to
 \begin{equation}
 \label{eq: convergence of conditional expectation}
 E\big[\frac{Z_n}{n}| Z_n > 0\big]
@@ -720,12 +720,12 @@ E[e^{-s \frac{\dot Z_n}{n}}]
 \end{equation}
 where $\dot Y$ is a $Y$-transform
 of the exponential random variable $Y$.
-Indeed, since $E[Z_n] = 1$, \eqref{eq: convergence of conditional expectation} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov});
+Indeed, since $E[Z_n] = 1$, \eqref{eq: convergence of conditional expectation} is equivalent to Theorem \ref{thm: Kolmogorov and Yaglom theorem}(\ref{thm:Kolmogorov});
 and assuming \eqref{eq: convergence of conditional expectation},
-according to \eqref{eq: conditional and size-biased transform}, we can see that \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:yaglom}).
+according to \eqref{eq: conditional and size-biased transform}, we can see that \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogorov and Yaglom theorem}(\ref{thm:Yaglom}).
 In Section \ref{sec: proofs}, for completeness, we will simplify
 the argument of \cite{Geiger1999Elementary} and \cite{VatutinDyakonova2001The-survival},
-and give a proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}).
+and give a proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}(\ref{thm:Kolmogorov}).
 
 Our method of proving
 \eqref{eq: convergence after size-biased}
@@ -1005,24 +1005,24 @@ For simplicity,
 we will refer to $(Z_n)_{n\geq 0}$ as a  \emph{$\mu$-Galton-Watson process}.
 It is well known that
 \begin{thm}[\cite{KestenNeySpitzer1966The-Galton-Watson}] 
-\label{thm: Kolmogrov and Yaglom theorem}
+\label{thm: Kolmogorov and Yaglom theorem}
 	For a $\mu$-Galton-Watson process $(Z_n)_{n\geq 0}$
 	satisfying \eqref{eq:mean} and \eqref{eq:variance}, we have
 	\begin{enumerate}
-		\item \label{thm:kolmogorov}
+		\item \label{thm:Kolmogorov}
 		$n P (Z_n>0) \xrightarrow[n \to \infty]{} 2/\sigma^2;$
-		\item \label{thm:yaglom}
+		\item \label{thm:Yaglom}
 		$\{n^{-1}Z_n; P(\cdot | Z_n>0)\}\xrightarrow[n \to \infty]{d} Y,$
 	\end{enumerate}
 	where $Y$ is an exponential random variable with mean $\sigma^2/2$.
 \end{thm}
 
-Under a third moment assumption, assertions \eqref{thm:kolmogorov} and \eqref{thm:yaglom} of Theorem \ref{thm: Kolmogrov and Yaglom theorem} are due to \cite{Kolmogorov1938Zur-losung} and \cite{Yaglom1947Certain} respectively.
-Theorem \ref{thm: Kolmogrov and Yaglom theorem}(2) is usually called Yaglom's theorem.
+Under a third moment assumption, assertions \eqref{thm:Kolmogorov} and \eqref{thm:Yaglom} of Theorem \ref{thm: Kolmogorov and Yaglom theorem} are due to \cite{Kolmogorov1938Zur-losung} and \cite{Yaglom1947Certain} respectively.
+Theorem \ref{thm: Kolmogorov and Yaglom theorem}(2) is usually called Yaglom's theorem.
 For probabilistic proofs of the above results, we refer our readers to
 \cite{Geiger1999Elementary}, \cite{Geiger2000A-new} and \cite{LyonsPemantlePeres1995Conceptual}.
 
-In \cite{LyonsPemantlePeres1995Conceptual}, Lyons, Pemantle and Peres gave a probabilistic proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem} using the so-called size-biased $\mu$-Galton-Watson tree.
+In \cite{LyonsPemantlePeres1995Conceptual}, Lyons, Pemantle and Peres gave a probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem} using the so-called size-biased $\mu$-Galton-Watson tree.
 In this note, by \emph{size-biased transform} we mean the following:
 Let $X$ be a random variable
 and $g(X)$ be a Borel function of $X$ with $P(g(X) \geq 0) = 1$ and $E[g(X)]\in (0,\infty)$.
@@ -1061,13 +1061,13 @@ E [ g ( \dot Z_1, \dots, \dot Z_n) ]
 = \frac { E[ Z_n g( Z_1, \dots, Z_n)]} {E [ Z_n]}.
 \end{equation}
 
-It is natural to consider probabilistic proofs of analogous results of Theorem \ref{thm: Kolmogrov and Yaglom theorem} for more general critical branching processes.
-Vatutin and  Dyakonova \cite{VatutinDyakonova2001The-survival} gave a probabilistic proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(1) for multitype critical branching processes.
+It is natural to consider probabilistic proofs of analogous results of Theorem \ref{thm: Kolmogorov and Yaglom theorem} for more general critical branching processes.
+Vatutin and  Dyakonova \cite{VatutinDyakonova2001The-survival} gave a probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}(1) for multitype critical branching processes.
 As far as we know, there is no probabilistic proof of Yaglom's theorem for multitype critical branching processes.
 It seems that it is difficult to adapt the probabilistic proofs in \cite{Geiger2000A-new} and \cite{LyonsPemantlePeres1995Conceptual} for monotype branching processes to more general models, such as multitype branching processes, branching Hunt processes and superprocesses.
 
 In this note, we propose a $k(k-1)$-type size-biased $\mu$-Galton-Watson tree equipped with a two-spine skeleton, which serves as a change-of-measure of the original $\mu$-Galton-Watson tree;
-and with the help of this two-spine technique, we give a new probabilistic proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(2), i.e. Yaglom's theorem.
+and with the help of this two-spine technique, we give a new probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}(2), i.e. Yaglom's theorem.
 The main motivation for developing this new proof for the classical Yaglom's theorem is that this new method is generic, in the sense that it can be generalized to more complicated critical branching systems.
 In fact, in our	follow-up
 paper \cite{RenSongSun2017Spine}, we show that, in a similar spirit, a two-spine structure can be constructed for a class of critical superprocesses, and a probabilistic proof of a Yaglom type theorem can be obtained for those processes.
@@ -1139,7 +1139,7 @@ In fact, for each $\lambda \geq 0$,
 \end{split}
 \end{equation}
 As a consequence,
-Theorem \ref{thm: Kolmogrov and Yaglom theorem}	is equivalent to
+Theorem \ref{thm: Kolmogorov and Yaglom theorem}	is equivalent to
 \begin{equation}
 \label{eq: convergence of conditional expectation}
 E\big[\frac{Z_n}{n}| Z_n > 0\big]
@@ -1153,12 +1153,12 @@ E[e^{-s \frac{\dot Z_n}{n}}]
 \end{equation}
 where $\dot Y$ is a $Y$-transform
 of the exponential random variable $Y$.
-Indeed, since $E[Z_n] = 1$, \eqref{eq: convergence of conditional expectation} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov});
+Indeed, since $E[Z_n] = 1$, \eqref{eq: convergence of conditional expectation} is equivalent to Theorem \ref{thm: Kolmogorov and Yaglom theorem}(\ref{thm:Kolmogorov});
 and assuming \eqref{eq: convergence of conditional expectation},
-according to \eqref{eq: conditional and size-biased transform}, we can see that \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:yaglom}).
+according to \eqref{eq: conditional and size-biased transform}, we can see that \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogorov and Yaglom theorem}(\ref{thm:Yaglom}).
 In Section \ref{sec: proofs}, for completeness, we will simplify
 the argument of \cite{Geiger1999Elementary} and \cite{VatutinDyakonova2001The-survival},
-and give a proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}).
+and give a proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}(\ref{thm:Kolmogorov}).
 
 Our method of proving
 \eqref{eq: convergence after size-biased}
@@ -1467,7 +1467,7 @@ This implies that the change of measure in Theorem \ref{thm: change of measure} 
 	\end{equation}
 \end{proof}
 
-\subsection{Spine decompositions.}
+\subsection{Double size-biased transform for Galton-Watson tree.}
 \label{sec:spinesdecomposition}
 
 	Using the notation introduced in the previous section, we are now ready to give a precise meaning to \eqref{eq: Our insight}:
@@ -1555,7 +1555,7 @@ This implies that the change of measure in Theorem \ref{thm: change of measure} 
 
 
 
-\section{Proofs}
+\section{Proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}}
 \label{sec: proofs}
 \begin{proof}[Proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem}(\ref{thm:Kolmogorov})]
 	Denote by $B_n^j$ the event that the Galton-Watson process
@@ -6710,13 +6710,13 @@ $M(r,x), M(r)$ and $C_X$, we have
 	According to that $M(\theta) \leq c_6 \theta$ for each $\theta$, we can apply Lemma \ref{lem: F is zero} to the above inequality to get the desired result.
 	Finally, by the definition of $M$,  $M\equiv 0$ implies the desired assertion \eqref{eq: we only need to proof this}.
 
-\appendix
+%\appendix
 \printbibliography[heading = bibintoc]
-\chapter{Some appendix}
-	Test text.
+%\chapter{Some appendix}
+%	Test text.
 \backmatter
-\chapter{Acknowledgements}	
-	Test text.
+\chapter{致谢}	
+	测试
 	
 {
 	\ctexset{section = {
