@@ -45,7 +45,7 @@
 	cauthor = {孙振尧},
 	eauthor = {Zhenyao Sun},
 	studentid = {1501110037},
-	date = {二〇一八年十二月},
+	date = {二〇一九年三月},
 	school = {数学科学学院},
 	cmajor = {概率论}, emajor = {Probability},
 	direction = {分支粒子系统},
@@ -69,23 +69,23 @@
 \setcounter{page}{0}
 \pagenumbering{Roman}
 \begin{cabstract}
-	本文主要研究了临界分支过程和一类临界超过程的极限行为，和它们与多脊柱分解理论的关系。
-	特别地，本文系统地研究了临界分支过程和一类临界超过程的脊柱分解和双脊柱分解，以及它们的 Kolmogrov 型、Yaglom 型和 Slack 型极限定理。
+	本文主要研究了临界分支过程和一类临界超过程的极限行为，以及它们与多脊柱分解理论的关系。
+	特别地，本文系统地研究了临界分支过程和一类临界超过程的脊柱分解和双脊柱分解定理，以及它们的 Kolmogrov 型、Yaglom 型和 Slack 型极限定理。
 
 	本文首先给出了临界 Galton-Watson 树的脊柱分解定理和双脊柱分解定理。
-	这些分解定理描述了 Galton-Watson 树的一阶 size-biased 变换和二阶 size-biased 变换。使用这些分解定理，本文给出了临界 Galton-Watson 过程 Yaglom 定理的一个新的直观的概率证明。
+	这些分解定理描述了 Galton-Watson 树的一阶 size-biased 变换和二阶 size-biased 变换。使用这些分解定理，本文给出了临界 Galton-Watson 过程 Yaglom 定理的一个新的直观概率证明。
 	
 	接着本文建立了一类临界超过程的脊柱分解和双脊柱分解定理，并讨论了他们和这类超过程极限定理的关系。
-	这两种分解分别刻画了一类具有有限二阶距的超过程的一阶 size-biased 变换和二阶 size-biased 变换。
+	这两种分解分别刻画了一类具有有限二阶矩的超过程的一阶 size-biased 变换和二阶 size-biased 变换。
 	同时这两类分解可以视为泊松随机测度的一个新的分解定理的特例。
-	使用这些分解，我们给出了一类具有有限二阶距的临界超过程灭绝概率渐近行为的 Kolmogrov 型和 Yaglom 型极限定理的概率证明。
+	使用这些分解，我们给出了一类具有有限二阶矩的临界超过程灭绝概率渐近行为的 Kolmogrov 型和 Yaglom 型极限定理的概率证明。
 	
 	然后，本文利用这些脊柱分解定理证明了超过程的特征函数满足某个非线性复值积分方程。
 	该方程可以用来估计一类具有稳定分支的上临界超过程的尾概率收敛速度。
 	
 	最后，本文研究了一类具有空间非齐次的稳定分支的临界超过程 $\{X;\mathbf P_\mu\}$ 的 Slack 型极限定理。
 	假设全空间稳定系数的下确界为 $\gamma_0 > 1$。
-	本文证明了，在一定条件下，$t$ 时刻的不灭绝概率 $\mathbf P_{\mu}(\|X_t\|\neq 0)$ 是以指数为 $(\gamma_0-1)^{-1}$ 正则变化的形式收敛到 $0$的；在不灭绝的条件概率下，经过适当的伸缩变换，该过程的一维分布会弱收敛到一个 Laplace 变换为
+	本文证明了，在一定条件下，$t$ 时刻的不灭绝概率 $\mathbf P_{\mu}(\|X_t\|\neq 0)$ 是以指数为 $(\gamma_0-1)^{-1}$ 正则变化的形式收敛到 $0$的；在不灭绝的条件概率下，对于一大类非负测试函数$f$, 经过适当的伸缩变换，$X_t(f)$会弱收敛到一个 Laplace 变换为
 \[
 	E[e^{-u\mathbf z^{(\gamma_0-1)}}]=1-(1+u^{-(\gamma_0-1)})^{-1/(\gamma_0-1)}
 \]
@@ -119,7 +119,7 @@
     On the theoretical side, they are closely related to nonlinear PDE's, stochastic PDE's, stochastic analysis and many other branches of modern mathematics.
 
     The asymptotic behavior of the extinction probability and the size of the population is a fundamental problem in the theory of Markovian branching processes. 
-    Roughly, there are three different cases to consider: in the supercritical case, the expectation of the population grows exponentially; in the subcritical case, the exponential grow rate (or decay rate) of the expectation of the population is $0$.
+    Roughly, there are three different cases to consider: in the supercritical case, the expectation of the population grows exponentially; in the subcritical case, the expectation of the population decays exponentially; in the critical case, the exponential grow rate (or decay rate) of the expectation of the population is $0$.
 
     The limiting behavior of Galton-Watson processes is well known, see \cite{AthreyaNey1972Branching} for example. 
     In the critical case, Slack \cite{Slack1968A-branching} considered Galton-Watson processes with offspring distribution belonging to the domain of attraction of an $\alpha$-stable law with $\alpha \in (1,2]$. 
@@ -279,17 +279,17 @@
     The idea of using the spine method to study the limiting behavior of branching processes is due to Lyons, Pemantle and Peres \cite{LyonsPemantlePeres1995Conceptual}. 
     For spine method in general branching processes and its applications under a variety of names, see \cite{Aidekon2013Convergence,AidekonShi2014The-Seneta-Heyde,BigginsKyprianou2004Measure,ChauvinRouault1988KPP-equation,Englander2009Law,EnglanderHarrisKyprianou2010Strong,EnglanderKyprianou2004Local,GeorgiiBaake2003Supercritical,HuShi2009Minimal,Lambert2007Quasi-stationary,LiuRenSong2011LlogL,RenYang2014Multitype} for example.
     The multi-spine is first investigated by Harris and Roberts \cite{HarrisRoberts2017The-many-to-few} in the context of branching Markov processes. 
-    Our main contribution is that we find a generic relationship between the multi-spine theory and the limiting behavior in the critical case, for both branching processes and superprocesses.
+    Our main contribution is that we find a generic relationship between the multi-spine theory and the limiting behaviors for both branching processes and superprocesses, in the critical case.
 
 
     Roughly speaking, the spine is the trajectory of an immortal particle, and the $k$-spine-skeleton is the combination of $k$ spines.
-    The multi-spline decomposition says that the size-biased measure transformations of a Markovian branching process can be decomposed as branching immigrations along with some multi-spine-skeleton.
+    The multi-spine decomposition says that the size-biased measure transformations of a Markovian branching process can be decomposed as branching immigrations along with some multi-spine-skeleton.
     These decomposition theorems are important at least for two reasons. 
     The first is that they capture the interplays between the original branching processes and their measure-transformed counterparts. 
     This provides new probabilistic points of view for characterizing properties of the original processes.
     The second is that they are flexible and generic, in the sense that almost all the models mentioned earlier can be decomposed under different measure transformations. 
 
-    Now, in order to be more precise about all these results and methods, we first introduce the model considered in this thesis.
+    Now, in order to be more precise about all these results and methods, we first introduce the models considered in this thesis.
 
 \begin{comment}
 \section{Orgenazation of the thesis}
@@ -360,7 +360,7 @@
 	where $\varphi(s):= \sum_{k\geq 0} \mu(k) s^k$.
 	If $m > 1$, then from the above equation, it can be verified that $\rho := P(Z_n = 0, \exists n \geq 0)= \lim_{m\to \infty} \theta_m$ is the unique fixed point of $\varphi$ in $[0,1)$.
 
-	We will call $(Z_n)$ a $\mu$-Galton-Watson processes, and say it is subcritical, critical and supercritical according to $m < 1$, $m = 1$ and $m >1$. 
+	We will call $(Z_n)_{n\geq 0}$ a $\mu$-Galton-Watson processes, and say it is subcritical, critical and supercritical according to $m < 1$, $m = 1$ and $m >1$. 
 	In this thesis, we mainly focus on the asymptotic behavior of critical branching processes. 
 	For the limiting behavior of the subcritical and supercritical cases, we refer our reader to \cite{AthreyaNey1972Branching}.
 
@@ -417,13 +417,13 @@
 	We will call the above Slack's theorem.
 	Note that, while $\alpha = 2$, Slack's theorem actually reduces to Kolmogorov's and Yaglom's theorem. 
 	As have been mentioned in the first subsection, ever since these pioneering papers of Kolmogorov, Yaglom and Slack, lots of analogous results have been obtained for more general critical branching processes.
-	This includes continuous time critical branching processes, discrete time multitype critical branching processes, continuous time multitype critical branching processes, critical branching Markov processes, continuous-state branching processes and superprocess.
+	This includes continuous time branching processes, discrete time multitype branching processes, continuous time multitype branching processes, branching Markov processes, continuous-state branching processes and superprocess.
 	See table \ref{tab: result} for the literature in this direction. 
 
 	A large part of this thesis is devoted to give a new probabilistic proof of Kolmogorov type and Yaglom type results for a class of critical superprocesses with finite second moment condition, and to give a proof of Slack type result for a class of critical superprocesses without the finite second moment condition. 
 	We now introduce the superprocesses.
 \subsection{Superprocesses}
-	We first give the definition, and then give some explanation.
+	We first give the definition of superprocesses, and then give some explanation.
 	Let $E$ be a locally compact separable metric space. 
 	Denote by $\mathcal M(E)$ the space of all finite measures on $E$. 
 	For any measurable function $f$ and a measure $\mu$ on some measurable space, we write $\mu(f)$ for the integration $\int f d\mu$ whenever it exists. 
@@ -522,7 +522,7 @@
 \item
 	each particle in the system has a same weight $m>0$; for $t\geq 0$ and any measurable subset $A$ of $\mathbb R^d$, $X_t(A)$ is the total weight of all the particles positioned in $A$ at time $t$. 
 \end{itemize}
-	The follwoing result is due to \cite{Watanabe1968A-limit,Dawson1975Stochastic}.
+	The follwoing result is due to \cite{Dawson1975Stochastic,Watanabe1968A-limit}.
 	
 \begin{thm}
 	Fix a $\mu \in \mathcal M(\mathbb R^d)$. For every $n \in \mathbb N$, consider a binary branching Brownian motion $(X_t^n)$ in $\mathbb R^d$, with branching rate $2n$ and particle weights $n^{-1}$, with its initial configuration $X_0^n$ satisfying that $nX^n_0$ is a Poisson random measure on $\mathbb R^d$ with intensity $n\mu$. Then $(X_t^n)_{t\geq 0} \xrightarrow[n\to \infty]{d} (X_t)_{t\geq 0}$ in the Skorokhod space $\mathbb D(\mathbb R_+, \mathcal M(\mathbb R^d))$, based on the topology of weak convergence in $\mathcal M(\mathbb R^d)$, where $(X_t)_{t\geq 0}$ is a super Brownian motion with branching mechanism $\psi(z) = z^2$ and initial configuration $\mu$.
@@ -585,7 +585,7 @@
 \section{Method}
 \subsection{Spine method for Galton-Watson processes}
 \label{sec: Methods}
-	Let $(Z_n)$ be a Galton-Watson branching process with offspring distribution $\mu$. The spine methods for branching processes are initiated in Lyons, Pemantle and Peres \cite{LyonsPemantlePeres1995Conceptual}, where they gave a probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem} using the so-called size-biased $\mu$-Galton-Watson tree.
+	Let $(Z_n)_{n\geq 0}$ be a Galton-Watson branching process with offspring distribution $\mu$. The spine methods for branching processes are initiated in Lyons, Pemantle and Peres \cite{LyonsPemantlePeres1995Conceptual}, where they gave a probabilistic proof of Theorem \ref{thm: Kolmogorov and Yaglom theorem} using the so-called size-biased $\mu$-Galton-Watson tree.
 In this thesis, by \emph{size-biased transform} we mean the following:
 Let $X$ be a random variable
 and $g(X)$ be a Borel function of $X$ with $P(g(X) \geq 0) = 1$ and $E[g(X)]\in (0,\infty)$.
@@ -919,7 +919,7 @@ It is helpful to consider $Y=(Y_t)$ as a random element taking values in the fol
 	Suppose that $\{(Y_s)_{0\leq s\leq t}, (Z_s)_{0\leq s\leq t}; Q_x^{(t)}\}$ is a size-biased representation of $P_x^{\mathcal N(F)}$. Then we have $\{(Y_s)_{0\leq s\leq t}; P^{\mathcal N(F)}_x\} \overset{law}{=} \{(Y_s+Z_s)_{0\leq s\leq t}; Q_x^{(t)}\}$.
 \end{thm}
 	
-	In Chapter 3, we will prove that, if $F$ takes the form of $F(w) = w_t^2$, and $\{Y,Z; Q_x^{(t)}\}$ is its corresponding size-biased representation of $P_x^{\mathcal N[w_t^2]}$, then $\{Z; Q_x^{(t)}\}$ can be decomposed further as a immigration processes along a 2-spine skeleton. More precisely, we say \[\{(Y_s)_{0\leq s\leq t}, (Z_s)_{0\leq s\leq t}, \kappa, n_1, n_2; Q_x^{(t)}\}\] is a 2-spine representation of $P_x^{\mathcal N[w_t^2]}$ if
+	In Chapter 3, we will prove that, if $F$ takes the form of $F(w) = w_t^2$, and $\{Y,Z; Q_x^{(t)}\}$ is the corresponding size-biased representation of $P_x^{\mathcal N[w_t^2]}$, then $\{Z; Q_x^{(t)}\}$ can be decomposed further as a immigration processes along a 2-spine skeleton. More precisely, we say \[\{(Y_s)_{0\leq s\leq t}, (Z_s)_{0\leq s\leq t}, \kappa, n_1, n_2; Q_x^{(t)}\}\] is a 2-spine representation of $P_x^{\mathcal N[w_t^2]}$ if
 \begin{itemize}
 \item
 	$\{Y:=(Y_s)_{0\leq s\leq t}; Q_x^{(t)}\}$ is a copy of the original CSBP $\{(Y_s)_{0\leq s\leq t}; P_x\}$;
@@ -959,7 +959,9 @@ It is helpful to consider $Y=(Y_t)$ as a random element taking values in the fol
 \[
 	\tilde X = X+U\cdot X',
 \]
-	where $X'$ is a copy of $X$, $U$ is a uniform random variable on $[0,1]$, and $X,X',U$ are independent. With this observation and Lemma \ref{lem: our equation}, we can see that why Yaglom type result for CSBP should be true.  The precise proofs of both Kolmogorov type and Yaglom type results for a large class of critical superprocesses using a 2-spine method will be presented in Chapter 3.
+	where $X'$ is a copy of $X$, $U$ is a uniform random variable on $[0,1]$, and $X,X',U$ are independent. 
+	With this observation and Lemma \ref{lem: our equation}, we can see why Yaglom type result for CSBP should be true.  
+	The precise proofs of both Kolmogorov type and Yaglom type results for a large class of critical superprocesses using a 2-spine method will be presented in Chapter 3.
 
 	A proof of Slack type result for a large class of critical superprocess without the second moment condition will be presented in Chapter 5. We mention here that the 2-spine decomposition for the critical superprocesses requires the second moment condition, so we can not use it anymore in Chapter 5. 
 	The general one-spine decomposition theorem developed in Chapter 3 still plays a central role though. 
@@ -972,14 +974,14 @@ It is helpful to consider $Y=(Y_t)$ as a random element taking values in the fol
     Note that, we already explained intuitively why Yaglom's theorem should be true using this 2-spine method earlier. 
     In Chapter 2, we translate this intuition into mathematics. 
     This is useful both for giving a new point of view on Yaglom type theorem and a new application to multi-spine theory. 
-    Our method is generic in the sense that it can apply to much more complicated branching systems such that superprocesses. 
+    Our method is generic in the sense that it can be applied to much more complicated branching systems such that superprocesses. 
 
-    Chapter 3 is based my work \cite{RenSongSun2017Spine} in collaboration with Yan-Xia Ren and Renming Song. In that chapter, we give a probabilistic proof of Yaglom type results for a class of critical superprocesses using a newly developed general size-biasing technique for the superprocesses. First, we establish a general framework for size-biased decomposition theorems for the superprocesses using their Poissonian representations. Second, under this framework, we establish a spine decomposition theorem and a 2-spine decomposition theorem for critical superprocesses. Third, we give a proof of the Kolmogorov type and Yaglom type result using those spine decompositions.  Compared to the analytical methods used by Perkins \cite{EvansPerkins1990Measure-valued} and Ren, Song and Zhang \cite{RenSongZhang2015Limit}, our probabilistic proof is more intuitive and gives more general results. Also, our general framework connects the spine theorem to the Poissonian representation of the superprocesses. This connection is fundamental and seems has not been fully exploited before in the literature. 
+    Chapter 3 is based on my work \cite{RenSongSun2017Spine} in collaboration with Yan-Xia Ren and Renming Song. In that chapter, we give a probabilistic proof of Yaglom type results for a class of critical superprocesses using a newly developed general size-biasing technique for the superprocesses. First, we establish a general framework for size-biased decomposition theorems for the superprocesses using their Poissonian representations. Second, under this framework, we establish a spine decomposition theorem and a 2-spine decomposition theorem for critical superprocesses. Third, we give a proof of the Kolmogorov type and Yaglom type result using those spine decompositions.  Compared to the analytical methods used by Perkins \cite{EvansPerkins1990Measure-valued} and Ren, Song and Zhang \cite{RenSongZhang2015Limit}, our probabilistic proof is more intuitive and gives results under weaker conditions. Also, our general framework connects the spine theorem to the Poissonian representation of the superprocesses. This connection is fundamental and seems has not been fully exploited before in the literature. 
 
-    In Chapter 4, we consider the characteristic function of Superprocesses. 
+    In Chapter 4, we consider the characteristic function of superprocesses. 
     We prove that the characteristic exponent of $\langle X_t,f\rangle$ is the mild solution to a non-linear complex-valued PDE where $(X_t)_{t\geq 0}$ is a general non-persistent superprocess and $f$ is a testing function. 
     This is more general than the classical theory about the Laplace exponents of a superprocess satisfying a non-linear real-valued PDE, because we allow our testing function $f$ to take both positive and negative values. 
-    The general spine decomposition theorem in Chapter 4 is used to prove this result. In the follow-up work \cite{RenSongSunZhao2019Stable} in collaboration with Yan-Xia Ren, Renming Song and Jianjie Zhao, we used this result to prove several stable central limit theorems for supercritical super Ornstein-Uhlenbeck processes.
+    The general spine decomposition theorem in Chapter 4 is used to prove this result. In the follow-up work \cite{RenSongSunZhao2019Stable} in collaboration with Yan-Xia Ren, Renming Song and Jianjie Zhao, we use this result to prove several stable central limit theorems for supercritical super Ornstein-Uhlenbeck processes.
     
     Chapter 5 is based on the work \cite{RenSongSun2018Limit} in collaboration with Yan-Xia Ren and Renming Song. 
     In that chapter, we establish Slack type results for a class of critical superprocesses with spatially dependent stable branching.
@@ -987,7 +989,7 @@ It is helpful to consider $Y=(Y_t)$ as a random element taking values in the fol
     We can also show that the Laplace transform of the one-dimensional distributions of the superprocess, after proper rescaling, can be characterized by a non-linear delay equation. 
     We then show that the Laplace transform of Slack's random variable $\mathbf z^{\alpha}$ can also be characterized by a similar non-linear equation. 
     As far as we know, this characterization of Slack's random variable is new.
-    The desired Slack type results can then be showed by a comparison-of-equations argument.
+    The desired Slack type results can then be showed by comparison of those equations.
     That the stable index is spatially inhomogeneous and that the second moment is infinite make the arguments challenging.
     This work adds more results to the theory of critical superprocess and provides a new point of view for Slack type universal results.
 	
@@ -1765,7 +1767,7 @@ The following lemma will be used to prove this.
 \section{Introduction}
 \subsection{Motivation}
 \label{sec: Motivation}
-	As mentioned in the first Chapter, it is well known that for a critical Galton-Watson process $\{(Z_n)_{n\in \mathbb N};P\}$, we have
+	As mentioned in Chapter 1, it is well known that for a critical Galton-Watson process $\{(Z_n)_{n\in \mathbb N};P\}$, we have
 \begin{equation}
 \label{eq:Mot-1}
 	nP(Z_n>0)
@@ -1892,7 +1894,7 @@ Our 2-spine methods for Galton-Watson trees \cite{RenSongSun2018A-2-spine} and f
 	Let $E$ be a locally compact separable metric space.
 	We will use $b\mathscr B_E$ and $p\mathscr B_E$ to denote the collection of all bounded Borel functions and positive Borel functions on $E$ respectively.
 	We write $bp\mathscr B_E$ for $b\mathscr B_E \cap p\mathscr B_E$.
-	For any functions $f,g$ and measure $\mu$ on $E$, we write $\|f\|_\infty := \sup_{x\in E} |f(x)|$, $\mu(f) :=\langle \mu,f \rangle:= \int_E f d\mu$and $\langle f,g \rangle_\mu := \int_E fg d\mu$ as long as they have meanings.
+	For any functions $f,g$ and measure $\mu$ on $E$, we write $\|f\|_\infty := \sup_{x\in E} |f(x)|$, $\mu(f) :=\langle \mu,f \rangle:= \int_E f d\mu$ and $\langle f,g \rangle_\mu := \int_E fg d\mu$ as long as they have meanings.
 	We use $\mathbf 0$ to denote the null measure and use $f\equiv 0$ to mean that $f$ is the zero function.
 	If $g(t,x)$ is a function on $[0,\infty)\times E$, we say $g$ is \emph{locally bounded} if $\sup_{t\in [0,T],x\in E} |g(t,x)|<\infty$ for every $T\geq 0$.
 
@@ -4050,17 +4052,17 @@ Therefore, by the dominated convergence theorem,
 \[
     \mathbf P_{\delta_x}[e^{-\theta\langle X_t,f\rangle}],\quad t\geq 0, \theta \geq 0, x\in E.
 \] 
-    The definition of the superprocess says that the map $(t,x)\mapsto \mathbf P_{\delta_x}[e^{- \langle X_t,f\rangle}]$ is the unique locally bounded non-negative solution to a mild non-linear partial differential equation, see \eqref{eq:FKPP_in_definition}.
+    The definition of the superprocess says that the map $(t,x)\mapsto \mathbf P_{\delta_x}[e^{- \langle X_t,f\rangle}]$ is a mild solution to a non-linear partial differential equation, see \eqref{eq:FKPP_in_definition}.
     Therefore, several distributional properties of $\langle X_t,f\rangle$ can be obtained by taking advantage of that equations.
 
-    A natural question arises in studying the limiting theory for superprocesses is to consider the property of $\langle X_t,f\rangle$ where $f$ is a Borel measurable function on $E$ which may take both non-negative and negative values.
-    Note that when $f$ is bounded, $\langle X_t,f\rangle$ is a well defined random variable whose Laplace transform may not exists. 
+    A natural question arises in studying the limiting theory for superprocesses is to consider the property of $\langle X_t,f\rangle$ where $f$ is a Borel measurable function on $E$ which may take both positive and negative values.
+    Note that, in this case, when $f$ is bounded, $\langle X_t,f\rangle$ is a well defined random variable whose Laplace transform may not exists. 
     So we can't use the equation \eqref{eq:FKPP_in_definition} anymore.
     Instead, we consider the characteristic function of $\langle X_t,f\rangle$:
 \[
     \mathbf P_{\delta_x}[e^{-i\theta \langle X_t,f\rangle}],\quad t\geq 0, x\in E, \theta \geq 0,
 \]
-    and ask the question: whether map $(t,x)\mapsto \mathbf P_{\delta_x}[e^{i\langle X_t,f\rangle}]$ also satisfies some mild complex-valued non-linear partial differential equation.
+    and ask the question: whether map $(t,x)\mapsto \mathbf P_{\delta_x}[e^{i\langle X_t,f\rangle}]$ also satisfies some complex-valued non-linear partial differential equation.
 
     In this chapter, we give a positive answer to this question under a non-persistent assumption.
     The precise statements of the results and the assumptions are presented in the next subsection.
@@ -4155,19 +4157,17 @@ Therefore, by the dominated convergence theorem,
 \end{prop}
 
 \subsection{Some words before the proofs}
-	One might think a natural way of proving it is to consider decomposing the general testing function $f$ into its positive and negative parts:
+	We can consider decomposing the general testing function $f$ into its positive and negative parts:
 \[
 	f= f^+ -f^-
 \]
-	and to prove the proposition for each $f^\pm$ using Equation \eqref{eq:FKPP_in_definition}.
-	However, this strategy will not work, because the dependence between $\langle X_t,f^+\rangle$ and $\langle X_t,f^-\rangle $ is not clear. (Note in particular, they are not independent.) so we don't know the relation between $(U_tf^+,U_tf^-)$ and $U_tf$.
+	and prove Proposition \ref{prop: complex FKPP-equation} for each $f^\pm$ using \eqref{eq:FKPP_in_definition}.
+	However, this strategy will not work while proving Proposition \ref{prop: complex FKPP-equation} for $f$, because the dependence between $\langle X_t,f^+\rangle$ and $\langle X_t,f^-\rangle $ is not clear. (Note in particular, they are not independent.) so we don't know the relation between $(U_tf^+,U_tf^-)$ and $U_tf$.
 
-	Instead, our strategy is to use the general spine decomposition theory developed in the Chapter 3. 
+	Instead, our strategy is to use the general spine decomposition theory developed in Chapter 3. 
 	The underlying idea is very simple: since the spine decomposition theory gives a decomposition about the superprocess $X_t$, it also gives a decomposition of $\langle X_t,f\rangle$. 
 	Translating this decomposition for random variable $\langle X_t,f\rangle$ in the language of characteristic functions will give us a complex valued identity. 
-	Using that identity we can give a proof of the proposition.
-
-	This is also the reason why we need the assumption that the superprocess is non-persistent which is required by the general spine decomposition theorem. 
+	Using that identity we can give a proof of the desired result.
 
 \section{Preliminary}
 \subsection{Some analytic facts}
@@ -4624,7 +4624,7 @@ Applying Gronwall's inequality, we get that $h(r) =  0$ for $r\in [0,t]$.
 \end{prop}
 \end{comment}
 
-    To prove the Proposition \ref{prop: complex FKPP-equation}, we will need the generalized spine decomposition theorem from \cite{RenSongSun2017Spine}. 
+    To prove Proposition \ref{prop: complex FKPP-equation}, we will need the generalized spine decomposition theorem from \cite{RenSongSun2017Spine}. 
     Let $f\in \mathcal B_b(E,\mathbb R_+)$, $T >0$ and $x\in E$.
     Suppose that $\mathbf P_{\delta_x}[\langle X_T, f\rangle] = \mathbb N_x[\langle W_T, f\rangle] = P^{\beta}_T f(x) \in (0,\infty)$, then we can define the following probability transforms:
 \begin{equation}
@@ -4633,7 +4633,7 @@ Applying Gronwall's inequality, we get that $h(r) =  0$ for $r\in [0,t]$.
     \quad d\mathbb N_x^{\langle W_T, f\rangle}
     :=  \frac{\langle W_T, f\rangle}{P_T^{\beta} f(x)} d\mathbb N_x.
 \end{equation}
-    Following the definition in \cite{RenSongSun2017Spine}, we say that $\{\xi, \mathbf n;\mathbf Q_{x}^{(f,T)}\}$ is a spine representation of $\mathbb N_x^{\langle W_T, f\rangle}$ if
+    Following the definition in Chapter 3, we say that $\{\xi, \mathbf n;\mathbf Q_{x}^{(f,T)}\}$ is a spine representation of $\mathbb N_x^{\langle W_T, f\rangle}$ if
 \begin{itemize}
 \item
     the spine process $\{(\xi_t)_{0\leq t\leq T}; \mathbf Q^{(f,T)}_x\}$ is a copy of $\{(\xi_t)_{0\leq t\leq T}; \Pi^{(f,T)}_{x}\}$,
@@ -4955,7 +4955,7 @@ $\langle\cdot, \cdot \rangle_m$ denotes the inner product in $L^2(E, m)$;
 	with critical branching mechanism $\psi$ satisfying Grey's condition.
 	In order for the left side of \eqref{eq: conditional limit of CSBP} to have a non-trivial weak limit for some positive constants $(\lambda_t)_{t\geq 0}$, one must have \eqref{eq: regular varing of branching mechanism of a CSBP} for some $1< \gamma \leq 2$.
 	
-	In this chapter, we will establish a result parallel to \eqref{eq: conditional limit of CSBP with stable branching} for some critical $(\xi,\psi)$-superprocess $\{X; \mathbf P\}$ with spatially dependent stable branching mechanism.
+		In this chapter, we will establish a result parallel to \eqref{eq: conditional limit of CSBP with stable branching} for some critical $(\xi,\psi)$-superprocess $\{X; \mathbf P\}$ with spatially dependent stable branching mechanism.
 	In particular, we assume that the spatial motion $\xi$ is intrinsically ultracontractive with respect to some reference measure $m$, and the branching mechanism takes the form
 \begin{align}
 	\psi(x,z) = -\beta (x) z + \kappa(x) z^{\gamma(x)},
@@ -6712,15 +6712,15 @@ $M(r,x), M(r)$ and $C_X$, we have
 	四年本科、六年博士，十年北大生活，有太多难以忘怀的人与事。值此博士论文完成之际，向关心、鼓励和支持我的导师、各位老师、同学、朋友和家人表达最诚挚的感谢。
 
 	感谢我的恩师，任艳霞教授和宋仁明教授！他（她）们为了培养我倾注了大量心血。
-	他（她）们为我提供了良好而又宽松的学术环境，还提供了各种难得的学术交流机会。每当我在学术上遇到困难，他（她）们都会及时地、持续地、毫无保留地给予我莫大的支持和帮助。在论文写作阶段，从选题、反复讨论各种方法的可行性、效验证明的细节、文章总体的规划以及语言表述的斟酌等等，无不亲力亲为。
+	他（她）们为我提供了良好而又宽松的学术环境，还提供了各种难得的学术交流机会。每当我在学术上遇到困难，他（她）们都会及时地、持续地、毫无保留地给予我莫大的支持和帮助。在论文写作阶段，从选题、反复讨论各种方法的可行性、校验证明的细节、文章总体的规划以及语言表述的斟酌等等，无不亲力亲为。
 	在生活的方方面面，两位导师都给予了我许多关心与帮助。
-	哪怕只是与他们相处，都让我受益良多：有时我们就像无话不谈的老朋友一样聚会、聊天，从他（她）们的谈吐与阅历中我增长了智慧与见识；有时他（她）们更是我生活上的长者，他（她）们严谨的态度和诚信的处世风范将是我终生学习的财富。
+	哪怕只是与他（她）们相处，都让我受益良多：有时我们就像无话不谈的老朋友一样聚会、聊天，从他（她）们的谈吐与阅历中我增长了智慧与见识；有时他（她）们更是我生活上的长者，他（她）们严谨的态度和诚信的处世风范将是我终生学习的财富。
 
-	感谢我的学长学姐，尤其是刘荣丽、杨婷、张睿学姐和赵国焕学长在我学术上的帮助。
+	感谢我的学长学姐，尤其是刘荣丽、杨婷、张蕊学姐和赵国焕学长在我学术上的帮助。
 	如果没有我的导师、学长和学姐在这一领域内长期的积累，我的博士论文就不可能完成！
 	感谢北大的陈大岳老师、冯仁杰老师、蒋达权老师、葛颢老师、刘勇老师、章复熹老师和张原老师。感谢他（她）们对我在北大学习期间的关心、帮助和指导。我在北大本科阶段和研究生阶段学习了他（她）们教授的多门课程，正是这些课程给予了我源源不断的对数学（尤其是概率论）研究的兴趣。
 
-	还要感谢 Simon Harris、Andreas Kyprianou、 Juan Carlos Pardo、Ellen Powell 、Leonid Mytnik、李增沪、马春华、何辉、胡文清、石海华、邵嗣烘、时颖慧、宋玉林、解龙杰、谢颖超和张希承等老师。与他（她）们的讨论数学问题让我收获良多！
+	还要感谢 Simon Harris、Andreas Kyprianou、 Juan Carlos Pardo、Ellen Powell 、Leonid Mytnik、李增沪、马春华、何辉、胡文清、石海华、邵嗣烘、时颖慧、宋玉林、解龙杰、谢颖超和张希承等老师。与他（她）们讨论数学问题让我收获良多！
 	
 	最后感谢我的家人和朋友，你们的理解和支持是我完成博士论文写作最大的源泉与动力。
 \vskip 1em
