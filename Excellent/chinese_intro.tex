@@ -1,0 +1,357 @@
+% * The preamble
+% ! This TeX file uses 'amsart' for its document class. 
+\documentclass[12pt,a4paper]{amsart}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+\calclayout
+\synctex=1
+% ! 'amsmath', 'amsthm', 'amsfonts' package is automatically loaded by 'amsart' class.
+% ! Below is the configuration of 'amsmath' package.
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+% ! Below is the configuration of 'amsthm' package.
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollaray}
+\newtheorem{conj}[thm]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{defi}[thm]{Definition}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{asp}{Assumption}
+\newtheorem{iss}{Issue}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem*{ack}{Acknowledgment}
+% ! 'inputenc' package is used to specify the set of characters allowed to input into this TeX file.
+% \usepackage[utf8]{inputenc}
+% ! 'foutenc' package is used to specify the set of characters allowed to output into the generated pdf file.
+% \usepackage[T1]{fontenc}
+% ! 'amssymb', 'mathrsfs' and 'mathtools' packages provide additional math symbols from the AMS default symbol fonts. They are compatible with the AMS class and is recommended to be used.
+\usepackage{amssymb}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+\usepackage{mathrsfs}
+% ! 'ctex' is used if we want to type Chinese words.
+% ! We also want to make sure that the file is build by XeLaTex.
+\usepackage{ctex}
+% ! 'hyperref' package is used to handle cross-referencing in the generated pdf file.
+\usepackage[backref]{hyperref}
+% ! Other packages
+\usepackage{xcolor}
+\usepackage{comment}
+% * Top matter
+\begin{document}
+\title
+[一个简介]
+{临界分支过程与超过程的脊柱分解与极限定理:一个简介}
+\author
+[孙振尧]
+{孙振尧}
+\maketitle
+% * Document body
+超过程是一类非常重要的测度值马氏过程。
+它是由 Watanabe \cite{Watanabe1968Limit}, Ikeda, Nagasawa 和 Watanabe \cite{IkedaNagasawaWatanabe1968Branchinga,IkedaNagasawaWatanabe1968Branching,IkedaNagasawaWatanabe1969Branching}, 以及 Dawson \cite{Dawson1975Stochastic,Dawson1977Critical}引入。
+它是一大类具有分支性的马尔可夫过程（简称马氏分支过程）中的一个。    
+这一类过程还包括 Galton-Watson 过程，多物种 Galton-Watson 过程，连续时间 Galton-Watson 过程，连续时间多物种 Galton-Watson 过程，分支随机游动，分支马氏过程和连续状态分支过程。如今，具有分支性的马尔可夫过程理论是概率论研究的重要主题之一。
+在应用方面，它们与生物学中的遗传、人口的变化与迁移、核裂变反应的数学模型相关联。
+在理论方面，它们与非线性 PDE，随机 PDE，随机分析以及许多其它现代数学分支关系密切。
+
+刻画灭绝概率的极限行为和粒子质量的空间分布的极限行为是分支马尔可夫过程理论中的一个基本问题。
+粗略地分类，马氏分支过程的极限行为有三种不同的情形：
+在上临界情形下，粒子质量的期望呈指数增长; 
+在下临界情况下，粒子质量的期望按指数衰减; 
+在临界情况下，粒子质量的期望的指数增长率（或衰减率）为0。
+
+Galton-Watson 过程是最简单的马氏分支过程。
+关于它的极限行为有很多研究，具体可参考 \cite{AthreyaNey1972Branching}。 
+在临界的时候 Kolmogrove \cite{Kolmogorov1938Zur}，Yaglom \cite{Yaglom1947Certain}，Kesten、Ney 和 Spitzer \cite{KestenNeySpitzer1966GaltonWatson}, Zelatorev \cite{Zolotarev1957More} 以及 Slack \cite{Slack1968Branching} 先后给出了 Galton-Watson 过程的一系列极限定理： Kolmogrove 定理、Yaglom 定理和 Slack 定理。
+具体来说，令 $(\xi_i^n)_{i,n \geq 1}$ 是一列独立同分布的非负整数值随机变量，则称由下定义的过程
+\begin{align}
+Z_0 = 0, 
+\quad 
+Z_{n+1} = \mathbf 1_{Z_n > 0} \sum_{k=1}^{Z_n} \xi_k^n, \quad n=0,1,\dots
+\end{align}
+是一个 Galton-Watson 过程。
+这里 $\xi_i^n$ 可以理解为第 $n$ 代第 $i$ 个粒子的后代数, 而 $Z_n$ 可以理解为第 $n$ 代粒子的总数。
+当后代分布的概率生成母函数具有如下的形式：
+\begin{align}
+E[s^{Z_n}]
+= s + (1-s)^\gamma l(1-s),
+\quad s\geq 0,
+\end{align}
+其中参数 $\gamma \in (1,2]$, 而 $l$ 是一个在 $0$ 处的缓变函数,  那么整个过程在 $n$ 时刻不灭绝的概率 $P(Z_n > 0) = n^{-1/(\gamma - 1)} L(n)$ 其中 $L$ 是在 $\infty$ 的缓变函数。
+此外还知道的是，在 $\{Z_n > 0\}$ 的条件下，$P(Z_n > 0) Z_n$ 会依分布收敛到一个正随机变量 $\mathbf z^{(\gamma - 1)}$。
+这个随机变量的拉普拉斯变换具有如下的形式：
+\begin{align}
+  E\left[ e^{-u \mathbf z^{(\gamma - 1)}} \right]
+= 1 - (1+ u^{-(\gamma - 1)})^{-1/(\gamma - 1)},
+\quad u\geq 0.
+\end{align}
+当 $\gamma =2$ 时，有关灭绝概率的结论即是 Kolmogorov 定理，有关依分布收敛的结论即是 Yaglom 定理；当 $\gamma \in (1,2)$ 时，我们称上述结论为 Slack 定理。
+
+有意思的是，这些极限定理具有所谓的是普适性（Universal）。
+因为对于上面提到的几乎所有马尔可夫分支过程，在临界的情形下，类似的极限定理都是正确的。
+关于这些模型的 Kolmogorov 型、Yaglom 型和 Slack 型定理的文献详见如下表格。
+\begin{table}[ht]
+\caption{Kolmogorov, Yaglom and Slack type results} \label{tab: result} 
+\resizebox{\textwidth}{!}
+{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+& 
+	$\alpha = 2$: Analytical method 
+& 
+	$\alpha = 2$: Probabilistic method 
+& 
+	$\alpha \in (1,2)$ 
+\\\hline
+	Galton-Watson processes 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{Kolmogorov1938Zur} A. Kolmogorov (1938)
+	\\ \cite{Yaglom1947Certain} A. Yaglom (1947)
+	\\ \cite{KestenNeySpitzer1966GaltonWatson} H. Kesten, P. Ney 
+	\\ and F. Spitzer (1966)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{LyonsPemantlePeres1995Conceptual} R. Lyons, R. Pemantle 
+	\\ and Y. Peres (1995)
+	\\ \cite{Geiger1999Elementary} J. Geiger (1999) 
+	\\ \cite{Geiger2000New} J. Geiger (2000)
+	\\ \cite{RenSongSun20182spine} Y.-X. Ren, R. Song 
+	\\ and Z. Sun (2018a)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\\ \cite{Slack1968Branching} R. Slack (1968)
+\end{tabular} 
+\\ \hline
+\begin{tabular}[c]{@{}l@{}} 
+	Multitype 
+	\\ Galton-Watson processes 
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{JoffeSpitzer1967Multitype} A. Joffe and F. Spitzer 
+	\\ (1967)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{VatutinDyakonova2001Survival} V. Vatutin and E. Dyakonova 
+	\\ (2001)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}}
+	\cite{GoldsteinHoppe1978Critical} M. Goldstein and F. Hoppe 
+	\\ (1978)
+\end{tabular} 
+\\ \hline
+\begin{tabular}[c]{@{}l@{}} 
+	Continuous time 
+	\\ Galton-Watson processes
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{AthreyaNey1972Branching} K. Athreya and P. Ney 
+	\\ (1972)\end{tabular} 
+& 
+	- 
+& 
+	\cite{Vatutin1977Limit} V. Vatutin (1977) 
+\\\hline
+\begin{tabular}[c]{@{}l@{}} 
+	Continuous time multitype 
+	\\ Galton-Watson processes
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{AthreyaNey1974Functionals} K. Athreya and P. Ney
+	\\ (1974)\end{tabular} 
+&
+	- 
+& 
+	\cite{Vatutin1977Limit} V. Vatutin (1977) 
+\\ \hline
+\begin{tabular}[c]{@{}l@{}}
+	Branching Markov 
+	\\ processes
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{AsmussenHering1983Branching} S. Asmussen and H. Hering 
+	\\ (1983)\end{tabular} 
+& 
+	\cite{Powell2019Invariance} E. Powell (2015) 
+&
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{AsmussenHering1983Branching} S. Asmussen and H. Hering 
+	\\ (1983)
+\end{tabular} 
+\\ \hline
+\begin{tabular}[c]{@{}l@{}} 
+	Continuous-state
+	\\ branching processes 
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{Li2000Asymptotic} Z. Li (2000)
+	\\ \cite{Lambert2007Quasistationary} A. Lambert (2007)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+\cite{RenSongSun2019Spine} 
+	Y.-X. Ren, R. Song 
+	\\ and Z. Sun (2019)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{KyprianouPardo2008Continuousstate} A. Kyprianou and J. Pardo 
+	\\ (2008)
+	\\ \cite{RenYangZhao2014Conditional} Y.-X. Ren, T. Yang 
+	\\ and G.-H. Zhao (2014)
+\end{tabular} 
+\\ \hline
+	Superprocesses 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{EvansPerkins1990Measurevalued} Evans and Perkins (1990) 
+	\\ \cite{RenSongZhang2015Limit} Y.-X. Ren, R. Song 
+	\\ and R. Zhang (2015)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}} 
+	\cite{RenSongSun2019Spine} Y.-X. Ren, R. Song 
+	\\ and Z. Sun (2019)
+\end{tabular} 
+& 
+\begin{tabular}[c]{@{}l@{}}
+	\cite{RenSongSun2018Limit} Y.-X. Ren, R. Song 
+	\\ and Z. Sun (2018b+)
+\end{tabular} 
+\\ \hline
+\end{tabular}
+}
+\end{table} 
+
+Evans 和 Perkins  \cite{EvansPerkins1990Measurevalued} 为一类具有二次分支、空间齐次的分支机制的超过程建立了 Kolmogorov 型定理和 Yaglom 型极限定理。 
+最近，Ren，Song 和 Zhang \cite{RenSongZhang2015Limit} 将他们的结果推广到具有更一般的分支机制和更一般的空间运动的二阶矩有限的临界超过程上。
+对于没有二阶矩条件的临界超过程，很自然的问题是问 Slack 型极限定理是否成立。 
+此外，对于具有二阶矩条件的临界超过程，由于 \cite{EvansPerkins1990Measurevalued} 和 \cite{RenSongZhang2015Limit} 中使用的方法都是分析的，我们想知道是否存在更直观的概率证明。
+    
+本人博士论文的主题，就是对上述两个问题给出正面的答案。
+我们使用一个称为``多脊柱分解''的概率方法来研究临界分支过程和超过程的极限行为。
+类似的想法起源于 Lyons，Pemantle 和 Peres \cite {LyonsPemantlePeres1995Conceptual} 关于 Galton-Watson 过程的单脊柱分解理论。
+对于更一般的分支过程的单脊柱分解定理及其相关应用，可以参见
+\cite{Aidekon2013Convergence,AidekonShi2014SenetaHeyde,BigginsKyprianou2004Measure,ChauvinRouault1988KPP,Englander2009Law,EnglanderHarrisKyprianou2010Strong,EnglanderKyprianou2004Local,GeorgiiBaake2003Supercritical,HuShi2009Minimal,Lambert2007Quasistationary,LiuRenSong2009Log,RenYang2014Multitype}。
+多脊柱分解定理作为单脊柱分解定理的推广，则最先是由 Harris 和 Roberts \cite{HarrisRoberts2017Manytofew} 在分支扩散过程中进行了系统的研究。
+这里，``脊柱''是指某个不灭绝马氏过程的时空轨迹，而 ``多脊柱'' 是指多个不灭绝马氏过程的时空轨迹的并集。
+粗略地讲，多脊柱分解理论是指这样一类定理：马尔可夫分支过程的一大类测度变换可以分解为沿着一个多脊柱骨架移民的带移民分支过程。
+脊柱分解理论对于研究分支过程的性质有重要意义：首先，它们刻画了原过程与其测度变换后的过程之间的关系，这为表征原过程提供了新的概率观点;
+其次，多脊柱分解理论具有灵活性与通用性——几乎前面提到的所有分支模型，在一大类不同的测度变换下，都有与之对应的脊柱分解定理。
+
+本人的博士论文是基于我与我的导师任艳霞教授、以及我的联合培养导师宋仁明教授合作发表的文章 \cite{RenSongSun20182spine}和 \cite{RenSongSun2019Spine}、 合作完成的预印本 \cite{RenSongSun2018Limit} 以及我和任艳霞、宋仁明以及赵建杰合作完成的预印本 \cite{RenSongSunZhao2019Stable}。
+该博士论文的主要贡献可以列举如下：
+\begin{enumerate}
+\item
+建立了 Galton-Watson 过程的双脊柱分解定理。（见第二章）
+\item
+利用 Galton-Watson 过程的脊柱分解理论给出了 Kolmogorov 型定理和 Yaglom 型定理的新的概率证明。（见第二章）
+\item
+推广了超过程的（单）脊柱分解定理。（见第三章）
+\item
+建立了超过程的双脊柱分解定理。（见第三章）
+\item
+  利用超过程的脊柱分解理论，在比 \cite{EvansPerkins1990Measurevalued} 和 \cite{RenSongZhang2015Limit} 更弱的条件下，给出了一大类临界超过程的 Kolmogorov 型定理和 Yaglom 型定理的概率证明。(见第三章)
+\item
+使用脊柱分解理论，给出了刻画超过程特征函数的一个复值积分方程。（见第四章）
+\item
+使用脊柱分解理论，提出并证明了一大类临界超过程的 Slack 型定理。（见第五章）
+\end{enumerate}
+
+下面粗略地介绍一下本文得到的临界超过程的 Kolmogrove 型、Yaglom 型和 Slack 型极限定理。我们在一个局部可分度量空间 $E$ 上考虑一个临界的 $(\xi,\psi)$-超过程，它具有如下依赖于空间的分支机制
+\begin{align}
+\psi(x,z)
+  = -\beta(x) z + \alpha(x) z^2 + \int_0^\infty \left( e^{-zr} - 1 + zr \right) \pi(x,dr),
+\quad x\in E,z\geq 0,
+\end{align}
+其中 $\beta$ 和 $\alpha$ 都是 $E$ 上的有界可测函数，$\alpha$ 非负，$\pi(x,dy)$ 是从 $E$ 到 $(0,\infty)$ 的满足
+\begin{align}
+\sup_{x\in E} \int_{(0,\infty)} (y\wedge y^2) \pi(x,dy)< \infty,
+\end{align}
+的一个 $\sigma$-有限转移核。
+更确切地，记 $\mathcal M(E)$ 是 $E$ 上的有限测度全体，令 $\xi =  \left\{ \left( \xi_t \right)_{t\geq 0};\left( \Pi_x \right)_{x\in E} \right\}$ 是一个在 $E$ 中取值的 Hunt 过程，其转移概率半群用 $(P_t)_{t\geq 0}$ 来表示。
+我们考虑一个满足如下性质的，在 $\mathcal M(E)$ 中取值的 Hunt 过程$X = \left\{ \left( X_t \right)_{t\geq 0}; \left( \mathbf P_\mu \right)_{\mu \in \mathcal M(E)} \right\}$：
+对于每一个 $E$ 上的有界非负可测函数 $f$，我们有
+\begin{align}
+\mathbf P_\mu [e^{- \langle X_t,f\rangle}] 
+= e^{-\langle  \mu, V_t f \rangle},
+\quad t\geq 0, \mu \in \mathcal M(E),
+\end{align}
+其中定义在 $[0,\infty)\times E$ 上的函数 $(t,x)\mapsto V_tf(x)$ 是如下方程的唯一局部有界非负解
+\[
+V_tf(x)+ \int_0^t P_{t-s}\psi \left(\cdot, V_sf(\cdot)\right)(x)~ds
+= P_tf(x),
+\quad t\geq 0, x\in E.
+\]
+这个测度值马氏过程 $X$ 既是超过程。我们做出一些技术性的假设，来保证下面的称述是正确的：
+(a) 超过程的均值算子半群 $P_t^\beta f(x):= \mathbf P_{\delta_x}\left( \left\langle X_t,f \right\rangle \right)$ 以及它的对偶半群 $P^{\beta *}_t$ 都是 Hilbert 空间 $L^2(E,m)$ 上的紧算子强连续算子半群；
+% (2) the first eigenvalue $\lambda$ of both generators is simple and equals $0$; 
+(b) 上面两个算子半群的生成元拥有相同的最大特征值 $\lambda = 0$，而且其对应的重数 (multiplicity) 为 $1$; 
+% (3) the corresponding eigenfunction $\phi$ and $\phi^*$ are strictly positive and continuous; and 
+(c) 这两个算子半群的生成元的最大特征值所分别对应的特征函数 $\phi$ 和 $\phi^*$ 可以取作严格正的，连续的；  
+% (4) the mean semigroup is intrinsically ultracontractive, which further implies that the density function of $P^\beta_t$ with respect to a certain reference measure converges uniformly to $1$ with an exponential decay ra  te.
+(d) 超过程的均值算子半群 $P_t^\beta$ 具有内蕴一致超压缩性：这就进一步意味着，算子 $P_t^\beta$ 的相对于某一个参考测度的转移密度函数会一致地收敛到 $1$，而且具有指数阶的收敛速率。
+(e) 在充分大的时刻，超过程以正概率灭绝，或者等价地，排除超过程以概率1不灭绝的情形。
+
+定义
+\begin{align}
+  A(x) := 2\alpha(x) + \int_{(0,\infty)} y^2 \pi(x,dy),
+\quad x\in E.
+\end{align}
+在第二章中，我们证明了在上述的假设下，如果 $A \cdot \phi$ 是有界的，那么对任意的初始状态$\mu\in \mathcal M(E)$ 满足 $\phi$ 关于 $\mu$ 可积，我们有
+\begin{align}
+  t \mathbf P_\mu \left( \|X_t\| \neq 0 \right) 
+\xrightarrow[t\to \infty]{} 
+  \frac{\mu(\phi)}{ \frac{1}{2} \left\langle A\phi, \phi\phi^* \right\rangle_m}.
+\end{align}
+这个结论便是临界超过程的 Kolmogrove 型极限定理。
+更进一步的，对于任意非负可测函数 $f$, 我们有
+\begin{align}
+\left\{ \frac{\left\langle f,X_t \right\rangle}{t} ; \mathbf P_\mu \left( \cdot \middle| \|X_t\| > 0 \right) \right\}
+  \xrightarrow[t\to \infty]{d} \frac{1}{2} \left\langle \phi^*, f \right\rangle_m \left\langle A\phi, \phi\phi^* \right\rangle_m \mathbf e,
+\end{align}
+其中 $\mathbf e$ 是一个期望为 $1$ 的指数随机变量。
+这个结论便是临界超过程的 Yaglom 型极限定理。
+
+% ** Results
+在第五章中，我们考虑了一类具有空间非齐次的 stable 分支机制的临界超过程。具体来说，我们依然考虑一个超过程 $(X_t)_{t\geq 0}$ 满足一定的假设使得前面的（a-e）的陈述是正确的。
+在这些假设下，对任意选取的初始测度 $\mu\in \mathcal M(E)$，我们证明了超过程在 $t$ 时刻的不灭绝概率 $\mathbf P_\mu\left( \left\| X_t \right\| \neq 0 \right)$ 在 $t\to \infty$ 的时候会收敛到 $0$。
+而且它是依参数 $1/(\gamma_0 - 1)$ 正则变化的 (regularly varing)。
+此外，如果 $m(x:\gamma(x) = \gamma_0)>0$，那么
+\begin{align}
+\lim_{t\to\infty} \eta_t^{-1}\mathbf P_\mu\left( \left\| X_t \right\| \neq 0 \right) 
+= \left\langle \mu,\phi \right\rangle,
+\end{align}
+而且对于一大类非负测试函数 $f$，我们证明
+\begin{align}
+\left\{ \eta_t \left\langle X_t,f \right\rangle ; \mathbf P_\mu \left( \cdot \middle| \left\| X_t \right\| \neq 0\right) \right\}
+\xrightarrow[t\to \infty]{d} \left\langle f,\phi^* \right\rangle_m \mathbf z^{(\gamma_0 - 1)}. 
+\end{align}
+这里，$\eta_t:= \left( C_X(\gamma_0 - 1) t \right)^{-1/(\gamma_0 - 1)}$, $C_X:=\left\langle \mathbf{1}_{\gamma(\cdot)=\gamma_0}\kappa\cdot \phi^{\gamma_0}, \phi^* \right\rangle_m$, $\mathbf{z}^{(\gamma_0 - 1)}$ 是一个具有如下拉普拉斯变换的非负随机变量： 
+\begin{align}
+E\left[ e^{-u \mathbf{z}^{(\gamma_0 - 1)}} \right]
+= 1 - \left( 1+u^{-(\gamma_0 - 1)} \right)^{-1/(\gamma_0 - 1)},
+\quad u \geq 0.
+\end{align}
+这个结论可以看作是临界超过程的 Slack 型极限定理。
+
+% * Bibliographic references
+\bibliographystyle{plain}
+\bibliography{../orggtd/bib.bib}
+\end{document}
+
+%%% Local Variables: 
+%%% TeX-engine: xetex
+%%% End:
