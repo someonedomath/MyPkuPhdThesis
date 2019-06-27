@@ -1,0 +1,245 @@
+\documentclass[12pt,a4paper]{article}
+%	\setlength{\textwidth}{\paperwidth}
+%	\addtolength{\textwidth}{-2in}
+%	\calclayout
+\usepackage[UTF8]{ctex}
+\usepackage{mathtools}
+	\mathtoolsset{showonlyrefs}
+\usepackage{stackrel}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+	\theoremstyle{plain}
+	\newtheorem{thm}{Theorem}[section]
+	\newtheorem{lem}[thm]{Lemma}
+	\newtheorem{prop}[thm]{Proposition}
+	\newtheorem{cor}[thm]{Corollary}
+	\newtheorem{conj}[thm]{Conjecture}
+	\theoremstyle{definition}
+	\newtheorem{defi}[thm]{Definition}
+	\newtheorem{rem}[thm]{Remark}
+	\newtheorem{exa}[thm]{Example}
+	\newtheorem{asp}{Assumption}
+	\numberwithin{equation}{section}
+	\allowdisplaybreaks
+\usepackage[backref=section]{hyperref}
+	\def\MR#1{\href{http://www.ams.org/mathscinet-getitem?mr=#1}{MR#1}}
+	\def\ARXIV#1{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
+\usepackage{comment}
+
+\begin{document}
+\begin{comment}
+\title
+    [选题报告]
+    {\large 博士论文选题报告：临界马氏分支过程的脊柱分解和极限定理}
+\author
+    [孙振尧]
+    {孙振尧}
+\address
+    {孙振尧\\
+    数学科学学院\\
+    北京大学\\
+    北京, 100871}
+\email{zhenyao.sun@pku.edu.cn}
+\thanks{博士生导师：任艳霞教授（北京大学）。}
+\thanks{联合培养导师：Prof. Renming Song（伊利诺伊大学香槟分校）。}
+\thanks{2018年6月1日}
+\maketitle
+\end{comment}
+
+\section{研究背景}
+
+	超过程是一类非常重要的测度值马氏过程，最早由 Watanabe 在 \cite{Watanabe1968A-limit} 引入。
+	它属于一大类具有分支性的马氏过程。
+	同样具有分支性和马氏性的随机模型还包括 Galton-Watson 过程，多物种 Galton-Watson 过程，连续时间 Galton-Watson 过程，多物种连续时间 Galton-Watson 过程，分支随机游动，分支马氏过程和连续状态分支过程。
+	有关这类具有分支性的马氏过程是现代概率论研究的重点之一。
+	在应用的方面，它们可以用于人口论，生物进化论的建模；在理论方面，它们与非线性偏微分方程、随机偏微分方程、随机分析以及许多其他数学分支的关系密切。
+
+	具有分支性的马氏过程的极限行为是这类随机过程研究中的基本问题。
+	其极限行为一般有三个不同的情形：
+	上临界情形时，粒子数期望随着时间指数增长；
+	下临界时，粒子数期望随着时间指数递减；
+	临界时，粒子数的期望基本不变。其中临界的情形最有意思，因为其极限行为具有某种普适性。
+
+	比如 Slack 在 \cite{Slack1968A-branching} 中考虑了一类后代生成分布属于 $\alpha​$-稳定分布的吸收域的临界 Galton-Watson 过程。
+	他证明了该过程在时刻 $n​$的总人口数，在时刻 $n​$过程不灭绝的条件下，其条件分布，在经过一个合适的放缩变换后弱收敛到一个随机变量。
+	这个极限随机变量的分布与后代生成分布的具体形式无关，其 Laplace变换的形式总是为 $1- (1+u^{-\alpha})^{-1/\alpha}​$。
+	当 $\alpha = 2​$ 的时候，这个弱收敛结果也称为是 Yaglom 定理，而此时的极限随机变量是一个指数随机变量。
+	对临界 Galton-Watson 过程的相关研究还有 \cite{Kolmogorov1938Zur-losung}, \cite{Yaglom1947Certain}, \cite{KestenNeySpitzer1966The-Galton-Watson}，\cite{LyonsPemantlePeres1995Conceptual}, \cite{Geiger1999Elementary} 和 \cite{Geiger2000A-new}。
+
+	所谓临界分支马氏过程的极限行为具有普世性，是指对几乎所有前面提到的马氏分支粒子系统，类似的Slack形弱收敛定理都成立。
+	对于多物种 Galton-Watson 过程见 \cite{JoffeSpitzer1967On-multitype}, \cite{VatutinDyakonova2001The-survival} 和 \cite{GoldsteinHoppe1978Critical}。
+	对于连续时间单物种或多物种 Galton-Watson 过程见 \cite{AthreyaNey1972Branching}, \cite{AthreyaNey1974Functionals} 以及 \cite{Vatutin1977Limit}。
+	对于分支马氏过程见 \cite{AsmussenHering1983Branching} 以及 \cite{Powell2016An-invariance}。 
+	对于连续状态分支过程见 \cite{Li2000Asymptotic}, \cite{KyprianouPardo2008Continuous-state} 和 \cite{RenYangZhao2014Conditional}。
+
+\section{研究问题}
+
+	Evans 和 Perkins 在 \cite{EvansPerkins1990Measure-valued} 证明了一类临界的分支机制是简单二分支的超过程的 Yaglom 型定理。
+	最近 Ren，Song 和 Zhang \cite{RenSongZhang2015Limit} 将他们的结论扩展到一类具有一般底过程和一般分支机制的临界超过程。
+	以上的研究中的超过程都具有有限的方差。对于不具有有限方差的临界超过程，自然的问题是问是否有类似的 Slack 型定理成立。
+	另一方面，上述两个文献中的的证明主要依赖非线性偏微分方程的理论和分析的手法，没有充分利用超过程自身的粒子结构，证明缺乏直观。
+	所以另一个问题是问是否有更自然直观的证明。
+	解答这些问题将会让我们对具有分支性的马氏过程的 Slack 型极限定理的普适性有更深刻的理解。
+
+\section{研究方法}
+
+	我们的主要研究工具叫做（多）脊柱分解。
+	简单地说，脊柱是一个不灭绝随机粒子的运动轨迹，而 $k$-脊柱是指 $k$ 个不同脊柱的合并。
+	多脊柱分解理论认为具有分支性和马氏性的随机粒子系统，在经过适当的测度变换后，可以分解为沿着某个多脊柱的移民过程。这套理论的重要性主要有以下三条：
+\begin{enumerate}
+\item
+	可以将随机多个（甚至无穷多个）轨道性质的研究转化成对某几个特别的轨道性质的研究。
+\item
+	它刻画了原过程和经过测度变换后的过程之间的关系。可以用来刻画原过程的许多特征。
+\item
+	它具有灵活的形式：对几乎所有之前提到的马氏分支粒子系统，和各类不同形式的测度变换，都有相对应的脊柱分解定理。
+\end{enumerate}
+
+	利用单脊柱的思想来研究分支过程的极限行为最早可以追溯到 \cite{LyonsPemantlePeres1995Conceptual}。
+	而多脊柱的思想在分支马氏过程中系统的论述可以参考 \cite{HarrisRoberts2017The-many}。
+	最近，Yan-xia Ren, Renming Song 和我 \cite{RenSongZhang2015Limit} 观察到临界分支过程的 Yaglom 型定理和其双脊柱分解之间某种紧密的联系。
+	我们用一个新的（指与 \cite{HarrisRoberts2017The-many} 中不同的）双脊柱分解定理刻画了临界分支过程的 $x^2$-形测度变换；并利用这个测度变换给出了一个经典的 Yaglom 型定理的新的直观证明。
+	这个新证明主要用到过程的马氏性、分支性和临界性，所以我们认为类似的方法应该可以用来处理更复杂的超过程。
+
+\renewcommand{\refname}{参考文献}
+\begin{thebibliography}{10}
+
+\bibitem{AsmussenHering1983Branching}
+Asmussen, S. and Hering, H.:
+\emph{Branching processes.} 
+Progress in Probability and Statistics, 3. Birkhäuser Boston, Inc., Boston, MA, 1983. x+461 pp. ISBN: 3-7643-3122-4 
+\MR{0701538}
+
+\bibitem{AthreyaNey1972Branching}
+Athreya, K. B. and Ney, P. E.:
+\emph{Branching processes.} 
+Die Grundlehren der mathematischen Wissenschaften, Band 196. Springer-Verlag, New York-Heidelberg, 1972. xi+287 pp. 
+\MR{0373040}
+
+\bibitem{AthreyaNey1974Functionals}
+Athreya, K. and Ney, P.:
+\emph{Functionals of critical multitype branching processes.}
+Ann. Probability \textbf{2} (1974), 339–343. 
+\MR{0373040}
+
+\bibitem{EvansPerkins1990Measure-valued}
+Evans, S. N. and Perkins, E.:
+\emph{Measure-valued Markov branching processes conditioned on nonextinction.}
+Israel J. Math. \textbf{71} (1990), no. 3, 329–337.
+\MR{1088825} 
+
+\bibitem{Geiger1999Elementary}
+Geiger, J.:
+\emph{Elementary new proofs of classical limit theorems for Galton-Watson processes.}
+J. Appl. Probab. \textbf{36} (1999), no. 2, 301--309.
+\MR{1724856} 
+
+\bibitem{Geiger2000A-new}
+Geiger, J.:
+\emph{A new proof of Yaglom's exponential limit law.} 
+Mathematics and computer science (Versailles, 2000), 245–249, Trends Math., Birkhäuser, Basel, 2000. 
+\MR{1798303}
+
+\bibitem{GoldsteinHoppe1978Critical}
+Goldstein, M. I. and Hoppe, F. M.:
+\emph{Critical multitype branching processes with infinite variance.}
+J. Math. Anal. Appl. \textbf{65} (1978), no. 3, 675--686.
+\MR{0510478} 
+
+\bibitem{HarrisRoberts2017The-many}
+Harris, S. C. and Roberts, M. I.:
+\emph{The many-to-few lemma and multiple spines.} 
+Ann. Inst. Henri Poincaré Probab. Stat. \textbf{53} (2017), no. 1, 226–242.
+\MR{3606740} 
+
+\bibitem{JoffeSpitzer1967On-multitype}
+Joffe, A. and Spitzer, F.:
+\emph{On multitype branching processes with $\rho \leq 1$.} 
+J. Math. Anal. Appl. \textbf{19} (1967), 409–430.
+\MR{0212895} 
+
+\bibitem{KestenNeySpitzer1966The-Galton-Watson}
+Kesten, H., Ney, P. and Spitzer, F.:
+\emph{The Galton-Watson process with mean one and finite variance.} 
+Teor. Verojatnost. i Primenen. \textbf{11} (1966), 579--611.
+\MR{0207052}
+
+\bibitem{Kolmogorov1938Zur-losung}
+Kolmogorov, A. N.:
+\emph{Zur lösung einer biologischen aufgabe}
+Comm. Math. Mech. Chebyshev Univ. Tomsk \textbf{2} (1938), 1--12.
+
+\bibitem{KyprianouPardo2008Continuous-state}
+Kyprianou, A. E. and Pardo, J. C.:
+\emph{Continuous-state branching processes and self-similarity.} 
+J. Appl. Probab. \textbf{45} (2008), no. 4, 1140--1160.
+\MR{2484167} 
+
+\bibitem{Li2000Asymptotic}
+Li, Z.-H.:
+\emph{Asymptotic behaviour of continuous time and state branching processes.} 
+J. Austral. Math. Soc. Ser. A \textbf{68} (2000), no. 1, 68--84.
+\MR{1727226}
+
+\bibitem{LyonsPemantlePeres1995Conceptual}
+Lyons, R., Pemantle, R. and Peres, Y.:
+\emph{Conceptual proofs of $L\log L$ criteria for mean behavior of branching processes.}
+Ann. Probab. \textbf{23} (1995), no. 3, 1125--1138.
+\MR{1349164}
+
+\bibitem{Powell2016An-invariance}
+Powell, E.: 
+\emph{An invariance principle for branching diffusions in bounded domains.} 
+Probability Theory and Related Fields (2016), 1--64.
+
+\bibitem{RenSongSun2018A-2-spine}
+Ren, Y.-X., Song, R. and Sun, Z.:
+\emph{A 2-spine decomposition of the critical Galton-Watson tree and a probabilistic proof of Yaglom's theorem.} 
+Electron. Commun. Probab. \textbf{23} (2018), Paper No. 42, 12 pp. 
+\MR{3841403}
+
+\bibitem{RenSongZhang2015Limit}
+Ren, Y.-X., Song, R. and Zhang, R.:
+\emph{Limit theorems for some critical superprocesses.}
+Illinois J. Math. \textbf{59} (2015), no. 1, 235–276.
+
+\bibitem{RenYangZhao2014Conditional}
+Ren, Y.-X., Yang, T. and Zhao, G.:
+\emph{Conditional limit theorems for critical continuous-state branching processes.}
+Sci. China Math. \textbf{57} (2014), no. 12, 2577--588. 
+\MR{3275407}
+
+\bibitem{Slack1968A-branching}
+Slack, R. S.:
+\emph{A branching process with mean one and possibly infinite variance.}
+Z. Wahrscheinlichkeitstheorie und Verw. Gebiete \textbf{9} (1968), 139--145.
+\MR{0228077}
+
+\bibitem{Vatutin1977Limit}
+Vatutin, V. A.:
+\emph{Limit theorems for critical multitype Markov branching processes with infinite second moments.} (Russian) 
+Mat. Sb. (N.S.) \textbf{103(145)} (1977), no. 2, 253–264, 319.
+\MR{0443115}
+
+\bibitem{VatutinDyakonova2001The-survival}
+Vatutin, V. A. and Dyakonova, E. E.:
+\emph{The survival probability of a critical multitype Galton-Watson branching process.}
+Proceedings of the Seminar on Stability Problems for Stochastic Models, Part II (Nalęczow, 1999). 
+J. Math. Sci. (New York) \textbf{106} (2001), no. 1, 2752–2759. 
+\MR{1878742}
+
+\bibitem{Watanabe1968A-limit}
+Watanabe, S.:
+\emph{A limit theorem of branching processes and continuous state branching processes.}
+J. Math. Kyoto Univ. \textbf{8} (1968), 141--167.
+\MR{0237008}
+
+\bibitem{Yaglom1947Certain}
+Yaglom, A. M.:
+\emph{Certain limit theorems of the theory of branching random processes.} (Russian)
+Doklady Akad. Nauk SSSR (N.S.) \textbf{56} (1947), 795--798. 
+\MR{0022045}
+
+\end{thebibliography}
+
+\end{document}
